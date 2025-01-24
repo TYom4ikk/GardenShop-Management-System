@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GardenKeeper", "GardenKeeper.csproj", "{A6410086-3335-4C36-86DC-52D27162A60B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A6410086-3335-4C36-86DC-52D27162A60B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6410086-3335-4C36-86DC-52D27162A60B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6410086-3335-4C36-86DC-52D27162A60B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6410086-3335-4C36-86DC-52D27162A60B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1413DE6B-CA7A-46EE-8E20-AD2433DC08C7}
+	EndGlobalSection
+EndGlobal
