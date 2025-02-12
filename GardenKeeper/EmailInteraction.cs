@@ -20,12 +20,12 @@ namespace GardenKeeper
             try
             {
                 string body = $"Здравствуйте! \r\nВы завершаете регистрацию" +
-                    $" в приложении GardenKeeper. Ваш код подтверждения - {code}" +
+                    $" в приложении . Ваш код подтверждения - {code}" +
                     $"\r\n\r\nПожалуйста, завершите верификацию учётной записи в приложении!" +
-                    $"\r\n\r\n\r\nС уважением,\r\n\r\nTYom4ik";
-                string subject = $"Ваш код подтверждения Work Flow - Task Tracker - {code}";
+                    $"\r\n\r\n\r\nС уважением,\r\n\r\n";
+                string subject = $"Ваш код подтверждения  - {code}";
 
-                MailAddress from = new MailAddress(fromAddress, "Work Flow - Task Tracker");
+                MailAddress from = new MailAddress(fromAddress, "");
                 MailAddress to = new MailAddress(toAddress);
                 MailMessage message = new MailMessage(from, to);
                 message.Subject = subject;

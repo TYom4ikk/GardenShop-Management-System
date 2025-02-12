@@ -1,4 +1,6 @@
-﻿using System;
+﻿using GardenKeeper.Model;
+using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +22,19 @@ namespace GardenKeeper.View
     /// </summary>
     public partial class MainPage : Page
     {
+        static Core db = new Core();
         public MainPage()
         {
             InitializeComponent();
+
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.ShowDialog();
+            //Обработать cancel
+            byte[]image_bytes = System.IO.File.ReadAllBytes(openFileDialog.FileName);
+
+            var product = db.context.Products.Where(p => p.Id == 1).FirstOrDefault();
+            product.Image = image_bytes;
+            db.context.SaveChanges();
         }
     }
 }

@@ -15,7 +15,7 @@
             <TextBox x:Name="TextBoxLogin" Width="200" Height="30"/>
             <Label Content="Пароль:" Width="200" Height="30"/>
 
-            <PasswordBox x:Name="TextBoxPassword" Width="200" Height="30"/>
+            <PasswordBox x:Name="PasswordBoxPassword" Width="200" Height="30"/>
             <!--TODO CHECKBOX-->
 
             <Button x:Name="ButtonSubmit" Content="Submit" Width="200" Height="30" Margin="20"
