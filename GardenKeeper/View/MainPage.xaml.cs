@@ -22,7 +22,6 @@ namespace GardenKeeper.View
     /// </summary>
     public partial class MainPage : Page
     {
-        static Core db = new Core();
         public MainPage()
         {
             InitializeComponent();
@@ -32,9 +31,9 @@ namespace GardenKeeper.View
             //Обработать cancel
             byte[]image_bytes = System.IO.File.ReadAllBytes(openFileDialog.FileName);
 
-            var product = db.context.Products.Where(p => p.Id == 1).FirstOrDefault();
+            var product = Core.context.Products.Where(p => p.Id == 1).FirstOrDefault();
             product.Image = image_bytes;
-            db.context.SaveChanges();
+            Core.context.SaveChanges();
         }
     }
 }

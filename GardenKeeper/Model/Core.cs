@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace GardenKeeper.Model
 {
-    internal class Core
+    public static class Core
     {
-        public GardenStoreEntities context = new GardenStoreEntities();
+        public static GardenStoreEntities context = new GardenStoreEntities();
     }
 }

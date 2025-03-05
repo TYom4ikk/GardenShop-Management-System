@@ -1,4 +1,5 @@
 ﻿using GardenKeeper.Model;
+using GardenKeeper.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,20 +27,17 @@ namespace GardenKeeper.View
         public RegistrationPage()
         {
             InitializeComponent();
+
+            DataContext = new RegistrationViewModel();
         }
 
         private void ButtonSubmit_Click(object sender, RoutedEventArgs e)
         {
-
-            MessageBox.Show(PasswordBoxPassword.Password);
-            MessageBox.Show(Hash.CreateMD5(Encoding.UTF8.GetBytes(PasswordBoxPassword.Password)).ToString());
-
-
             if(!string.IsNullOrEmpty(TextBoxLogin.Text) && !string.IsNullOrEmpty(PasswordBoxPassword.Password))
             {
                 if(Authentication.IsAuthenticated(TextBoxLogin.Text, PasswordBoxPassword.Password))
                 {
-                    this.NavigationService.Navigate(new Uri("View\\MainPage.xaml", UriKind.Relative));
+                    this.NavigationService.Navigate(new Uri("View\\UsersView\\CatalogPage.xaml", UriKind.Relative));
                 }
                 else
                 {

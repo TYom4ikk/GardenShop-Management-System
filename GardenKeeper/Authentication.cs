@@ -12,8 +12,7 @@ namespace GardenKeeper
 {
     internal static class Authentication
     {
-        static Core db = new Core();
-        static List<Users> users = db.context.Users.ToList();
+        static List<Users> users = Core.context.Users.ToList();
 
         public static bool IsAuthenticated(string email, string password)
         {

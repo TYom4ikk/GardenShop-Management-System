@@ -9,8 +9,8 @@
       Title="RegistrationPage">
 
     <Grid Background="LightBlue">
-        <StackPanel VerticalAlignment="Center">
-            <Label/>
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Label Content="Регистрация" FontSize="26" FontWeight="Bold" HorizontalAlignment="Center" FontFamily="Arial" Margin="0 0 0 30"/>
             <Label Content="Логин:" Width="200" Height="30"/>
             <TextBox x:Name="TextBoxLogin" Width="200" Height="30"/>
             <Label Content="Пароль:" Width="200" Height="30"/>

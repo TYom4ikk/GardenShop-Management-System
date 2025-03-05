@@ -1,0 +1,26 @@
+﻿<UserControl x:Class="GardenKeeper.View.UsersView.Partial.ProductCard"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:GardenKeeper.View.UsersView.Partial"
+             mc:Ignorable="d" 
+             d:DesignHeight="400" d:DesignWidth="400">
+
+    <Grid x:Name="ProductCardGrid" Background="LightBlue">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        
+        <Image x:Name="ProductImage" Source="/View/UsersView/Partial/Садовый-измельчитель-Bosch-AXT-25-TC.png"/>
+        <StackPanel x:Name="ProductContentStackPanel" Grid.Row="1">
+            <Label x:Name="ProductNameLabel" Content="{Binding Name}"  Style="{StaticResource ProductNameLabel}"/>
+            <Label x:Name="ProductMainPriceLabel" Content="{Binding MainPrice}"/>
+            <Label x:Name="ProductDescriptionLabel" Content="{Binding Description}"/>
+            <Label x:Name="ProductDiscountPriceLabel" Content="[default]"/>
+            <Label x:Name="ProductQuantityLabel" Content="[default]"/>
+            <Label x:Name="ProductCategoryLabel" Content="[default]"/>
+        </StackPanel>
+    </Grid>
+</UserControl>
