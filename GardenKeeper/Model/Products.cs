@@ -25,7 +25,31 @@ namespace GardenKeeper.Model
         public string Name { get; set; }
         public string Description { get; set; }
         public Nullable<long> MainPrice { get; set; }
+
+        public string FormattedMainPrice { get
+            {
+                string mainPriceStr = MainPrice.ToString();
+
+                string rubles = mainPriceStr.Substring(0, mainPriceStr.Length - 2);
+                string kopecks = mainPriceStr.Substring(mainPriceStr.Length - 2);
+                return $"{rubles}.{kopecks} ₽";
+            }
+        }
+
         public Nullable<long> DiscountPrice { get; set; }
+
+        public string FormattedDiscountPrice
+        {
+            get
+            {
+                string discountPriceStr = DiscountPrice.ToString();
+
+                string rubles = discountPriceStr.Substring(0, discountPriceStr.Length - 2);
+                string kopecks = discountPriceStr.Substring(discountPriceStr.Length - 2);
+                return $"{rubles}.{kopecks} ₽";
+            }
+        }
+
         public long Quantity { get; set; }
         public int CategoryId { get; set; }
         public byte[] Image { get; set; }

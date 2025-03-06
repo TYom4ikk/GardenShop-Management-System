@@ -5,22 +5,39 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:GardenKeeper.View.UsersView.Partial"
              mc:Ignorable="d" 
-             d:DesignHeight="400" d:DesignWidth="400">
+             d:DesignHeight="600" d:DesignWidth="600">
 
-    <Grid x:Name="ProductCardGrid" Background="LightBlue">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../../../Styles/ProductCardStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid x:Name="ProductCardGrid" Style="{StaticResource ProductCardGrid}">
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
         
-        <Image x:Name="ProductImage" Source="/View/UsersView/Partial/Садовый-измельчитель-Bosch-AXT-25-TC.png"/>
-        <StackPanel x:Name="ProductContentStackPanel" Grid.Row="1">
-            <Label x:Name="ProductNameLabel" Content="{Binding Name}"  Style="{StaticResource ProductNameLabel}"/>
-            <Label x:Name="ProductMainPriceLabel" Content="{Binding MainPrice}"/>
-            <Label x:Name="ProductDescriptionLabel" Content="{Binding Description}"/>
-            <Label x:Name="ProductDiscountPriceLabel" Content="[default]"/>
-            <Label x:Name="ProductQuantityLabel" Content="[default]"/>
-            <Label x:Name="ProductCategoryLabel" Content="[default]"/>
-        </StackPanel>
+        <Image x:Name="ProductImage" Source="{Binding Image}"/>
+        <Grid x:Name="ProductContentGrid" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Orientation="Horizontal" Grid.Row="0" VerticalAlignment="Center">
+                <TextBlock x:Name="ProductDiscountPriceTextBlock" Text="{Binding FormattedDiscountPrice}" Style="{StaticResource ProductDiscountPriceTextBlock}"/>
+                <TextBlock x:Name="ProductMainPriceTextBlock" Text="{Binding FormattedMainPrice}" Style="{StaticResource ProductMainPriceTextBlock}"/>
+            </StackPanel>
+
+            <TextBlock x:Name="ProductNameTextBlock" Grid.Row="1" Text="{Binding Name}" Style="{StaticResource ProductNameTextBlock}"/>
+            <TextBlock x:Name="ProductDescriptionTextBlock" Grid.Row="2" Text="{Binding Description}" Style="{StaticResource ProductDescriptionTextBlock}"/>
+            <TextBlock x:Name="ProductQuantityTextBlock" Grid.Row="3" Text="{Binding Quantity, StringFormat='Осталось: {0} шт.'}" Style="{StaticResource ProductQuantityTextBlock}"/>
+        </Grid>
     </Grid>
 </UserControl>

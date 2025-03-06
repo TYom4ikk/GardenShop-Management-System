@@ -1,19 +1,14 @@
 ﻿using GardenKeeper.Model;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
-using System.Security.Policy;
 using System.Text;
-using System.Threading.Tasks;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace GardenKeeper
 {
-    internal static class Authentication
+    public static class Authentication
     {
-        static List<Users> users = Core.context.Users.ToList();
-
+        private static List<Users> users = Core.context.Users.ToList();
         public static bool IsAuthenticated(string email, string password)
         {
             MD5 hasher = MD5.Create();

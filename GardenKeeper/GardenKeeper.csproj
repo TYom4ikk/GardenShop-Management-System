@@ -194,6 +194,14 @@
     <Compile Include="View\UsersView\Partial\ProductCard.xaml.cs">
       <DependentUpon>ProductCard.xaml</DependentUpon>
     </Compile>
+    <Page Include="Colors\MainColors.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Fonts\MainFonts.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

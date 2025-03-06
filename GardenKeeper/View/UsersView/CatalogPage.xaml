@@ -14,19 +14,19 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <StackPanel></StackPanel>
+        <StackPanel Background="AliceBlue">
+            
+        </StackPanel>
 
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
             </Grid.RowDefinitions>
-        </Grid>
-
-        <StackPanel Grid.Row="1" x:Name="catalog">
             
-        </StackPanel>
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <UniformGrid Columns="3" x:Name="CatalogUniformGrid">
+                </UniformGrid>
+            </ScrollViewer>
+        </Grid>
 
     </Grid>
 </Page>

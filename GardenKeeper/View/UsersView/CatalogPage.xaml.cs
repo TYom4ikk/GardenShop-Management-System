@@ -29,13 +29,23 @@ namespace GardenKeeper.View.UsersView
             DataContext = new CatalogViewModel();
             var products = ((CatalogViewModel)DataContext).products;
 
-            foreach(var product in products)
+           foreach(var product in products)
             {
                 ProductCard card = new ProductCard(product);
-                card.Width = 200;
-                card.Height = 200;
-                catalog.Children.Add(card);
+                card.Width = 400;
+                card.Height = 400;
+                card.Margin = new Thickness(0, 20, 0, 20);
+                CatalogUniformGrid.Children.Add(card);
             }
+
+          /*  for(int i = 0; i < 10; i++)
+            {
+                ProductCard card = new ProductCard(products[0]);
+                card.Width = 300;
+                card.Height = 300;
+                card.Margin = new Thickness(0, 20, 0, 20);
+                CatalogUniformGrid.Children.Add(card);
+            }*/
         }
     }
 }

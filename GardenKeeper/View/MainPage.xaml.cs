@@ -31,7 +31,7 @@ namespace GardenKeeper.View
             //Обработать cancel
             byte[]image_bytes = System.IO.File.ReadAllBytes(openFileDialog.FileName);
 
-            var product = Core.context.Products.Where(p => p.Id == 1).FirstOrDefault();
+            var product = Core.context.Products.Where(p => p.Id == 3).FirstOrDefault();
             product.Image = image_bytes;
             Core.context.SaveChanges();
         }

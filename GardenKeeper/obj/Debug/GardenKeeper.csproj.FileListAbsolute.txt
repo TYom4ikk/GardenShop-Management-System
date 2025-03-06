@@ -88,3 +88,5 @@ C:\Users\zhaku\Desktop\Курсовые\GardenShop-Management-System\GardenKeepe
 C:\Users\zhaku\Desktop\Курсовые\GardenShop-Management-System\GardenKeeper\obj\Debug\View\UsersView\Partial\ProductCard.baml
 C:\Users\zhaku\Desktop\Курсовые\GardenShop-Management-System\GardenKeeper\obj\Debug\View\UsersView\CatalogPage.g.cs
 C:\Users\zhaku\Desktop\Курсовые\GardenShop-Management-System\GardenKeeper\obj\Debug\View\UsersView\CatalogPage.baml
+C:\Users\zhaku\Desktop\Курсовые\GardenShop-Management-System\GardenKeeper\obj\Debug\Colors\MainColors.baml
+C:\Users\zhaku\Desktop\Курсовые\GardenShop-Management-System\GardenKeeper\obj\Debug\Fonts\MainFonts.baml
