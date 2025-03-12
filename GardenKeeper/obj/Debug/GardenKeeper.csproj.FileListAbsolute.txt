@@ -82,11 +82,12 @@ C:\Users\zhaku\Desktop\Курсовые\GardenShop-Management-System\GardenKeepe
 C:\Users\zhaku\Desktop\Курсовые\GardenShop-Management-System\GardenKeeper\obj\Debug\GardenKeeper.csproj.GenerateResource.cache
 C:\Users\zhaku\Desktop\Курсовые\GardenShop-Management-System\GardenKeeper\obj\Debug\GardenKeeper.csproj.CoreCompileInputs.cache
 C:\Users\zhaku\Desktop\Курсовые\GardenShop-Management-System\GardenKeeper\obj\Debug\GardenKe.CFEE4CED.Up2Date
-C:\Users\zhaku\Desktop\Курсовые\GardenShop-Management-System\GardenKeeper\obj\Debug\Styles\ProductCardStyle.baml
 C:\Users\zhaku\Desktop\Курсовые\GardenShop-Management-System\GardenKeeper\obj\Debug\View\UsersView\Partial\ProductCard.g.cs
 C:\Users\zhaku\Desktop\Курсовые\GardenShop-Management-System\GardenKeeper\obj\Debug\App.baml
 C:\Users\zhaku\Desktop\Курсовые\GardenShop-Management-System\GardenKeeper\obj\Debug\View\UsersView\Partial\ProductCard.baml
 C:\Users\zhaku\Desktop\Курсовые\GardenShop-Management-System\GardenKeeper\obj\Debug\View\UsersView\CatalogPage.g.cs
 C:\Users\zhaku\Desktop\Курсовые\GardenShop-Management-System\GardenKeeper\obj\Debug\View\UsersView\CatalogPage.baml
-C:\Users\zhaku\Desktop\Курсовые\GardenShop-Management-System\GardenKeeper\obj\Debug\Colors\MainColors.baml
-C:\Users\zhaku\Desktop\Курсовые\GardenShop-Management-System\GardenKeeper\obj\Debug\Fonts\MainFonts.baml
+C:\Users\zhaku\Desktop\Курсовые\GardenShop-Management-System\GardenKeeper\obj\Debug\Assets\Colors\MainColors.baml
+C:\Users\zhaku\Desktop\Курсовые\GardenShop-Management-System\GardenKeeper\obj\Debug\Assets\Fonts\MainFonts.baml
+C:\Users\zhaku\Desktop\Курсовые\GardenShop-Management-System\GardenKeeper\obj\Debug\Assets\Styles\CatalogStyle.baml
+C:\Users\zhaku\Desktop\Курсовые\GardenShop-Management-System\GardenKeeper\obj\Debug\Assets\Styles\ProductCardStyle.baml

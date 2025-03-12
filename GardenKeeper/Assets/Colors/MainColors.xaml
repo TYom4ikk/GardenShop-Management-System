@@ -1,8 +1,12 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
     <SolidColorBrush x:Key="BackgroundColor" Color="LightGreen"/>
+    <SolidColorBrush x:Key="HeaderBackgroundColor" Color="Green"/>
+    
     <SolidColorBrush x:Key="ProductCardBackgroundColor" Color="ForestGreen"/>
     <SolidColorBrush x:Key="ProductCardTextColor" Color="White"/>
     <SolidColorBrush x:Key="ProductCardDiscountPriceColor" Color="Red"/>
     <SolidColorBrush x:Key="ProductCardMainPriceColor" Color="White"/>
+    
 </ResourceDictionary>

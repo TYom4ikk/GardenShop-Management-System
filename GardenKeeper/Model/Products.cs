@@ -42,11 +42,27 @@ namespace GardenKeeper.Model
         {
             get
             {
+                if(DiscountPrice == null)
+                {
+                    return "";
+                }
                 string discountPriceStr = DiscountPrice.ToString();
 
                 string rubles = discountPriceStr.Substring(0, discountPriceStr.Length - 2);
                 string kopecks = discountPriceStr.Substring(discountPriceStr.Length - 2);
                 return $"{rubles}.{kopecks} ₽";
+            }
+        }
+
+        public Nullable<long> PriceToSort
+        {
+            get
+            {
+                if (DiscountPrice == null)
+                {
+                    return MainPrice;
+                }
+                return DiscountPrice;
             }
         }
 

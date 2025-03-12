@@ -1,0 +1,28 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="../Colors/MainColors.xaml"/>
+        <ResourceDictionary Source="../Fonts/MainFonts.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style TargetType="Grid" x:Key="CatalogGrid">
+        <Setter Property="Background" Value="{StaticResource BackgroundColor}"/>
+    </Style>
+
+    <Style TargetType="StackPanel" x:Key="HeaderStackPanel">
+        <Setter Property="Orientation" Value="Horizontal"/>
+        <Setter Property="Background" Value="{StaticResource HeaderBackgroundColor}"/>
+    </Style>
+
+    <Style TargetType="ComboBox" x:Key="CategoriesFilterComboBox">
+        <Setter Property="Height" Value="40"/>
+        <Setter Property="Width" Value="300"/>
+        <Setter Property="ItemsSource" Value="{Binding Categories}"/>
+    </Style>
+
+    <Style TargetType="ComboBox" x:Key="PriceFilterComboBox">
+        <Setter Property="Height" Value="40"/>
+        <Setter Property="Width" Value="200"/>
+    </Style>
+    
+</ResourceDictionary>

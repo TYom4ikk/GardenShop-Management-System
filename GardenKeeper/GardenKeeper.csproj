@@ -194,11 +194,11 @@
     <Compile Include="View\UsersView\Partial\ProductCard.xaml.cs">
       <DependentUpon>ProductCard.xaml</DependentUpon>
     </Compile>
-    <Page Include="Colors\MainColors.xaml">
+    <Page Include="Assets\Colors\MainColors.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Fonts\MainFonts.xaml">
+    <Page Include="Assets\Fonts\MainFonts.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -214,7 +214,11 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Styles\ProductCardStyle.xaml">
+    <Page Include="Assets\Styles\CatalogStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Assets\Styles\ProductCardStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -273,9 +277,8 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="View\UsersView\Partial\Садовый-измельчитель-Bosch-AXT-25-TC.png" />
-  </ItemGroup>
-  <ItemGroup>
+    <Resource Include="Assets\Images\GardenKeeperIcon.ico" />
+    <Resource Include="Assets\Images\GardenKeeperLogo.png" />
     <Content Include="Model\Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model.edmx</DependentUpon>
@@ -286,6 +289,11 @@
       <DependentUpon>Model.edmx</DependentUpon>
       <LastGenOutput>Model.cs</LastGenOutput>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="View\DirectorView\" />
+    <Folder Include="View\ManagerView\" />
+    <Folder Include="View\SystemAdminView\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

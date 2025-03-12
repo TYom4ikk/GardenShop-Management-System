@@ -20,6 +20,8 @@
 
             <Button x:Name="ButtonSubmit" Content="Submit" Width="200" Height="30" Margin="20"
              Click="ButtonSubmit_Click"/>
+            <Label Content="Продолжить без регистрации" HorizontalAlignment="Center" Foreground="Blue" MouseLeftButtonDown="Label_MouseLeftButtonDown" 
+                   Cursor="Hand"/>
         </StackPanel>
     </Grid>
 </Page>

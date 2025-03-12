@@ -1,4 +1,6 @@
-﻿using GardenKeeper.ViewModel;
+﻿using GardenKeeper.Model;
+using GardenKeeper.View.UsersView;
+using GardenKeeper.ViewModel;
 using System;
 using System.Windows;
 using System.Windows.Controls;
@@ -19,17 +21,24 @@ namespace GardenKeeper.View
 
         private void ButtonSubmit_Click(object sender, RoutedEventArgs e)
         {
-            if(true) //!string.IsNullOrEmpty(TextBoxLogin.Text) && !string.IsNullOrEmpty(PasswordBoxPassword.Password)
+            if(!string.IsNullOrEmpty(TextBoxLogin.Text) && !string.IsNullOrEmpty(PasswordBoxPassword.Password))
             {
-                if(true) //Authentication.IsAuthenticated(TextBoxLogin.Text, PasswordBoxPassword.Password)
-                {
-                    this.NavigationService.Navigate(new Uri("View\\UsersView\\CatalogPage.xaml", UriKind.Relative)); //View\\MainPage.xaml
-                }
-                else
+                var currentUser = Authentication.IsAuthenticated(TextBoxLogin.Text, PasswordBoxPassword.Password);
+                if (currentUser == null)
                 {
                     MessageBox.Show("Неверный логин или пароль!", "Ошибка аутентификации", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
                 }
+                CatalogPage page = new CatalogPage(currentUser);
+                this.NavigationService.Navigate(page);
             }
+        }
+
+        private void Label_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            Users user = new Users();
+            CatalogPage page = new CatalogPage(user);
+            this.NavigationService.Navigate(page);
         }
     }
 }

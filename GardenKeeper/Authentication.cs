@@ -9,7 +9,7 @@ namespace GardenKeeper
     public static class Authentication
     {
         private static List<Users> users = Core.context.Users.ToList();
-        public static bool IsAuthenticated(string email, string password)
+        public static Users IsAuthenticated(string email, string password)
         {
             MD5 hasher = MD5.Create();
 
@@ -26,10 +26,10 @@ namespace GardenKeeper
             {
                 if(user.Email == email && user.PasswordHash == sBuilder.ToString())
                 {
-                    return true;
+                    return user;
                 }
             }
-            return false;
+            return null;
         }
     }
 }

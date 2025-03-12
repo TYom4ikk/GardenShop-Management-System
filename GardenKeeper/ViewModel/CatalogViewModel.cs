@@ -8,12 +8,53 @@ using System.Threading.Tasks;
 
 namespace GardenKeeper.ViewModel
 {
-    public  class CatalogViewModel
+    public class CatalogViewModel
     {
-        public List<Products> products;
-        public CatalogViewModel()
+        public enum PriceFilterStatuses
         {
-            products = Core.context.Products.ToList();
+            Default,
+            Cheap,
+            Expensive,
+            Date
+        }
+        public PriceFilterStatuses PriceFilterStatus = PriceFilterStatuses.Default;
+        public string CategoriesFilterDisplayMemberPath = "Name";
+        public List<Products> Products { get; set; }
+        public List<Categories> Categories { get; set; }
+        public Users currentUser { get; set; }
+        public CatalogViewModel(Users user)
+        {
+            Products = Core.context.Products.ToList();
+            Categories = Core.context.Categories.ToList();
+            currentUser = user;
+        }
+
+        public IEnumerable<Products> PriceFilter(PriceFilterStatuses selectedFilter)
+        {
+            IEnumerable<Products> filteredProducts;
+            switch (selectedFilter)
+            {
+                case PriceFilterStatuses.Cheap:
+                    filteredProducts = Products.OrderBy(p => p.PriceToSort);
+                    break;
+                case PriceFilterStatuses.Expensive:
+                    filteredProducts = Products.OrderByDescending(p => p.PriceToSort);
+                    break;
+                case PriceFilterStatuses.Date:
+                    filteredProducts = Products.OrderBy(p => p.PriceToSort);
+                    break;
+                case PriceFilterStatuses.Default:
+                    filteredProducts = Products;
+                    break;
+                default:
+                    filteredProducts = Products;
+                    break;
+            }
+            return filteredProducts;
+        }
+        public IEnumerable<Products> CategoryFilter(int categoryId)
+        {
+            return Products.Where(p=>p.CategoryId == categoryId);
         }
     }
 }

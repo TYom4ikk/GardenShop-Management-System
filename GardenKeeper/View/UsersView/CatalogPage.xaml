@@ -8,21 +8,45 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Catalog">
 
-    <Grid Background="LightBlue">
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../../Assets/Styles/CatalogStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+
+    <Grid x:Name="CatalogGrid" Style="{StaticResource CatalogGrid}">
         <Grid.RowDefinitions>
             <RowDefinition Height="100"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Background="AliceBlue">
-            
+        <StackPanel x:Name="HeaderStackPanel" Style="{StaticResource HeaderStackPanel}">
+            <Image Source="/Assets/Images/GardenKeeperLogo.png" Width="100" Height="100"/>
         </StackPanel>
 
         <Grid Grid.Row="1">
-            <Grid.RowDefinitions>
-            </Grid.RowDefinitions>
             
-            <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <StackPanel x:Name="FiltersStackPanel" Grid.Row="0" Orientation="Horizontal">
+
+                <ComboBox x:Name="CategoriesFilterComboBox" Style="{StaticResource CategoriesFilterComboBox}"
+                          SelectionChanged="CategoriesFilterComboBox_SelectionChanged"
+                          HorizontalContentAlignment="Center"
+                          VerticalContentAlignment="Center"/>
+
+                <ComboBox x:Name="PriceFilterComboBox" Style="{StaticResource PriceFilterComboBox}"
+                          HorizontalContentAlignment="Center"
+                            VerticalContentAlignment="Center"
+                          SelectionChanged="PriceFilterComboBox_SelectionChanged"/>
+            </StackPanel>
+            
+            <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Row="1">
                 <UniformGrid Columns="3" x:Name="CatalogUniformGrid">
                 </UniformGrid>
             </ScrollViewer>
@@ -30,3 +54,4 @@
 
     </Grid>
 </Page>
+

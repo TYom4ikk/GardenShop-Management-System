@@ -22,10 +22,36 @@ namespace GardenKeeper.View.UsersView.Partial
     /// </summary>
     public partial class ProductCard : UserControl
     {
-        public ProductCard(Products product)
+        private bool isSell;
+        public ProductCard(Products product, bool isSell)
         {
             InitializeComponent();
             DataContext = product;
+            this.isSell= isSell;
+
+            if(product.DiscountPrice == null)
+            {
+                ProductMainPriceTextBlock.FontSize = 30;
+                ProductMainPriceTextBlock.TextDecorations = null;
+            }
+
+            if(product.Quantity == 0)
+            {
+                ProductQuantityTextBlock.Foreground = new SolidColorBrush(Color.FromRgb(255, 0, 0));
+                ProductQuantityTextBlock.Text = "Нет в наличии";
+            }
+        }
+
+        private void BuyProductButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (!isSell)
+            {
+                MessageBox.Show("Войдите в аккаунт!");
+            }
+            else
+            {
+                MessageBox.Show("Продано!");
+            }
         }
     }
 }

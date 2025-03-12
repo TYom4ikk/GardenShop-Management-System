@@ -5,12 +5,12 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:GardenKeeper.View.UsersView.Partial"
              mc:Ignorable="d" 
-             d:DesignHeight="600" d:DesignWidth="600">
+             d:DesignHeight="700" d:DesignWidth="600">
 
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="../../../Styles/ProductCardStyle.xaml"/>
+                <ResourceDictionary Source="../../../Assets/Styles/ProductCardStyle.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
@@ -37,7 +37,15 @@
 
             <TextBlock x:Name="ProductNameTextBlock" Grid.Row="1" Text="{Binding Name}" Style="{StaticResource ProductNameTextBlock}"/>
             <TextBlock x:Name="ProductDescriptionTextBlock" Grid.Row="2" Text="{Binding Description}" Style="{StaticResource ProductDescriptionTextBlock}"/>
-            <TextBlock x:Name="ProductQuantityTextBlock" Grid.Row="3" Text="{Binding Quantity, StringFormat='Осталось: {0} шт.'}" Style="{StaticResource ProductQuantityTextBlock}"/>
+
+            <Grid x:Name="BottomLineStackPanel" Grid.Row="3">
+                <TextBlock x:Name="ProductQuantityTextBlock" Text="{Binding Quantity, StringFormat='Осталось: {0} шт.'}"
+                           Style="{StaticResource ProductQuantityTextBlock}"/>
+                <Button x:Name="BuyProductButton" Content="Купить" Padding="60 0" FontSize="20" Foreground="White" Background="LightGreen"
+                        Height="50"
+                        HorizontalAlignment="Right" Margin="30 0" Click="BuyProductButton_Click"/>
+            </Grid>
+
         </Grid>
     </Grid>
 </UserControl>

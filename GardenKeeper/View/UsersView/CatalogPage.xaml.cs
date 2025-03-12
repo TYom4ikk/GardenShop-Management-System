@@ -1,4 +1,5 @@
-﻿using GardenKeeper.View.UsersView.Partial;
+﻿using GardenKeeper.Model;
+using GardenKeeper.View.UsersView.Partial;
 using GardenKeeper.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -22,30 +23,62 @@ namespace GardenKeeper.View.UsersView
     /// </summary>
     public partial class CatalogPage : Page
     {
-        public CatalogPage()
+        private CatalogViewModel viewModel;
+        private Users currentUser = null;
+        private bool isRegisteredUser;
+        public CatalogPage(Users user)
         {
             InitializeComponent();
-
-            DataContext = new CatalogViewModel();
-            var products = ((CatalogViewModel)DataContext).products;
-
-           foreach(var product in products)
+            if(user.Email != null)
             {
-                ProductCard card = new ProductCard(product);
-                card.Width = 400;
-                card.Height = 400;
-                card.Margin = new Thickness(0, 20, 0, 20);
+                MessageBox.Show(user.Email.ToString());
+            }
+            viewModel = new CatalogViewModel(user);
+            DataContext = viewModel;
+
+            currentUser = user;
+            isRegisteredUser = user.Email != null ? true : false;
+
+            PriceFilterComboBox.ItemsSource = Enum.GetValues(typeof(CatalogViewModel.PriceFilterStatuses));
+            PriceFilterComboBox.SelectedIndex = 0;
+
+            CategoriesFilterComboBox.ItemsSource = viewModel.Categories;
+            CategoriesFilterComboBox.DisplayMemberPath = viewModel.CategoriesFilterDisplayMemberPath;
+
+            UpdateProductDisplay(viewModel.Products);
+        }
+
+
+        private void UpdateProductDisplay(List<Products> products)
+        {
+            CatalogUniformGrid.Children.Clear();
+
+            foreach (var product in products)
+            {
+                ProductCard card = new ProductCard(product, isRegisteredUser)
+                {
+                    Width = 400,
+                    Height = 500,
+                    Margin = new Thickness(0, 20, 0, 20)
+                };
                 CatalogUniformGrid.Children.Add(card);
             }
+        }
 
-          /*  for(int i = 0; i < 10; i++)
+        private void PriceFilterComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (PriceFilterComboBox.SelectedItem is CatalogViewModel.PriceFilterStatuses selectedFilter)
             {
-                ProductCard card = new ProductCard(products[0]);
-                card.Width = 300;
-                card.Height = 300;
-                card.Margin = new Thickness(0, 20, 0, 20);
-                CatalogUniformGrid.Children.Add(card);
-            }*/
+                UpdateProductDisplay(viewModel.PriceFilter(selectedFilter).ToList());
+            }
+        }
+
+        private void CategoriesFilterComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(CategoriesFilterComboBox.SelectedItem is Categories category)
+            {
+                UpdateProductDisplay(viewModel.CategoryFilter(category.Id).ToList());
+            }
         }
     }
 }
