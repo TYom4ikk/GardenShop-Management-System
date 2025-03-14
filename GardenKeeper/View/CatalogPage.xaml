@@ -11,7 +11,7 @@
     <Page.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="../../Assets/Styles/CatalogStyle.xaml"/>
+                <ResourceDictionary Source="../Assets/Styles/CatalogStyle.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Page.Resources>
@@ -22,9 +22,18 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <StackPanel x:Name="HeaderStackPanel" Style="{StaticResource HeaderStackPanel}">
-            <Image Source="/Assets/Images/GardenKeeperLogo.png" Width="100" Height="100"/>
-        </StackPanel>
+        <Grid x:Name="HeaderGrid" Style="{StaticResource HeaderGrid}">
+            
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            
+            <Image x:Name="LogoImage" Grid.Column="0" Source="/Assets/Images/GardenKeeperLogo.png" Style="{StaticResource LogoImage}"/>
+            <Button x:Name="LoginButton" Grid.Column="1" Style="{StaticResource LoginButton}"
+                    Click="LoginButton_Click"/>
+            
+        </Grid>
 
         <Grid Grid.Row="1">
             

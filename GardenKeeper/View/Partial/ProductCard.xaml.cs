@@ -1,4 +1,5 @@
 ﻿using GardenKeeper.Model;
+using GardenKeeper.View.ManagerView;
 using GardenKeeper.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -23,13 +24,17 @@ namespace GardenKeeper.View.UsersView.Partial
     public partial class ProductCard : UserControl
     {
         private bool isSell;
-        public ProductCard(Products product, bool isSell)
+        private bool isCustomize;
+        public ProductCard(Products product, bool isSell, bool isCustomize)
         {
             InitializeComponent();
             DataContext = product;
             this.isSell= isSell;
+            this.isCustomize=isCustomize;
 
-            if(product.DiscountPrice == null)
+            CustomizeButtonImage.Visibility = isCustomize ? Visibility.Visible : Visibility.Hidden;
+
+            if (product.DiscountPrice == null)
             {
                 ProductMainPriceTextBlock.FontSize = 30;
                 ProductMainPriceTextBlock.TextDecorations = null;
@@ -39,6 +44,7 @@ namespace GardenKeeper.View.UsersView.Partial
             {
                 ProductQuantityTextBlock.Foreground = new SolidColorBrush(Color.FromRgb(255, 0, 0));
                 ProductQuantityTextBlock.Text = "Нет в наличии";
+                BuyProductButton.IsEnabled = false;
             }
         }
 
@@ -46,12 +52,24 @@ namespace GardenKeeper.View.UsersView.Partial
         {
             if (!isSell)
             {
-                MessageBox.Show("Войдите в аккаунт!");
+                MessageBox.Show("Чтобы приобретать товары, войдите в аккаунт!", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             else
             {
-                MessageBox.Show("Продано!");
+                ProductWindow window = new ProductWindow();
+                window.ShowDialog();
             }
+        }
+
+        private void Image_GiveFeedback(object sender, GiveFeedbackEventArgs e)
+        {
+
+        }
+
+        private void CustomizeButtonImage_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            ProductCustomizationWindow window = new ProductCustomizationWindow(DataContext as Products);
+            window.ShowDialog();
         }
     }
 }

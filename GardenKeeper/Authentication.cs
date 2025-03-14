@@ -1,8 +1,10 @@
 ﻿using GardenKeeper.Model;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
+using System.Windows;
 
 namespace GardenKeeper
 {
@@ -21,7 +23,9 @@ namespace GardenKeeper
             {
                 sBuilder.Append(data[i].ToString("x2"));
             }
-
+            StreamWriter sw = new StreamWriter("asd.txt", true);
+            sw.WriteLine(sBuilder.ToString());
+            sw.Close();
             foreach (var user in users)
             {
                 if(user.Email == email && user.PasswordHash == sBuilder.ToString())

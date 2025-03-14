@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\zhaku\Desktop\Курсовые\GardenShop-Management-System\GardenKeeper\App.xaml
-91443896817
+13-1359451827
 2-95638413
-29-193593773
+33-685443768
 41575124831
-Assets\Colors\MainColors.xaml;Assets\Fonts\MainFonts.xaml;MainWindow.xaml;Assets\Styles\CatalogStyle.xaml;Assets\Styles\ProductCardStyle.xaml;View\MainPage.xaml;View\RegistrationPage.xaml;View\UsersView\CatalogPage.xaml;View\UsersView\Partial\ProductCard.xaml;
+Assets\Colors\MainColors.xaml;Assets\Fonts\MainFonts.xaml;Assets\Styles\ProductCustomizationWindowStyle.xaml;Assets\Styles\ProductWindowStyle.xaml;MainWindow.xaml;Assets\Styles\CatalogStyle.xaml;Assets\Styles\ProductCardStyle.xaml;View\MainPage.xaml;View\ManagerView\ProductCustomizationWindow.xaml;View\ProductWindow.xaml;View\RegistrationPage.xaml;View\CatalogPage.xaml;View\Partial\ProductCard.xaml;
 
 False
 

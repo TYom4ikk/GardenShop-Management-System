@@ -9,8 +9,7 @@
         <Setter Property="Background" Value="{StaticResource BackgroundColor}"/>
     </Style>
 
-    <Style TargetType="StackPanel" x:Key="HeaderStackPanel">
-        <Setter Property="Orientation" Value="Horizontal"/>
+    <Style TargetType="Grid" x:Key="HeaderGrid">
         <Setter Property="Background" Value="{StaticResource HeaderBackgroundColor}"/>
     </Style>
 
@@ -24,5 +23,21 @@
         <Setter Property="Height" Value="40"/>
         <Setter Property="Width" Value="200"/>
     </Style>
+
+    <Style TargetType="Image" x:Key="LogoImage">
+        <Setter Property="Height" Value="100"/>
+        <Setter Property="Width" Value="100"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+    </Style>
     
+    <Style TargetType="Button" x:Key="LoginButton">
+        <Setter Property="Height" Value="40"/>
+        <Setter Property="Width" Value="120"/>
+        <Setter Property="Content" Value="Войти в аккаунт"/>
+        <Setter Property="Background" Value="{StaticResource CatalogButtonColor}"/>
+        <Setter Property="Foreground" Value="{StaticResource CatalogTextColor}"/>
+        <Setter Property="HorizontalAlignment" Value="Right"/>
+        <Setter Property="Margin" Value="40 0"/>
+    </Style>
+
 </ResourceDictionary>

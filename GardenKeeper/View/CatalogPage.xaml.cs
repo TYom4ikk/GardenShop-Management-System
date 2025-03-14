@@ -23,27 +23,29 @@ namespace GardenKeeper.View.UsersView
     /// </summary>
     public partial class CatalogPage : Page
     {
+        private const int MANAGER_TYPE_ID = 2;
+
         private CatalogViewModel viewModel;
         private Users currentUser = null;
         private bool isRegisteredUser;
+        private bool isManager;
         public CatalogPage(Users user)
         {
             InitializeComponent();
-            if(user.Email != null)
-            {
-                MessageBox.Show(user.Email.ToString());
-            }
             viewModel = new CatalogViewModel(user);
             DataContext = viewModel;
 
             currentUser = user;
             isRegisteredUser = user.Email != null ? true : false;
+            isManager = user.UserTypeId == MANAGER_TYPE_ID ? true : false;
 
             PriceFilterComboBox.ItemsSource = Enum.GetValues(typeof(CatalogViewModel.PriceFilterStatuses));
             PriceFilterComboBox.SelectedIndex = 0;
 
             CategoriesFilterComboBox.ItemsSource = viewModel.Categories;
             CategoriesFilterComboBox.DisplayMemberPath = viewModel.CategoriesFilterDisplayMemberPath;
+
+            LoginButton.Content = isRegisteredUser ? "Войти в другой аккаунт" : "Войти в аккаунт";
 
             UpdateProductDisplay(viewModel.Products);
         }
@@ -55,7 +57,7 @@ namespace GardenKeeper.View.UsersView
 
             foreach (var product in products)
             {
-                ProductCard card = new ProductCard(product, isRegisteredUser)
+                ProductCard card = new ProductCard(product, isRegisteredUser, isManager)
                 {
                     Width = 400,
                     Height = 500,
@@ -67,18 +69,28 @@ namespace GardenKeeper.View.UsersView
 
         private void PriceFilterComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (PriceFilterComboBox.SelectedItem is CatalogViewModel.PriceFilterStatuses selectedFilter)
-            {
-                UpdateProductDisplay(viewModel.PriceFilter(selectedFilter).ToList());
-            }
+            Filter();
         }
 
         private void CategoriesFilterComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if(CategoriesFilterComboBox.SelectedItem is Categories category)
+            Filter();
+        }
+
+        private void Filter()
+        {
+            if(PriceFilterComboBox.SelectedItem is CatalogViewModel.PriceFilterStatuses selectedFilter &&
+                CategoriesFilterComboBox.SelectedItem is Categories category)
             {
+                UpdateProductDisplay(viewModel.PriceFilter(selectedFilter).ToList());
                 UpdateProductDisplay(viewModel.CategoryFilter(category.Id).ToList());
             }
+        }
+
+        private void LoginButton_Click(object sender, RoutedEventArgs e)
+        {
+            RegistrationPage page = new RegistrationPage();
+            this.NavigationService.Navigate(page);
         }
     }
 }

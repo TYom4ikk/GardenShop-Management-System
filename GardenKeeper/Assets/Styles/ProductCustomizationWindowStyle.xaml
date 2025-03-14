@@ -1,0 +1,54 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="../Colors/MainColors.xaml"/>
+        <ResourceDictionary Source="../Fonts/MainFonts.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style TargetType="Grid" x:Key="ProductCastomizationGrid">
+        <Setter Property="Background" Value="{StaticResource BackgroundColor}"/>
+    </Style>
+
+    <Style TargetType="Image" x:Key="ProductImage">
+        <Setter Property="Height" Value="200"/>
+        <Setter Property="Width" Value="200"/>
+    </Style>
+
+    <Style TargetType="TextBox">
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="Width" Value="200"/>
+        <Setter Property="FontSize" Value="24"/>
+        <Setter Property="Margin" Value="0 0 15 0"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+    </Style>
+
+    <Style TargetType="TextBox" x:Key="Description" BasedOn="{StaticResource {x:Type TextBox}}">
+        <Setter Property="Height" Value="50"/>
+    </Style>
+
+    <Style TargetType="StackPanel" x:Key="ProperyRow">
+        <Setter Property="Margin" Value="15 0"/>
+        <Setter Property="Height" Value="76"/>
+    </Style>
+
+    <Style TargetType="Label">
+        <Setter Property="Height" Value="26"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Foreground" Value="{StaticResource ProductCardTextColor}"/>
+    </Style>
+
+    <Style TargetType="ComboBox">
+        <Setter Property="Height" Value="40"/>
+        <Setter Property="Width" Value="200"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+    </Style>
+
+    <Style TargetType="Button">
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="Width" Value="300"/>
+        <Setter Property="Height" Value="40"/>
+        <Setter Property="Margin" Value="0 10"/>
+        
+    </Style>
+</ResourceDictionary>

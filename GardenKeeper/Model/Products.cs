@@ -17,16 +17,17 @@ namespace GardenKeeper.Model
         public Products()
         {
             this.AuditLog = new HashSet<AuditLog>();
-            this.ProductProperties = new HashSet<ProductProperties>();
+            this.ProductProperty = new HashSet<ProductProperty>();
             this.Sales = new HashSet<Sales>();
         }
     
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public Nullable<long> MainPrice { get; set; }
-
-        public string FormattedMainPrice { get
+        public long MainPrice { get; set; }
+        public string FormattedMainPrice
+        {
+            get
             {
                 string mainPriceStr = MainPrice.ToString();
 
@@ -35,14 +36,12 @@ namespace GardenKeeper.Model
                 return $"{rubles}.{kopecks} ₽";
             }
         }
-
         public Nullable<long> DiscountPrice { get; set; }
-
         public string FormattedDiscountPrice
         {
             get
             {
-                if(DiscountPrice == null)
+                if (DiscountPrice == null)
                 {
                     return "";
                 }
@@ -53,7 +52,6 @@ namespace GardenKeeper.Model
                 return $"{rubles}.{kopecks} ₽";
             }
         }
-
         public Nullable<long> PriceToSort
         {
             get
@@ -65,14 +63,13 @@ namespace GardenKeeper.Model
                 return DiscountPrice;
             }
         }
-
         public long Quantity { get; set; }
         public int CategoryId { get; set; }
         public byte[] Image { get; set; }
     
         public virtual ICollection<AuditLog> AuditLog { get; set; }
         public virtual Categories Categories { get; set; }
-        public virtual ICollection<ProductProperties> ProductProperties { get; set; }
+        public virtual ICollection<ProductProperty> ProductProperty { get; set; }
         public virtual ICollection<Sales> Sales { get; set; }
     }
 }

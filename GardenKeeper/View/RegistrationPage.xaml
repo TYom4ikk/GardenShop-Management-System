@@ -8,19 +8,28 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="RegistrationPage">
 
-    <Grid Background="LightBlue">
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Assets/Colors/MainColors.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+
+    <Grid Background="{StaticResource BackgroundColor}">
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-            <Label Content="Регистрация" FontSize="26" FontWeight="Bold" HorizontalAlignment="Center" FontFamily="Arial" Margin="0 0 0 30"/>
+            <Label Content="Garden Store" FontSize="26" FontWeight="Bold" HorizontalAlignment="Center" FontFamily="Arial" Margin="0 0 0 30"/>
             <Label Content="Логин:" Width="200" Height="30"/>
             <TextBox x:Name="TextBoxLogin" Width="200" Height="30"/>
             <Label Content="Пароль:" Width="200" Height="30"/>
 
             <PasswordBox x:Name="PasswordBoxPassword" Width="200" Height="30"/>
-            <!--TODO CHECKBOX-->
 
-            <Button x:Name="ButtonSubmit" Content="Submit" Width="200" Height="30" Margin="20"
+            <Button x:Name="ButtonSubmit" Content="Войти" Width="200" Height="30" Margin="20"
              Click="ButtonSubmit_Click"/>
-            <Label Content="Продолжить без регистрации" HorizontalAlignment="Center" Foreground="Blue" MouseLeftButtonDown="Label_MouseLeftButtonDown" 
+            <Label x:Name="ForgetPassword" Content="Забыли пароль?" HorizontalAlignment="Center" Foreground="Blue" MouseLeftButtonDown="ForgetPassword_MouseLeftButtonDown" 
+                   Cursor="Hand"/>
+            <Label x:Name="ContinueWithoutRegistration" Content="Продолжить без регистрации" HorizontalAlignment="Center" Foreground="Blue" MouseLeftButtonDown="ContinueWithoutRegistration_MouseLeftButtonDown" 
                    Cursor="Hand"/>
         </StackPanel>
     </Grid>

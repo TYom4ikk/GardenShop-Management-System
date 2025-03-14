@@ -40,14 +40,13 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
         </EntityType>
-        <EntityType Name="ProductProperties">
+        <EntityType Name="ProductProperty">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ProductId" Type="int" Nullable="false" />
-          <Property Name="PropertyName" Type="nvarchar(max)" />
-          <Property Name="PropertyValue" Type="nvarchar(max)" />
+          <Property Name="PropertyId" Type="bigint" />
         </EntityType>
         <EntityType Name="Products">
           <Key>
@@ -56,11 +55,19 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Description" Type="nvarchar(max)" />
-          <Property Name="MainPrice" Type="bigint" />
+          <Property Name="MainPrice" Type="bigint" Nullable="false" />
           <Property Name="DiscountPrice" Type="bigint" />
           <Property Name="Quantity" Type="bigint" Nullable="false" />
           <Property Name="CategoryId" Type="int" Nullable="false" />
           <Property Name="Image" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Properties">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar(max)" Nullable="false" />
+          <Property Name="Value" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="Sales">
           <Key>
@@ -155,17 +162,29 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ProductProperties_Products">
+        <Association Name="FK_ProductProperty_Products">
           <End Role="Products" Type="Self.Products" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="ProductProperties" Type="Self.ProductProperties" Multiplicity="*" />
+          <End Role="ProductProperty" Type="Self.ProductProperty" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Products">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="ProductProperties">
+            <Dependent Role="ProductProperty">
               <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductProperty_Properties">
+          <End Role="Properties" Type="Self.Properties" Multiplicity="0..1" />
+          <End Role="ProductProperty" Type="Self.ProductProperty" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Properties">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductProperty">
+              <PropertyRef Name="PropertyId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -211,44 +230,14 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
-        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-          <Parameter Name="version" Type="int" Mode="In" />
-          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
-        </Function>
-        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-          <Parameter Name="version" Type="int" Mode="In" />
-          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
-        </Function>
-        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
-        </Function>
-        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="Хранилище GardenStoreModelContainer">
           <EntitySet Name="Actions" EntityType="Self.Actions" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AuditLog" EntityType="Self.AuditLog" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Fields" EntityType="Self.Fields" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="ProductProperties" EntityType="Self.ProductProperties" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductProperty" EntityType="Self.ProductProperty" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Properties" EntityType="Self.Properties" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sales" EntityType="Self.Sales" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
@@ -269,9 +258,13 @@
             <End Role="Users" EntitySet="Users" />
             <End Role="AuditLog" EntitySet="AuditLog" />
           </AssociationSet>
-          <AssociationSet Name="FK_ProductProperties_Products" Association="Self.FK_ProductProperties_Products">
+          <AssociationSet Name="FK_ProductProperty_Products" Association="Self.FK_ProductProperty_Products">
             <End Role="Products" EntitySet="Products" />
-            <End Role="ProductProperties" EntitySet="ProductProperties" />
+            <End Role="ProductProperty" EntitySet="ProductProperty" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductProperty_Properties" Association="Self.FK_ProductProperty_Properties">
+            <End Role="Properties" EntitySet="Properties" />
+            <End Role="ProductProperty" EntitySet="ProductProperty" />
           </AssociationSet>
           <AssociationSet Name="FK_Products_Categories" Association="Self.FK_Products_Categories">
             <End Role="Categories" EntitySet="Categories" />
@@ -333,15 +326,15 @@
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="AuditLog" Relationship="Self.FK_AuditLog_Fields" FromRole="Fields" ToRole="AuditLog" />
         </EntityType>
-        <EntityType Name="ProductProperties">
+        <EntityType Name="ProductProperty">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ProductId" Type="Int32" Nullable="false" />
-          <Property Name="PropertyName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="PropertyValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Products" Relationship="Self.FK_ProductProperties_Products" FromRole="ProductProperties" ToRole="Products" />
+          <Property Name="PropertyId" Type="Int64" />
+          <NavigationProperty Name="Products" Relationship="Self.FK_ProductProperty_Products" FromRole="ProductProperty" ToRole="Products" />
+          <NavigationProperty Name="Properties" Relationship="Self.FK_ProductProperty_Properties" FromRole="ProductProperty" ToRole="Properties" />
         </EntityType>
         <EntityType Name="Products">
           <Key>
@@ -350,15 +343,24 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="MainPrice" Type="Int64" />
+          <Property Name="MainPrice" Type="Int64" Nullable="false" />
           <Property Name="DiscountPrice" Type="Int64" />
           <Property Name="Quantity" Type="Int64" Nullable="false" />
           <Property Name="CategoryId" Type="Int32" Nullable="false" />
           <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
           <NavigationProperty Name="AuditLog" Relationship="Self.FK_AuditLog_Products" FromRole="Products" ToRole="AuditLog" />
           <NavigationProperty Name="Categories" Relationship="Self.FK_Products_Categories" FromRole="Products" ToRole="Categories" />
-          <NavigationProperty Name="ProductProperties" Relationship="Self.FK_ProductProperties_Products" FromRole="Products" ToRole="ProductProperties" />
+          <NavigationProperty Name="ProductProperty" Relationship="Self.FK_ProductProperty_Products" FromRole="Products" ToRole="ProductProperty" />
           <NavigationProperty Name="Sales" Relationship="Self.FK_Sales_Products" FromRole="Products" ToRole="Sales" />
+        </EntityType>
+        <EntityType Name="Properties">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Value" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="ProductProperty" Relationship="Self.FK_ProductProperty_Properties" FromRole="Properties" ToRole="ProductProperty" />
         </EntityType>
         <EntityType Name="Sales">
           <Key>
@@ -471,17 +473,29 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ProductProperties_Products">
+        <Association Name="FK_ProductProperty_Products">
           <End Role="Products" Type="Self.Products" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="ProductProperties" Type="Self.ProductProperties" Multiplicity="*" />
+          <End Role="ProductProperty" Type="Self.ProductProperty" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Products">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="ProductProperties">
+            <Dependent Role="ProductProperty">
               <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductProperty_Properties">
+          <End Role="Properties" Type="Self.Properties" Multiplicity="0..1" />
+          <End Role="ProductProperty" Type="Self.ProductProperty" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Properties">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductProperty">
+              <PropertyRef Name="PropertyId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -518,8 +532,9 @@
           <EntitySet Name="AuditLog" EntityType="Self.AuditLog" />
           <EntitySet Name="Categories" EntityType="Self.Categories" />
           <EntitySet Name="Fields" EntityType="Self.Fields" />
-          <EntitySet Name="ProductProperties" EntityType="Self.ProductProperties" />
+          <EntitySet Name="ProductProperty" EntityType="Self.ProductProperty" />
           <EntitySet Name="Products" EntityType="Self.Products" />
+          <EntitySet Name="Properties" EntityType="Self.Properties" />
           <EntitySet Name="Sales" EntityType="Self.Sales" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="Users" EntityType="Self.Users" />
@@ -544,9 +559,13 @@
             <End Role="Categories" EntitySet="Categories" />
             <End Role="Products" EntitySet="Products" />
           </AssociationSet>
-          <AssociationSet Name="FK_ProductProperties_Products" Association="Self.FK_ProductProperties_Products">
+          <AssociationSet Name="FK_ProductProperty_Products" Association="Self.FK_ProductProperty_Products">
             <End Role="Products" EntitySet="Products" />
-            <End Role="ProductProperties" EntitySet="ProductProperties" />
+            <End Role="ProductProperty" EntitySet="ProductProperty" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductProperty_Properties" Association="Self.FK_ProductProperty_Properties">
+            <End Role="Properties" EntitySet="Properties" />
+            <End Role="ProductProperty" EntitySet="ProductProperty" />
           </AssociationSet>
           <AssociationSet Name="FK_Sales_Products" Association="Self.FK_Sales_Products">
             <End Role="Products" EntitySet="Products" />
@@ -556,48 +575,7 @@
             <End Role="UserTypes" EntitySet="UserTypes" />
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
-          <FunctionImport Name="sp_alterdiagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-            <Parameter Name="version" Mode="In" Type="Int32" />
-            <Parameter Name="definition" Mode="In" Type="Binary" />
-          </FunctionImport>
-          <FunctionImport Name="sp_creatediagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-            <Parameter Name="version" Mode="In" Type="Int32" />
-            <Parameter Name="definition" Mode="In" Type="Binary" />
-          </FunctionImport>
-          <FunctionImport Name="sp_dropdiagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(GardenStoreModel.sp_helpdiagramdefinition_Result)">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(GardenStoreModel.sp_helpdiagrams_Result)">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_renamediagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-            <Parameter Name="new_diagramname" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="sp_upgraddiagrams" />
         </EntityContainer>
-        <ComplexType Name="sp_helpdiagramdefinition_Result">
-          <Property Type="Int32" Name="version" Nullable="true" />
-          <Property Type="Binary" Name="definition" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="sp_helpdiagrams_Result">
-          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
-          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
-          <Property Type="Int32" Name="ID" Nullable="false" />
-          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
-          <Property Type="Int32" Name="OwnerID" Nullable="false" />
-        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -643,13 +621,12 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ProductProperties">
-            <EntityTypeMapping TypeName="GardenStoreModel.ProductProperties">
-              <MappingFragment StoreEntitySet="ProductProperties">
+          <EntitySetMapping Name="ProductProperty">
+            <EntityTypeMapping TypeName="GardenStoreModel.ProductProperty">
+              <MappingFragment StoreEntitySet="ProductProperty">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="ProductId" ColumnName="ProductId" />
-                <ScalarProperty Name="PropertyName" ColumnName="PropertyName" />
-                <ScalarProperty Name="PropertyValue" ColumnName="PropertyValue" />
+                <ScalarProperty Name="PropertyId" ColumnName="PropertyId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -664,6 +641,15 @@
                 <ScalarProperty Name="Quantity" ColumnName="Quantity" />
                 <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
                 <ScalarProperty Name="Image" ColumnName="Image" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Properties">
+            <EntityTypeMapping TypeName="GardenStoreModel.Properties">
+              <MappingFragment StoreEntitySet="Properties">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -708,30 +694,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Хранилище GardenStoreModel.sp_alterdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Хранилище GardenStoreModel.sp_creatediagram" />
-          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Хранилище GardenStoreModel.sp_dropdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="Хранилище GardenStoreModel.sp_helpdiagramdefinition">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="GardenStoreModel.sp_helpdiagramdefinition_Result">
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="Хранилище GardenStoreModel.sp_helpdiagrams">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="GardenStoreModel.sp_helpdiagrams_Result">
-                <ScalarProperty Name="Database" ColumnName="Database" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Owner" ColumnName="Owner" />
-                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Хранилище GardenStoreModel.sp_renamediagram" />
-          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Хранилище GardenStoreModel.sp_upgraddiagrams" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -12,13 +12,17 @@ namespace GardenKeeper.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class ProductProperties
+    public partial class Properties
     {
-        public int Id { get; set; }
-        public int ProductId { get; set; }
-        public string PropertyName { get; set; }
-        public string PropertyValue { get; set; }
+        public Properties()
+        {
+            this.ProductProperty = new HashSet<ProductProperty>();
+        }
     
-        public virtual Products Products { get; set; }
+        public long Id { get; set; }
+        public string Name { get; set; }
+        public string Value { get; set; }
+    
+        public virtual ICollection<ProductProperty> ProductProperty { get; set; }
     }
 }

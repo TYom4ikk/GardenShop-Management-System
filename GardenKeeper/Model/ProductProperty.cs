@@ -10,10 +10,15 @@
 namespace GardenKeeper.Model
 {
     using System;
+    using System.Collections.Generic;
     
-    public partial class sp_helpdiagramdefinition_Result
+    public partial class ProductProperty
     {
-        public Nullable<int> version { get; set; }
-        public byte[] definition { get; set; }
+        public long Id { get; set; }
+        public int ProductId { get; set; }
+        public Nullable<long> PropertyId { get; set; }
+    
+        public virtual Products Products { get; set; }
+        public virtual Properties Properties { get; set; }
     }
 }

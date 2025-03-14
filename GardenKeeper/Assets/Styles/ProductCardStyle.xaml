@@ -43,5 +43,17 @@
 
     <Style TargetType="TextBlock" x:Key="ProductDescriptionTextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
     </Style>
-    
+
+    <Style TargetType="Button" x:Key="BuyProductButton">
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="Foreground" Value="{StaticResource ProductCardTextColor}"/>
+        <Setter Property="Background" Value="{StaticResource ProductCardBuyProductButton}"/>
+        <Setter Property="Padding" Value="60 0"/>
+        <Setter Property="Height" Value="50"/>
+        <Setter Property="Margin" Value="30 0"/>
+    </Style>
+    <Style TargetType="Image" x:Key="CustomizeButtonImage">
+        <Setter Property="Height" Value="40"/>
+        <Setter Property="Width" Value="40"/>
+    </Style>
 </ResourceDictionary>

@@ -10,7 +10,7 @@
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="../../../Assets/Styles/ProductCardStyle.xaml"/>
+                <ResourceDictionary Source="../../Assets/Styles/ProductCardStyle.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
@@ -39,11 +39,18 @@
             <TextBlock x:Name="ProductDescriptionTextBlock" Grid.Row="2" Text="{Binding Description}" Style="{StaticResource ProductDescriptionTextBlock}"/>
 
             <Grid x:Name="BottomLineStackPanel" Grid.Row="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="0.25*"/>
+                </Grid.ColumnDefinitions>
                 <TextBlock x:Name="ProductQuantityTextBlock" Text="{Binding Quantity, StringFormat='Осталось: {0} шт.'}"
-                           Style="{StaticResource ProductQuantityTextBlock}"/>
-                <Button x:Name="BuyProductButton" Content="Купить" Padding="60 0" FontSize="20" Foreground="White" Background="LightGreen"
-                        Height="50"
-                        HorizontalAlignment="Right" Margin="30 0" Click="BuyProductButton_Click"/>
+                           Style="{StaticResource ProductQuantityTextBlock}" />
+                <Button x:Name="BuyProductButton" Style="{StaticResource BuyProductButton}" Content="Купить"
+                        Grid.Column="1"
+                        HorizontalAlignment="Right" Click="BuyProductButton_Click" MaxHeight="50" MaxWidth="190"/>
+                <Image x:Name="CustomizeButtonImage" Style="{StaticResource CustomizeButtonImage}" Source="/Assets/Images/Customize.png" Grid.Column="2"
+                       MouseLeftButtonDown="CustomizeButtonImage_MouseLeftButtonDown" Margin="14,22,13,26" />
             </Grid>
 
         </Grid>

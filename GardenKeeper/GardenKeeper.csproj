@@ -156,19 +156,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Model\ProductProperties.cs">
+    <Compile Include="Model\ProductProperty.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Products.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\Properties.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\Sales.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\sp_helpdiagrams_Result.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\sysdiagrams.cs">
@@ -180,18 +177,27 @@
     <Compile Include="Model\UserTypes.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\AuditLogViewModel.cs" />
     <Compile Include="ViewModel\CatalogViewModel.cs" />
+    <Compile Include="ViewModel\ProductCustomizationViewModel.cs" />
     <Compile Include="ViewModel\RegistrationViewModel.cs" />
+    <Compile Include="ViewModel\SaleViewModel.cs" />
     <Compile Include="View\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ManagerView\ProductCustomizationWindow.xaml.cs">
+      <DependentUpon>ProductCustomizationWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ProductWindow.xaml.cs">
+      <DependentUpon>ProductWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\RegistrationPage.xaml.cs">
       <DependentUpon>RegistrationPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\UsersView\CatalogPage.xaml.cs">
+    <Compile Include="View\CatalogPage.xaml.cs">
       <DependentUpon>CatalogPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\UsersView\Partial\ProductCard.xaml.cs">
+    <Compile Include="View\Partial\ProductCard.xaml.cs">
       <DependentUpon>ProductCard.xaml</DependentUpon>
     </Compile>
     <Page Include="Assets\Colors\MainColors.xaml">
@@ -199,6 +205,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Assets\Fonts\MainFonts.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Assets\Styles\ProductCustomizationWindowStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Assets\Styles\ProductWindowStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -226,15 +240,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\ManagerView\ProductCustomizationWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ProductWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\RegistrationPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\UsersView\CatalogPage.xaml">
+    <Page Include="View\CatalogPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\UsersView\Partial\ProductCard.xaml">
+    <Page Include="View\Partial\ProductCard.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -279,6 +301,13 @@
   <ItemGroup>
     <Resource Include="Assets\Images\GardenKeeperIcon.ico" />
     <Resource Include="Assets\Images\GardenKeeperLogo.png" />
+    <Resource Include="Assets\Images\Customize.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="View\DirectorView\" />
+    <Folder Include="View\SystemAdminView\" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="Model\Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model.edmx</DependentUpon>
@@ -289,11 +318,6 @@
       <DependentUpon>Model.edmx</DependentUpon>
       <LastGenOutput>Model.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="View\DirectorView\" />
-    <Folder Include="View\ManagerView\" />
-    <Folder Include="View\SystemAdminView\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
