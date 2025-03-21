@@ -17,6 +17,7 @@ namespace GardenKeeper.Model
         public Products()
         {
             this.AuditLog = new HashSet<AuditLog>();
+            this.ProductImages = new HashSet<ProductImages>();
             this.ProductProperty = new HashSet<ProductProperty>();
             this.Sales = new HashSet<Sales>();
         }
@@ -64,11 +65,15 @@ namespace GardenKeeper.Model
             }
         }
         public long Quantity { get; set; }
+
+        public long SelectedQuantity = 0;
         public int CategoryId { get; set; }
-        public byte[] Image { get; set; }
-    
+
+        public byte[] MainImage { get; set; }
+
         public virtual ICollection<AuditLog> AuditLog { get; set; }
         public virtual Categories Categories { get; set; }
+        public virtual ICollection<ProductImages> ProductImages { get; set; }
         public virtual ICollection<ProductProperty> ProductProperty { get; set; }
         public virtual ICollection<Sales> Sales { get; set; }
     }

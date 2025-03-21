@@ -58,7 +58,7 @@ namespace GardenKeeper.View
                 string newPassword = model.GeneratePassword(16);
                 string hash = model.GenerateHash(newPassword);
                 model.SaveUserRegistrationData(TextBoxLogin.Text, hash);
-                EmailInteraction.SendIvnite(TextBoxLogin.Text, newPassword);
+                EmailInteraction.SendResetPassword(TextBoxLogin.Text, newPassword);
             }
         }
     }

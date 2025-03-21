@@ -24,6 +24,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CETCompat>false</CETCompat>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -33,6 +34,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CETCompat>false</CETCompat>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=4.3.1.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -156,6 +158,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Model\ProductImages.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\ProductProperty.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -180,16 +185,18 @@
     <Compile Include="ViewModel\AuditLogViewModel.cs" />
     <Compile Include="ViewModel\CatalogViewModel.cs" />
     <Compile Include="ViewModel\ProductCustomizationViewModel.cs" />
+    <Compile Include="ViewModel\QuantitySelectionViewModel.cs" />
     <Compile Include="ViewModel\RegistrationViewModel.cs" />
     <Compile Include="ViewModel\SaleViewModel.cs" />
-    <Compile Include="View\MainPage.xaml.cs">
-      <DependentUpon>MainPage.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="ViewModel\ShoppingCardViewModel.cs" />
     <Compile Include="View\ManagerView\ProductCustomizationWindow.xaml.cs">
       <DependentUpon>ProductCustomizationWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\ProductWindow.xaml.cs">
-      <DependentUpon>ProductWindow.xaml</DependentUpon>
+    <Compile Include="View\Partial\ShoppingCardProduct.xaml.cs">
+      <DependentUpon>ShoppingCardProduct.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\QuantitySelectionWindow.xaml.cs">
+      <DependentUpon>QuantitySelectionWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\RegistrationPage.xaml.cs">
       <DependentUpon>RegistrationPage.xaml</DependentUpon>
@@ -199,6 +206,9 @@
     </Compile>
     <Compile Include="View\Partial\ProductCard.xaml.cs">
       <DependentUpon>ProductCard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ShoppingCardPage.xaml.cs">
+      <DependentUpon>ShoppingCardPage.xaml</DependentUpon>
     </Compile>
     <Page Include="Assets\Colors\MainColors.xaml">
       <SubType>Designer</SubType>
@@ -212,7 +222,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Assets\Styles\ProductWindowStyle.xaml">
+    <Page Include="Assets\Styles\QuantitySelectionWindowStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Assets\Styles\ShoppingCardStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -236,15 +250,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\MainPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="View\ManagerView\ProductCustomizationWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\ProductWindow.xaml">
+    <Page Include="View\Partial\ShoppingCardProduct.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\QuantitySelectionWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -257,6 +271,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Partial\ProductCard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ShoppingCardPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

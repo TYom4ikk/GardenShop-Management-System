@@ -11,11 +11,10 @@ namespace GardenKeeper
 {
     internal class EmailInteraction
     {
-        static private string fromAddress = @"gardenkeeperofficial@gmail.com";
-        static private string fromPassword = @"EPSjfqi5w94qq";
+        static private string fromAddress = @"garden.keeper@mail.ru";
+        static private string fromPassword = @"m5fDQKF3wuuscg59Erah";
         static private bool isSent = false;
-
-        public static void SendIvnite(string toAddress, string newPassword)
+        public static void SendResetPassword(string toAddress, string newPassword)
         {
             try
             {
@@ -29,7 +28,7 @@ namespace GardenKeeper
                 MailMessage message = new MailMessage(from, to);
                 message.Subject = subject;
                 message.Body = body;
-                SmtpClient smtp = new SmtpClient("smtp.gmail.ru", 587);
+                SmtpClient smtp = new SmtpClient("smtp.mail.ru", 587);
                 smtp.Credentials = new NetworkCredential(fromAddress, fromPassword);
                 smtp.EnableSsl = true;
                 smtp.Send(message);

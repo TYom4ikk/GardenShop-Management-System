@@ -1,0 +1,56 @@
+﻿<Page x:Class="GardenKeeper.View.ShoppingCardPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:GardenKeeper.View"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ShoppingCardPage">
+    
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Assets/Styles/ShoppingCardStyle.xaml"/>
+                <ResourceDictionary Source="/Assets/Styles/CatalogStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid x:Name="HeaderGrid" Style="{StaticResource HeaderGrid}">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Image x:Name="LogoImage" Grid.Column="0" Source="/Assets/Images/GardenKeeperLogo.png" Style="{StaticResource LogoImage}" MouseLeftButtonDown="LogoImage_MouseLeftButtonDown"/>
+            <Button x:Name="LoginButton" Grid.Column="1" Style="{StaticResource LoginButton}"
+          Click="LoginButton_Click"/>
+            <Button x:Name="ShoppingCardButton" Grid.Column="3" Content="Корзина"
+          Height="40" Width="100" Click="ShoppingCardButton_Click"
+          Style="{StaticResource ShoppingCardButton}"/>
+        </Grid>
+
+        <Grid Grid.Row="1">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <StackPanel x:Name="ProductListStackPanel" Background="{StaticResource BackgroundColor}">
+            
+            </StackPanel>
+            <StackPanel Grid.Column="1" Background="{StaticResource BackgroundColor}">
+                <Button x:Name="BuyButton" Height="50" Content="Купить" Click="BuyButton_Click"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Page>

@@ -29,6 +29,7 @@ namespace GardenKeeper.Model
         public DbSet<AuditLog> AuditLog { get; set; }
         public DbSet<Categories> Categories { get; set; }
         public DbSet<Fields> Fields { get; set; }
+        public DbSet<ProductImages> ProductImages { get; set; }
         public DbSet<ProductProperty> ProductProperty { get; set; }
         public DbSet<Products> Products { get; set; }
         public DbSet<Properties> Properties { get; set; }

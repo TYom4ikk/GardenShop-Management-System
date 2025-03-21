@@ -54,6 +54,10 @@ namespace GardenKeeper.ViewModel
         }
         public IEnumerable<Products> CategoryFilter(int categoryId)
         {
+            if(categoryId == 1)
+            {
+                return Products;
+            }
             return Products.Where(p=>p.CategoryId == categoryId);
         }
     }

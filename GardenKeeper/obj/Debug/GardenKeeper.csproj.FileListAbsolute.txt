@@ -20,7 +20,6 @@ C:\Users\zhaku\Desktop\GardenShop-Management-System\GardenKeeper\obj\Debug\View\
 C:\Users\zhaku\Desktop\GardenShop-Management-System\GardenKeeper\obj\Debug\GardenKeeper_Content.g.cs
 C:\Users\zhaku\Desktop\Курсовые\GardenShop-Management-System\GardenKeeper\obj\Debug\GardenKeeper.csproj.AssemblyReference.cache
 C:\Users\zhaku\Desktop\Курсовые\GardenShop-Management-System\GardenKeeper\obj\Debug\MainWindow.g.cs
-C:\Users\zhaku\Desktop\Курсовые\GardenShop-Management-System\GardenKeeper\obj\Debug\View\MainPage.g.cs
 C:\Users\zhaku\Desktop\Курсовые\GardenShop-Management-System\GardenKeeper\obj\Debug\View\RegistrationPage.g.cs
 C:\Users\zhaku\Desktop\Курсовые\GardenShop-Management-System\GardenKeeper\obj\Debug\App.g.cs
 C:\Users\zhaku\Desktop\Курсовые\GardenShop-Management-System\GardenKeeper\obj\Debug\GardenKeeper_Content.g.cs
@@ -75,7 +74,6 @@ C:\Users\zhaku\Desktop\Курсовые\GardenShop-Management-System\GardenKeepe
 C:\Users\zhaku\Desktop\Курсовые\GardenShop-Management-System\GardenKeeper\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\zhaku\Desktop\Курсовые\GardenShop-Management-System\GardenKeeper\bin\Debug\System.Threading.Tasks.Extensions.xml
 C:\Users\zhaku\Desktop\Курсовые\GardenShop-Management-System\GardenKeeper\obj\Debug\MainWindow.baml
-C:\Users\zhaku\Desktop\Курсовые\GardenShop-Management-System\GardenKeeper\obj\Debug\View\MainPage.baml
 C:\Users\zhaku\Desktop\Курсовые\GardenShop-Management-System\GardenKeeper\obj\Debug\View\RegistrationPage.baml
 C:\Users\zhaku\Desktop\Курсовые\GardenShop-Management-System\GardenKeeper\obj\Debug\GardenKeeper.g.resources
 C:\Users\zhaku\Desktop\Курсовые\GardenShop-Management-System\GardenKeeper\obj\Debug\GardenKeeper.Properties.Resources.resources
@@ -91,9 +89,14 @@ C:\Users\zhaku\Desktop\Курсовые\GardenShop-Management-System\GardenKeepe
 C:\Users\zhaku\Desktop\Курсовые\GardenShop-Management-System\GardenKeeper\obj\Debug\View\Partial\ProductCard.g.cs
 C:\Users\zhaku\Desktop\Курсовые\GardenShop-Management-System\GardenKeeper\obj\Debug\View\CatalogPage.baml
 C:\Users\zhaku\Desktop\Курсовые\GardenShop-Management-System\GardenKeeper\obj\Debug\View\Partial\ProductCard.baml
-C:\Users\zhaku\Desktop\Курсовые\GardenShop-Management-System\GardenKeeper\obj\Debug\View\ProductWindow.g.cs
-C:\Users\zhaku\Desktop\Курсовые\GardenShop-Management-System\GardenKeeper\obj\Debug\View\ProductWindow.baml
 C:\Users\zhaku\Desktop\Курсовые\GardenShop-Management-System\GardenKeeper\obj\Debug\Assets\Styles\ProductCustomizationWindowStyle.baml
-C:\Users\zhaku\Desktop\Курсовые\GardenShop-Management-System\GardenKeeper\obj\Debug\Assets\Styles\ProductWindowStyle.baml
 C:\Users\zhaku\Desktop\Курсовые\GardenShop-Management-System\GardenKeeper\obj\Debug\View\ManagerView\ProductCustomizationWindow.g.cs
 C:\Users\zhaku\Desktop\Курсовые\GardenShop-Management-System\GardenKeeper\obj\Debug\View\ManagerView\ProductCustomizationWindow.baml
+C:\Users\zhaku\Desktop\Курсовые\GardenShop-Management-System\GardenKeeper\obj\Debug\View\ShoppingCardPage.g.cs
+C:\Users\zhaku\Desktop\Курсовые\GardenShop-Management-System\GardenKeeper\obj\Debug\View\ShoppingCardPage.baml
+C:\Users\zhaku\Desktop\Курсовые\GardenShop-Management-System\GardenKeeper\obj\Debug\Assets\Styles\ShoppingCardStyle.baml
+C:\Users\zhaku\Desktop\Курсовые\GardenShop-Management-System\GardenKeeper\obj\Debug\Assets\Styles\QuantitySelectionWindowStyle.baml
+C:\Users\zhaku\Desktop\Курсовые\GardenShop-Management-System\GardenKeeper\obj\Debug\View\Partial\ShoppingCardProduct.g.cs
+C:\Users\zhaku\Desktop\Курсовые\GardenShop-Management-System\GardenKeeper\obj\Debug\View\QuantitySelectionWindow.g.cs
+C:\Users\zhaku\Desktop\Курсовые\GardenShop-Management-System\GardenKeeper\obj\Debug\View\Partial\ShoppingCardProduct.baml
+C:\Users\zhaku\Desktop\Курсовые\GardenShop-Management-System\GardenKeeper\obj\Debug\View\QuantitySelectionWindow.baml

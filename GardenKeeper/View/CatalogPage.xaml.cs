@@ -44,6 +44,7 @@ namespace GardenKeeper.View.UsersView
 
             CategoriesFilterComboBox.ItemsSource = viewModel.Categories;
             CategoriesFilterComboBox.DisplayMemberPath = viewModel.CategoriesFilterDisplayMemberPath;
+            CategoriesFilterComboBox.SelectedIndex = 0;
 
             LoginButton.Content = isRegisteredUser ? "Войти в другой аккаунт" : "Войти в аккаунт";
 
@@ -90,6 +91,12 @@ namespace GardenKeeper.View.UsersView
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
             RegistrationPage page = new RegistrationPage();
+            this.NavigationService.Navigate(page);
+        }
+
+        private void ShoppingCardButton_Click(object sender, RoutedEventArgs e)
+        {
+            ShoppingCardPage page = new ShoppingCardPage(currentUser);
             this.NavigationService.Navigate(page);
         }
     }

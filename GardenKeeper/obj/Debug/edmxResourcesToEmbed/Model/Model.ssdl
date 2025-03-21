@@ -35,6 +35,14 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
   </EntityType>
+  <EntityType Name="ProductImages">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Image" Type="image" Nullable="false" />
+    <Property Name="ProductId" Type="int" Nullable="false" />
+  </EntityType>
   <EntityType Name="ProductProperty">
     <Key>
       <PropertyRef Name="Id" />
@@ -54,7 +62,6 @@
     <Property Name="DiscountPrice" Type="bigint" />
     <Property Name="Quantity" Type="bigint" Nullable="false" />
     <Property Name="CategoryId" Type="int" Nullable="false" />
-    <Property Name="Image" Type="varbinary(max)" />
   </EntityType>
   <EntityType Name="Properties">
     <Key>
@@ -72,7 +79,7 @@
     <Property Name="ProductId" Type="int" Nullable="false" />
     <Property Name="Quantity" Type="bigint" Nullable="false" />
     <Property Name="SaleDate" Type="date" Nullable="false" />
-    <Property Name="TotalPrice" Type="int" Nullable="false" />
+    <Property Name="TotalPrice" Type="bigint" Nullable="false" />
     <Property Name="UnitPrice" Type="bigint" Nullable="false" />
   </EntityType>
   <EntityType Name="sysdiagrams">
@@ -157,6 +164,20 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Images_Products">
+    <End Role="Products" Type="Self.Products" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ProductImages" Type="Self.ProductImages" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Products">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProductImages">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_ProductProperty_Products">
     <End Role="Products" Type="Self.Products" Multiplicity="1">
       <OnDelete Action="Cascade" />
@@ -230,6 +251,7 @@
     <EntitySet Name="AuditLog" EntityType="Self.AuditLog" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Fields" EntityType="Self.Fields" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProductImages" EntityType="Self.ProductImages" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ProductProperty" EntityType="Self.ProductProperty" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Properties" EntityType="Self.Properties" Schema="dbo" store:Type="Tables" />
@@ -252,6 +274,10 @@
     <AssociationSet Name="FK_AuditLog_Users" Association="Self.FK_AuditLog_Users">
       <End Role="Users" EntitySet="Users" />
       <End Role="AuditLog" EntitySet="AuditLog" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Images_Products" Association="Self.FK_Images_Products">
+      <End Role="Products" EntitySet="Products" />
+      <End Role="ProductImages" EntitySet="ProductImages" />
     </AssociationSet>
     <AssociationSet Name="FK_ProductProperty_Products" Association="Self.FK_ProductProperty_Products">
       <End Role="Products" EntitySet="Products" />

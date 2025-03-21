@@ -3,6 +3,7 @@ using GardenKeeper.View.ManagerView;
 using GardenKeeper.ViewModel;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -25,10 +27,14 @@ namespace GardenKeeper.View.UsersView.Partial
     {
         private bool isSell;
         private bool isCustomize;
+        private int imageIndex = 0;
+        private List<ProductImages> images = new List<ProductImages>();
+        Products product;
         public ProductCard(Products product, bool isSell, bool isCustomize)
         {
             InitializeComponent();
             DataContext = product;
+            this.product = product;
             this.isSell= isSell;
             this.isCustomize=isCustomize;
 
@@ -46,18 +52,26 @@ namespace GardenKeeper.View.UsersView.Partial
                 ProductQuantityTextBlock.Text = "Нет в наличии";
                 BuyProductButton.IsEnabled = false;
             }
+
+            images = Core.context.ProductImages.Where(img => img.ProductId == product.Id).ToList();
+
+            ChangeImage();
         }
 
         private void BuyProductButton_Click(object sender, RoutedEventArgs e)
         {
-            if (!isSell)
+
+            QuantitySelectionWindow window = new QuantitySelectionWindow();
+            bool? success = window.ShowDialog();
+            if (success == true)
             {
-                MessageBox.Show("Чтобы приобретать товары, войдите в аккаунт!", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-            else
-            {
-                ProductWindow window = new ProductWindow();
-                window.ShowDialog();
+                product.MainImage = Core.context.ProductImages.Where(img => img.ProductId == product.Id).ToList()[0].Image;
+                Products existingProduct = ShoppingCardViewModel.Products.FirstOrDefault(p => p.Id == product.Id);
+                if (existingProduct == null)
+                {
+                    ShoppingCardViewModel.Products.Add(product);
+                }
+                product.SelectedQuantity += QuantitySelectionViewModel.SelectedQuantity;
             }
         }
 
@@ -70,6 +84,42 @@ namespace GardenKeeper.View.UsersView.Partial
         {
             ProductCustomizationWindow window = new ProductCustomizationWindow(DataContext as Products);
             window.ShowDialog();
+        }
+
+        private void ChangeImageButtonLeft_Click(object sender, RoutedEventArgs e)
+        {
+            if (imageIndex == 0)
+            {
+                imageIndex = images.Count;
+            }
+            imageIndex--;
+            ChangeImage();
+        }
+
+        private void ChangeImageButtonRight_Click(object sender, RoutedEventArgs e)
+        {
+            if (imageIndex == images.Count - 1)
+            {
+                imageIndex = -1;
+            }
+            imageIndex++;
+            ChangeImage();
+        }
+
+        private void ChangeImage()
+        {
+            byte[] imageBytes = images[imageIndex].Image;
+
+            using (var ms = new MemoryStream(imageBytes))
+            {
+                var bitmap = new BitmapImage();
+                bitmap.BeginInit();
+                bitmap.CacheOption = BitmapCacheOption.OnLoad;
+                bitmap.StreamSource = ms;
+                bitmap.EndInit();
+
+                ProductImage.Source = bitmap;
+            }
         }
     }
 }

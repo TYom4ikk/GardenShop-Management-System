@@ -4,16 +4,17 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="66bde920b3724750a04002df3181159d" Name="Diagram1">
-        <EntityTypeShape EntityType="GardenStoreModel.Actions" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="GardenStoreModel.AuditLog" Width="1.5" PointX="5.25" PointY="4.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="GardenStoreModel.Categories" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
-        <EntityTypeShape EntityType="GardenStoreModel.Fields" Width="1.5" PointX="3" PointY="8.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="GardenStoreModel.ProductProperty" Width="1.5" PointX="8.25" PointY="4.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="GardenStoreModel.Products" Width="1.5" PointX="3" PointY="4.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="GardenStoreModel.Properties" Width="1.5" PointX="6" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="GardenStoreModel.Sales" Width="1.5" PointX="5.25" PointY="11.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="GardenStoreModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="7.75" IsExpanded="true" />
+      <Diagram DiagramId="f8514f4dcd974dbe9f93183138d0e4bc" Name="Diagram1">
+        <EntityTypeShape EntityType="GardenStoreModel.Actions" Width="1.5" PointX="3" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="GardenStoreModel.AuditLog" Width="1.5" PointX="5.25" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="GardenStoreModel.Categories" Width="1.5" PointX="0.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="GardenStoreModel.Fields" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GardenStoreModel.ProductImages" Width="1.5" PointX="5.25" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="GardenStoreModel.ProductProperty" Width="1.5" PointX="8.25" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GardenStoreModel.Products" Width="1.5" PointX="3" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="GardenStoreModel.Properties" Width="1.5" PointX="6" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="GardenStoreModel.Sales" Width="1.5" PointX="5.25" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GardenStoreModel.sysdiagrams" Width="1.5" PointX="8.75" PointY="1.375" IsExpanded="true" />
         <EntityTypeShape EntityType="GardenStoreModel.Users" Width="1.5" PointX="3" PointY="11.125" IsExpanded="true" />
         <EntityTypeShape EntityType="GardenStoreModel.UserTypes" Width="1.5" PointX="0.75" PointY="11.375" IsExpanded="true" />
         <AssociationConnector Association="GardenStoreModel.FK_AuditLog_Actions" ManuallyRouted="false" />
@@ -21,6 +22,7 @@
         <AssociationConnector Association="GardenStoreModel.FK_AuditLog_Products" ManuallyRouted="false" />
         <AssociationConnector Association="GardenStoreModel.FK_AuditLog_Users" ManuallyRouted="false" />
         <AssociationConnector Association="GardenStoreModel.FK_Products_Categories" ManuallyRouted="false" />
+        <AssociationConnector Association="GardenStoreModel.FK_Images_Products" ManuallyRouted="false" />
         <AssociationConnector Association="GardenStoreModel.FK_ProductProperty_Products" ManuallyRouted="false" />
         <AssociationConnector Association="GardenStoreModel.FK_ProductProperty_Properties" ManuallyRouted="false" />
         <AssociationConnector Association="GardenStoreModel.FK_Sales_Products" ManuallyRouted="false" />

@@ -18,7 +18,7 @@ namespace GardenKeeper.Model
         public int ProductId { get; set; }
         public long Quantity { get; set; }
         public System.DateTime SaleDate { get; set; }
-        public int TotalPrice { get; set; }
+        public long TotalPrice { get; set; }
         public long UnitPrice { get; set; }
     
         public virtual Products Products { get; set; }

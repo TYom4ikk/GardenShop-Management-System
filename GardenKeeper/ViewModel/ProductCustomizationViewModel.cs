@@ -1,4 +1,5 @@
 ﻿using GardenKeeper.Model;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,19 @@ namespace GardenKeeper.ViewModel
         public void AddNewProperty(string name, string value)
         {
             Model.Properties property = new Model.Properties { Name = name, Value = value};
+        }
+
+        public void AddNewImage()
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.ShowDialog();
+            //Обработать cancel
+            byte[] image_bytes = System.IO.File.ReadAllBytes(openFileDialog.FileName);
+
+            var images = Core.context.ProductImages;
+
+            images.Add(new ProductImages { Image = image_bytes, ProductId = 5 });
+            Core.context.SaveChanges();
         }
     }
 }

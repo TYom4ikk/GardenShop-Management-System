@@ -1,0 +1,37 @@
+﻿<Window x:Class="GardenKeeper.View.QuantitySelectionWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GardenKeeper.View"
+        mc:Ignorable="d"
+        Title="Количество" Height="100" Width="110" WindowStyle="ToolWindow"
+        MinHeight="100" MinWidth="110" MaxHeight="100" MaxWidth="110">
+
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Assets/Styles/QuantitySelectionWindowStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button x:Name="DecreaseButton" Content="-" Width="20" Height="20" Click="DecreaseButton_Click"/>
+            <TextBox x:Name="QuantityTextBox" Text="1" Width="30" TextAlignment="Center" Margin="5,0"/>
+            <Button x:Name="IncreaseButton" Content="+" Width="20" Height="20" Click="IncreaseButton_Click"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,5">
+            <Button x:Name="OkButton" Content="Ок" Width="40" Height="20" Margin="0,0,5,0" Click="OkButton_Click"/>
+            <Button x:Name="CancelButton" Content="Отмена" Width="50" Height="20" Click="CancelButton_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>
