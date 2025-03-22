@@ -20,17 +20,44 @@ namespace GardenKeeper.ViewModel
             Model.Properties property = new Model.Properties { Name = name, Value = value};
         }
 
-        public void AddNewImage()
+        public bool AddNewImage(int productId)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.ShowDialog();
-            //Обработать cancel
-            byte[] image_bytes = System.IO.File.ReadAllBytes(openFileDialog.FileName);
+            try
+            {
+                OpenFileDialog openFileDialog = new OpenFileDialog();
+                var result = openFileDialog.ShowDialog();
+                if (result == false)
+                {
+                    return false;
+                }
+                byte[] image_bytes = System.IO.File.ReadAllBytes(openFileDialog.FileName);
 
-            var images = Core.context.ProductImages;
+                var images = Core.context.ProductImages;
 
-            images.Add(new ProductImages { Image = image_bytes, ProductId = 5 });
-            Core.context.SaveChanges();
+                images.Add(new ProductImages { Image = image_bytes, ProductId = productId });
+                Core.context.SaveChanges();
+                return true;
+            }
+            catch(Exception ex)
+            {
+                return false;
+            }
+            
+        }
+
+        public bool DeleteImage(long id)
+        {
+            try
+            {
+                var image = Core.context.ProductImages.FirstOrDefault(x => x.Id == id);
+                Core.context.ProductImages.Remove(image);
+                Core.context.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
     }
 }

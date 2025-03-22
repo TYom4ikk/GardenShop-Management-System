@@ -30,13 +30,18 @@ namespace GardenKeeper.View.UsersView.Partial
         private int imageIndex = 0;
         private List<ProductImages> images = new List<ProductImages>();
         Products product;
-        public ProductCard(Products product, bool isSell, bool isCustomize)
+
+        Users currentUser;
+        public ProductCard(Products product, bool isSell, bool isCustomize, Users user)
         {
             InitializeComponent();
             DataContext = product;
             this.product = product;
             this.isSell= isSell;
+            currentUser = user;
             this.isCustomize=isCustomize;
+
+            product.MainImage = Core.context.ProductImages.Where(img => img.ProductId == product.Id).ToList()[0].Image;
 
             CustomizeButtonImage.Visibility = isCustomize ? Visibility.Visible : Visibility.Hidden;
 
@@ -60,12 +65,10 @@ namespace GardenKeeper.View.UsersView.Partial
 
         private void BuyProductButton_Click(object sender, RoutedEventArgs e)
         {
-
             QuantitySelectionWindow window = new QuantitySelectionWindow();
             bool? success = window.ShowDialog();
             if (success == true)
             {
-                product.MainImage = Core.context.ProductImages.Where(img => img.ProductId == product.Id).ToList()[0].Image;
                 Products existingProduct = ShoppingCardViewModel.Products.FirstOrDefault(p => p.Id == product.Id);
                 if (existingProduct == null)
                 {
@@ -82,7 +85,7 @@ namespace GardenKeeper.View.UsersView.Partial
 
         private void CustomizeButtonImage_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            ProductCustomizationWindow window = new ProductCustomizationWindow(DataContext as Products);
+            ProductCustomizationWindow window = new ProductCustomizationWindow(product, currentUser);
             window.ShowDialog();
         }
 

@@ -58,7 +58,7 @@ namespace GardenKeeper.View.UsersView
 
             foreach (var product in products)
             {
-                ProductCard card = new ProductCard(product, isRegisteredUser, isManager)
+                ProductCard card = new ProductCard(product, isRegisteredUser, isManager, currentUser)
                 {
                     Width = 400,
                     Height = 500,

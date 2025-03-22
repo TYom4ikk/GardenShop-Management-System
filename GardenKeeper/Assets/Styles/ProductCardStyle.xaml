@@ -48,7 +48,7 @@
         <Setter Property="FontSize" Value="20"/>
         <Setter Property="Foreground" Value="{StaticResource ProductCardTextColor}"/>
         <Setter Property="Background" Value="{StaticResource ProductCardBuyProductButton}"/>
-        <Setter Property="Padding" Value="60 0"/>
+        <Setter Property="Padding" Value="20 0"/>
         <Setter Property="Height" Value="50"/>
         <Setter Property="Margin" Value="30 0"/>
     </Style>

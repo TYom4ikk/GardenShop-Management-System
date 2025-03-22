@@ -28,7 +28,7 @@
     </Style>
 
     <Style TargetType="StackPanel" x:Key="ProperyRow">
-        <Setter Property="Margin" Value="15 0"/>
+        <Setter Property="Margin" Value="10 0 6 0"/>
         <Setter Property="Height" Value="76"/>
     </Style>
 
@@ -46,8 +46,16 @@
 
     <Style TargetType="Button">
         <Setter Property="HorizontalAlignment" Value="Center"/>
-        <Setter Property="Width" Value="300"/>
+        <Setter Property="Width" Value="200"/>
         <Setter Property="Height" Value="40"/>
         <Setter Property="Margin" Value="0 10"/>
     </Style>
+
+    <Style TargetType="Button" x:Key="AddPropertyButton" BasedOn="{StaticResource {x:Type Button}}">
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="Width" Value="20"/>
+        <Setter Property="Height" Value="40"/>
+        <Setter Property="Margin" Value="0 0 0 0"/>
+    </Style>
+
 </ResourceDictionary>

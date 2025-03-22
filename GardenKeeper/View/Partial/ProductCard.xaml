@@ -55,7 +55,7 @@
                            Style="{StaticResource ProductQuantityTextBlock}" />
                 <Button x:Name="BuyProductButton" Style="{StaticResource BuyProductButton}" Content="Купить"
                         Grid.Column="1"
-                        HorizontalAlignment="Right" Click="BuyProductButton_Click" MaxHeight="50" MaxWidth="190"/>
+                        HorizontalAlignment="Right" Click="BuyProductButton_Click"/>
 
                 <Image x:Name="CustomizeButtonImage" Style="{StaticResource CustomizeButtonImage}" Source="/Assets/Images/Customize.png" Grid.Column="2"
                        MouseLeftButtonDown="CustomizeButtonImage_MouseLeftButtonDown"/>
