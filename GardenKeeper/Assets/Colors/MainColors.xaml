@@ -3,6 +3,7 @@
     
     <SolidColorBrush x:Key="BackgroundColor" Color="LightGreen"/>
     <SolidColorBrush x:Key="HeaderBackgroundColor" Color="Green"/>
+    <SolidColorBrush x:Key="AlternativeBackgroundColor" Color="LimeGreen"/>
 
     <SolidColorBrush x:Key="CatalogTextColor" Color="White"/>
     <SolidColorBrush x:Key="CatalogButtonColor" Color="LightGreen"/>

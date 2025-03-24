@@ -41,7 +41,10 @@ namespace GardenKeeper.View.UsersView.Partial
             currentUser = user;
             this.isCustomize=isCustomize;
 
-            product.MainImage = Core.context.ProductImages.Where(img => img.ProductId == product.Id).ToList()[0].Image;
+            if (Core.context.ProductImages.Where(img => img.ProductId == product.Id).ToList().Count > 0)
+            {
+                product.MainImage = Core.context.ProductImages.Where(img => img.ProductId == product.Id).ToList()[0].Image;
+            }
 
             CustomizeButtonImage.Visibility = isCustomize ? Visibility.Visible : Visibility.Hidden;
 
@@ -59,7 +62,7 @@ namespace GardenKeeper.View.UsersView.Partial
             }
 
             images = Core.context.ProductImages.Where(img => img.ProductId == product.Id).ToList();
-
+            if (images.Count > 0) 
             ChangeImage();
         }
 
@@ -87,6 +90,7 @@ namespace GardenKeeper.View.UsersView.Partial
         {
             ProductCustomizationWindow window = new ProductCustomizationWindow(product, currentUser);
             window.ShowDialog();
+
         }
 
         private void ChangeImageButtonLeft_Click(object sender, RoutedEventArgs e)

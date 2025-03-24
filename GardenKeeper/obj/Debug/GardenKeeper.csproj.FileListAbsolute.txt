@@ -100,3 +100,6 @@ C:\Users\zhaku\Desktop\Курсовые\GardenShop-Management-System\GardenKeepe
 C:\Users\zhaku\Desktop\Курсовые\GardenShop-Management-System\GardenKeeper\obj\Debug\View\QuantitySelectionWindow.g.cs
 C:\Users\zhaku\Desktop\Курсовые\GardenShop-Management-System\GardenKeeper\obj\Debug\View\Partial\ShoppingCardProduct.baml
 C:\Users\zhaku\Desktop\Курсовые\GardenShop-Management-System\GardenKeeper\obj\Debug\View\QuantitySelectionWindow.baml
+C:\Users\zhaku\Desktop\Курсовые\GardenShop-Management-System\GardenKeeper\obj\Debug\GardenKeeper.csproj.ResolveComReference.cache
+C:\Users\zhaku\Desktop\Курсовые\GardenShop-Management-System\GardenKeeper\obj\Debug\View\SystemAdminView\AuditLogReportGeneratorWindow.g.cs
+C:\Users\zhaku\Desktop\Курсовые\GardenShop-Management-System\GardenKeeper\obj\Debug\View\SystemAdminView\AuditLogReportGeneratorWindow.baml

@@ -3,8 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\zhaku\\Desktop\\\u041A\u0443\u0440\u0441\u043E\u0432\u044B\u0435\\GardenShop-Management-System\\GardenKeeper\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A6410086-3335-4C36-86DC-52D27162A60B}|GardenKeeper.csproj|c:\\users\\zhaku\\desktop\\\u043A\u0443\u0440\u0441\u043E\u0432\u044B\u0435\\gardenshop-management-system\\gardenkeeper\\view\\managerview\\productcustomizationwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{A6410086-3335-4C36-86DC-52D27162A60B}|GardenKeeper.csproj|solutionrelative:view\\managerview\\productcustomizationwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{A6410086-3335-4C36-86DC-52D27162A60B}|GardenKeeper.csproj|c:\\users\\zhaku\\desktop\\\u043A\u0443\u0440\u0441\u043E\u0432\u044B\u0435\\gardenshop-management-system\\gardenkeeper\\viewmodel\\auditlogreportgeneratorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A6410086-3335-4C36-86DC-52D27162A60B}|GardenKeeper.csproj|solutionrelative:viewmodel\\auditlogreportgeneratorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A6410086-3335-4C36-86DC-52D27162A60B}|GardenKeeper.csproj|c:\\users\\zhaku\\desktop\\\u043A\u0443\u0440\u0441\u043E\u0432\u044B\u0435\\gardenshop-management-system\\gardenkeeper\\view\\catalogpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -15,20 +15,28 @@
       "RelativeMoniker": "D:0:0:{A6410086-3335-4C36-86DC-52D27162A60B}|GardenKeeper.csproj|solutionrelative:view\\catalogpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{A6410086-3335-4C36-86DC-52D27162A60B}|GardenKeeper.csproj|c:\\users\\zhaku\\desktop\\\u043A\u0443\u0440\u0441\u043E\u0432\u044B\u0435\\gardenshop-management-system\\gardenkeeper\\view\\systemadminview\\auditlogreportgeneratorwindow.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|",
+      "RelativeMoniker": "D:0:0:{A6410086-3335-4C36-86DC-52D27162A60B}|GardenKeeper.csproj|solutionrelative:view\\systemadminview\\auditlogreportgeneratorwindow.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A6410086-3335-4C36-86DC-52D27162A60B}|GardenKeeper.csproj|c:\\users\\zhaku\\desktop\\\u043A\u0443\u0440\u0441\u043E\u0432\u044B\u0435\\gardenshop-management-system\\gardenkeeper\\view\\systemadminview\\auditlogreportgeneratorwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{A6410086-3335-4C36-86DC-52D27162A60B}|GardenKeeper.csproj|solutionrelative:view\\systemadminview\\auditlogreportgeneratorwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A6410086-3335-4C36-86DC-52D27162A60B}|GardenKeeper.csproj|c:\\users\\zhaku\\desktop\\\u043A\u0443\u0440\u0441\u043E\u0432\u044B\u0435\\gardenshop-management-system\\gardenkeeper\\viewmodel\\registrationviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A6410086-3335-4C36-86DC-52D27162A60B}|GardenKeeper.csproj|solutionrelative:viewmodel\\registrationviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A6410086-3335-4C36-86DC-52D27162A60B}|GardenKeeper.csproj|c:\\users\\zhaku\\desktop\\\u043A\u0443\u0440\u0441\u043E\u0432\u044B\u0435\\gardenshop-management-system\\gardenkeeper\\view\\managerview\\productcustomizationwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A6410086-3335-4C36-86DC-52D27162A60B}|GardenKeeper.csproj|solutionrelative:view\\managerview\\productcustomizationwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A6410086-3335-4C36-86DC-52D27162A60B}|GardenKeeper.csproj|c:\\users\\zhaku\\desktop\\\u043A\u0443\u0440\u0441\u043E\u0432\u044B\u0435\\gardenshop-management-system\\gardenkeeper\\view\\partial\\productcard.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A6410086-3335-4C36-86DC-52D27162A60B}|GardenKeeper.csproj|solutionrelative:view\\partial\\productcard.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A6410086-3335-4C36-86DC-52D27162A60B}|GardenKeeper.csproj|c:\\users\\zhaku\\desktop\\\u043A\u0443\u0440\u0441\u043E\u0432\u044B\u0435\\gardenshop-management-system\\gardenkeeper\\view\\partial\\productcard.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{A6410086-3335-4C36-86DC-52D27162A60B}|GardenKeeper.csproj|solutionrelative:view\\partial\\productcard.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A6410086-3335-4C36-86DC-52D27162A60B}|GardenKeeper.csproj|c:\\users\\zhaku\\desktop\\\u043A\u0443\u0440\u0441\u043E\u0432\u044B\u0435\\gardenshop-management-system\\gardenkeeper\\view\\partial\\shoppingcardproduct.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{A6410086-3335-4C36-86DC-52D27162A60B}|GardenKeeper.csproj|solutionrelative:view\\partial\\shoppingcardproduct.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A6410086-3335-4C36-86DC-52D27162A60B}|GardenKeeper.csproj|c:\\users\\zhaku\\desktop\\\u043A\u0443\u0440\u0441\u043E\u0432\u044B\u0435\\gardenshop-management-system\\gardenkeeper\\assets\\styles\\productcardstyle.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{A6410086-3335-4C36-86DC-52D27162A60B}|GardenKeeper.csproj|solutionrelative:assets\\styles\\productcardstyle.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{A6410086-3335-4C36-86DC-52D27162A60B}|GardenKeeper.csproj|C:\\Users\\zhaku\\Desktop\\\u041A\u0443\u0440\u0441\u043E\u0432\u044B\u0435\\GardenShop-Management-System\\GardenKeeper\\view\\managerview\\productcustomizationwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{A6410086-3335-4C36-86DC-52D27162A60B}|GardenKeeper.csproj|solutionrelative:view\\managerview\\productcustomizationwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,27 +50,27 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "CatalogPage.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\zhaku\\Desktop\\\u041A\u0443\u0440\u0441\u043E\u0432\u044B\u0435\\GardenShop-Management-System\\GardenKeeper\\View\\CatalogPage.xaml.cs",
-              "RelativeDocumentMoniker": "View\\CatalogPage.xaml.cs",
-              "ToolTip": "C:\\Users\\zhaku\\Desktop\\\u041A\u0443\u0440\u0441\u043E\u0432\u044B\u0435\\GardenShop-Management-System\\GardenKeeper\\View\\CatalogPage.xaml.cs",
-              "RelativeToolTip": "View\\CatalogPage.xaml.cs",
-              "ViewState": "AgIAAB4AAAAAAAAAAAAMwC0AAABkAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "AuditLogReportGeneratorWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\zhaku\\Desktop\\\u041A\u0443\u0440\u0441\u043E\u0432\u044B\u0435\\GardenShop-Management-System\\GardenKeeper\\View\\SystemAdminView\\AuditLogReportGeneratorWindow.xaml.cs",
+              "RelativeDocumentMoniker": "View\\SystemAdminView\\AuditLogReportGeneratorWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\zhaku\\Desktop\\\u041A\u0443\u0440\u0441\u043E\u0432\u044B\u0435\\GardenShop-Management-System\\GardenKeeper\\View\\SystemAdminView\\AuditLogReportGeneratorWindow.xaml.cs",
+              "RelativeToolTip": "View\\SystemAdminView\\AuditLogReportGeneratorWindow.xaml.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAAABcAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-22T10:11:35.688Z",
+              "WhenOpened": "2025-03-24T00:21:04.123Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ProductCustomizationWindow.xaml",
-              "DocumentMoniker": "C:\\Users\\zhaku\\Desktop\\\u041A\u0443\u0440\u0441\u043E\u0432\u044B\u0435\\GardenShop-Management-System\\GardenKeeper\\View\\ManagerView\\ProductCustomizationWindow.xaml",
-              "RelativeDocumentMoniker": "View\\ManagerView\\ProductCustomizationWindow.xaml",
-              "ToolTip": "C:\\Users\\zhaku\\Desktop\\\u041A\u0443\u0440\u0441\u043E\u0432\u044B\u0435\\GardenShop-Management-System\\GardenKeeper\\View\\ManagerView\\ProductCustomizationWindow.xaml",
-              "RelativeToolTip": "View\\ManagerView\\ProductCustomizationWindow.xaml",
+              "DocumentIndex": 4,
+              "Title": "AuditLogReportGeneratorWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\zhaku\\Desktop\\\u041A\u0443\u0440\u0441\u043E\u0432\u044B\u0435\\GardenShop-Management-System\\GardenKeeper\\View\\SystemAdminView\\AuditLogReportGeneratorWindow.xaml",
+              "RelativeDocumentMoniker": "View\\SystemAdminView\\AuditLogReportGeneratorWindow.xaml",
+              "ToolTip": "C:\\Users\\zhaku\\Desktop\\\u041A\u0443\u0440\u0441\u043E\u0432\u044B\u0435\\GardenShop-Management-System\\GardenKeeper\\View\\SystemAdminView\\AuditLogReportGeneratorWindow.xaml",
+              "RelativeToolTip": "View\\SystemAdminView\\AuditLogReportGeneratorWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-03-22T09:00:42.068Z",
+              "WhenOpened": "2025-03-24T00:00:01.299Z",
               "EditorCaption": ""
             },
             {
@@ -74,56 +82,84 @@
               "ToolTip": "C:\\Users\\zhaku\\Desktop\\\u041A\u0443\u0440\u0441\u043E\u0432\u044B\u0435\\GardenShop-Management-System\\GardenKeeper\\View\\CatalogPage.xaml",
               "RelativeToolTip": "View\\CatalogPage.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-03-22T10:11:38.782Z",
+              "WhenOpened": "2025-03-23T22:22:58.48Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ProductCard.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\zhaku\\Desktop\\\u041A\u0443\u0440\u0441\u043E\u0432\u044B\u0435\\GardenShop-Management-System\\GardenKeeper\\View\\Partial\\ProductCard.xaml.cs",
-              "RelativeDocumentMoniker": "View\\Partial\\ProductCard.xaml.cs",
-              "ToolTip": "C:\\Users\\zhaku\\Desktop\\\u041A\u0443\u0440\u0441\u043E\u0432\u044B\u0435\\GardenShop-Management-System\\GardenKeeper\\View\\Partial\\ProductCard.xaml.cs",
-              "RelativeToolTip": "View\\Partial\\ProductCard.xaml.cs",
-              "ViewState": "AgIAAEgAAAAAAAAAAAAMwFQAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "AuditLogReportGeneratorViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\zhaku\\Desktop\\\u041A\u0443\u0440\u0441\u043E\u0432\u044B\u0435\\GardenShop-Management-System\\GardenKeeper\\ViewModel\\AuditLogReportGeneratorViewModel.cs",
+              "RelativeDocumentMoniker": "ViewModel\\AuditLogReportGeneratorViewModel.cs",
+              "ToolTip": "C:\\Users\\zhaku\\Desktop\\\u041A\u0443\u0440\u0441\u043E\u0432\u044B\u0435\\GardenShop-Management-System\\GardenKeeper\\ViewModel\\AuditLogReportGeneratorViewModel.cs",
+              "RelativeToolTip": "ViewModel\\AuditLogReportGeneratorViewModel.cs",
+              "ViewState": "AgIAADUAAAAAAAAAAAAuwDgAAABIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-22T11:16:21.615Z",
+              "WhenOpened": "2025-03-24T00:07:49.589Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CatalogPage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\zhaku\\Desktop\\\u041A\u0443\u0440\u0441\u043E\u0432\u044B\u0435\\GardenShop-Management-System\\GardenKeeper\\View\\CatalogPage.xaml.cs",
+              "RelativeDocumentMoniker": "View\\CatalogPage.xaml.cs",
+              "ToolTip": "C:\\Users\\zhaku\\Desktop\\\u041A\u0443\u0440\u0441\u043E\u0432\u044B\u0435\\GardenShop-Management-System\\GardenKeeper\\View\\CatalogPage.xaml.cs",
+              "RelativeToolTip": "View\\CatalogPage.xaml.cs",
+              "ViewState": "AgIAAGQAAAAAAAAAAAAAwHEAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-23T23:21:04.683Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "ShoppingCardProduct.xaml",
-              "DocumentMoniker": "C:\\Users\\zhaku\\Desktop\\\u041A\u0443\u0440\u0441\u043E\u0432\u044B\u0435\\GardenShop-Management-System\\GardenKeeper\\View\\Partial\\ShoppingCardProduct.xaml",
-              "RelativeDocumentMoniker": "View\\Partial\\ShoppingCardProduct.xaml",
-              "ToolTip": "C:\\Users\\zhaku\\Desktop\\\u041A\u0443\u0440\u0441\u043E\u0432\u044B\u0435\\GardenShop-Management-System\\GardenKeeper\\View\\Partial\\ShoppingCardProduct.xaml",
-              "RelativeToolTip": "View\\Partial\\ShoppingCardProduct.xaml",
+              "Title": "RegistrationViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\zhaku\\Desktop\\\u041A\u0443\u0440\u0441\u043E\u0432\u044B\u0435\\GardenShop-Management-System\\GardenKeeper\\ViewModel\\RegistrationViewModel.cs",
+              "RelativeDocumentMoniker": "ViewModel\\RegistrationViewModel.cs",
+              "ToolTip": "C:\\Users\\zhaku\\Desktop\\\u041A\u0443\u0440\u0441\u043E\u0432\u044B\u0435\\GardenShop-Management-System\\GardenKeeper\\ViewModel\\RegistrationViewModel.cs",
+              "RelativeToolTip": "ViewModel\\RegistrationViewModel.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAiwAwAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-23T23:20:20.49Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ProductCard.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\zhaku\\Desktop\\\u041A\u0443\u0440\u0441\u043E\u0432\u044B\u0435\\GardenShop-Management-System\\GardenKeeper\\View\\Partial\\ProductCard.xaml.cs",
+              "RelativeDocumentMoniker": "View\\Partial\\ProductCard.xaml.cs",
+              "ToolTip": "C:\\Users\\zhaku\\Desktop\\\u041A\u0443\u0440\u0441\u043E\u0432\u044B\u0435\\GardenShop-Management-System\\GardenKeeper\\View\\Partial\\ProductCard.xaml.cs",
+              "RelativeToolTip": "View\\Partial\\ProductCard.xaml.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAkwDUAAABBAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-23T21:24:53.815Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ProductCustomizationWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\zhaku\\Desktop\\\u041A\u0443\u0440\u0441\u043E\u0432\u044B\u0435\\GardenShop-Management-System\\GardenKeeper\\View\\ManagerView\\ProductCustomizationWindow.xaml",
+              "RelativeDocumentMoniker": "View\\ManagerView\\ProductCustomizationWindow.xaml",
+              "ToolTip": "C:\\Users\\zhaku\\Desktop\\\u041A\u0443\u0440\u0441\u043E\u0432\u044B\u0435\\GardenShop-Management-System\\GardenKeeper\\View\\ManagerView\\ProductCustomizationWindow.xaml",
+              "RelativeToolTip": "View\\ManagerView\\ProductCustomizationWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-03-22T10:25:05.213Z",
+              "WhenOpened": "2025-03-23T07:59:08.177Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "ProductCardStyle.xaml",
-              "DocumentMoniker": "C:\\Users\\zhaku\\Desktop\\\u041A\u0443\u0440\u0441\u043E\u0432\u044B\u0435\\GardenShop-Management-System\\GardenKeeper\\Assets\\Styles\\ProductCardStyle.xaml",
-              "RelativeDocumentMoniker": "Assets\\Styles\\ProductCardStyle.xaml",
-              "ToolTip": "C:\\Users\\zhaku\\Desktop\\\u041A\u0443\u0440\u0441\u043E\u0432\u044B\u0435\\GardenShop-Management-System\\GardenKeeper\\Assets\\Styles\\ProductCardStyle.xaml",
-              "RelativeToolTip": "Assets\\Styles\\ProductCardStyle.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-03-22T10:13:44.378Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ProductCard.xaml",
-              "DocumentMoniker": "C:\\Users\\zhaku\\Desktop\\\u041A\u0443\u0440\u0441\u043E\u0432\u044B\u0435\\GardenShop-Management-System\\GardenKeeper\\View\\Partial\\ProductCard.xaml",
-              "RelativeDocumentMoniker": "View\\Partial\\ProductCard.xaml",
-              "ToolTip": "C:\\Users\\zhaku\\Desktop\\\u041A\u0443\u0440\u0441\u043E\u0432\u044B\u0435\\GardenShop-Management-System\\GardenKeeper\\View\\Partial\\ProductCard.xaml",
-              "RelativeToolTip": "View\\Partial\\ProductCard.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-03-22T10:13:06.038Z",
+              "Title": "ProductCustomizationWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\zhaku\\Desktop\\\u041A\u0443\u0440\u0441\u043E\u0432\u044B\u0435\\GardenShop-Management-System\\GardenKeeper\\View\\ManagerView\\ProductCustomizationWindow.xaml.cs",
+              "RelativeDocumentMoniker": "View\\ManagerView\\ProductCustomizationWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\zhaku\\Desktop\\\u041A\u0443\u0440\u0441\u043E\u0432\u044B\u0435\\GardenShop-Management-System\\GardenKeeper\\View\\ManagerView\\ProductCustomizationWindow.xaml.cs",
+              "RelativeToolTip": "View\\ManagerView\\ProductCustomizationWindow.xaml.cs",
+              "ViewState": "AgIAAJADAAAAAAAAAAAlwKEDAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-23T07:59:07.582Z",
               "EditorCaption": ""
             }
           ]

@@ -1,4 +1,5 @@
 ﻿using GardenKeeper.Model;
+using GardenKeeper.View.SystemAdminView;
 using GardenKeeper.View.UsersView.Partial;
 using GardenKeeper.ViewModel;
 using System;
@@ -24,11 +25,15 @@ namespace GardenKeeper.View.UsersView
     public partial class CatalogPage : Page
     {
         private const int MANAGER_TYPE_ID = 2;
+        private const int ADMIN_TYPE_ID = 3;
+        private const int DIRECTOR_TYPE_ID = 4;
 
         private CatalogViewModel viewModel;
         private Users currentUser = null;
         private bool isRegisteredUser;
         private bool isManager;
+        private bool isAdmin;
+        private bool isDirector;
         public CatalogPage(Users user)
         {
             InitializeComponent();
@@ -38,7 +43,10 @@ namespace GardenKeeper.View.UsersView
             currentUser = user;
             isRegisteredUser = user.Email != null ? true : false;
             isManager = user.UserTypeId == MANAGER_TYPE_ID ? true : false;
-
+            isAdmin = user.UserTypeId == ADMIN_TYPE_ID ? true : false;
+            isDirector = user.UserTypeId == DIRECTOR_TYPE_ID? true : false;
+            if (isDirector) { isAdmin = true; }
+            if (isAdmin) { isManager = true; }
             PriceFilterComboBox.ItemsSource = Enum.GetValues(typeof(CatalogViewModel.PriceFilterStatuses));
             PriceFilterComboBox.SelectedIndex = 0;
 
@@ -83,8 +91,8 @@ namespace GardenKeeper.View.UsersView
             if(PriceFilterComboBox.SelectedItem is CatalogViewModel.PriceFilterStatuses selectedFilter &&
                 CategoriesFilterComboBox.SelectedItem is Categories category)
             {
-                UpdateProductDisplay(viewModel.PriceFilter(selectedFilter).ToList());
                 UpdateProductDisplay(viewModel.CategoryFilter(category.Id).ToList());
+                UpdateProductDisplay(viewModel.PriceFilter(selectedFilter).ToList());
             }
         }
 
@@ -98,6 +106,12 @@ namespace GardenKeeper.View.UsersView
         {
             ShoppingCardPage page = new ShoppingCardPage(currentUser);
             this.NavigationService.Navigate(page);
+        }
+
+        private void GenerateAuditLogReportButton_Click(object sender, RoutedEventArgs e)
+        {
+            var window = new AuditLogReportGeneratorWindow();
+            window.ShowDialog();
         }
     }
 }
