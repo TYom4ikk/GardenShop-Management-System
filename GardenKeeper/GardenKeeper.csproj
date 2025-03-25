@@ -188,6 +188,7 @@
     <Compile Include="ViewModel\ProductCustomizationViewModel.cs" />
     <Compile Include="ViewModel\QuantitySelectionViewModel.cs" />
     <Compile Include="ViewModel\RegistrationViewModel.cs" />
+    <Compile Include="ViewModel\SalesReportGeneratorViewModel.cs" />
     <Compile Include="ViewModel\SaleViewModel.cs" />
     <Compile Include="ViewModel\ShoppingCardViewModel.cs" />
     <Compile Include="View\ManagerView\ProductCustomizationWindow.xaml.cs">
@@ -210,6 +211,9 @@
     </Compile>
     <Compile Include="View\ShoppingCardPage.xaml.cs">
       <DependentUpon>ShoppingCardPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SystemAdminView\AddNewManagerWindow.xaml.cs">
+      <DependentUpon>AddNewManagerWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\SystemAdminView\AuditLogReportGeneratorWindow.xaml.cs">
       <DependentUpon>AuditLogReportGeneratorWindow.xaml</DependentUpon>
@@ -279,6 +283,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\ShoppingCardPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SystemAdminView\AddNewManagerWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

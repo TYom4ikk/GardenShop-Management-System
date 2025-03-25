@@ -1,0 +1,33 @@
+﻿<Window x:Class="GardenKeeper.View.SystemAdminView.AddNewManagerWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GardenKeeper.View.SystemAdminView"
+        mc:Ignorable="d"
+        Title="AddNewManagerWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="0.25*"/>
+            <RowDefinition Height="0.25*"/>
+            <RowDefinition Height="0.25*"/>
+            <RowDefinition Height="0.25*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Label Grid.Row="0" Content="Добавление менеджера" VerticalAlignment="Center" HorizontalAlignment="Center"
+               FontSize="30"/>
+
+        <Label Grid.Row="1" Content="Email:" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <TextBox Grid.Row="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                 Width="200" x:Name="EmailTextBox"/>
+        <Label Grid.Row="3" Content="Пароль:" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <TextBox Grid.Row="4" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                 Width="200" x:Name="PasswordTextBox"/>
+        
+        <Button Grid.Row="5" x:Name="AddNewManager" Content="Зарегестрировать" VerticalAlignment="Center" HorizontalAlignment="Center"
+                Width="200" Height="50" Click="AddNewManager_Click"/>
+
+    </Grid>
+</Window>

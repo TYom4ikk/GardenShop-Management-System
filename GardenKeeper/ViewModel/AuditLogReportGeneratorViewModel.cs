@@ -5,68 +5,73 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Shapes;
 using Excel = Microsoft.Office.Interop.Excel;
 
 namespace GardenKeeper.ViewModel
 {
     class AuditLogReportGeneratorViewModel
     {
-
-
-        public void WriteLogToExcel(AuditLog log, DateTime dateTime, Products product)
+        private Excel.Application excelApp;
+        private Excel.Workbook workbook;
+        private Excel.Worksheet worksheet;
+        private int row;
+        private int column;
+        public void OpenLogsExcel()
         {
-            // Инициализация Excel приложения
-            Excel.Application excelApp = new Excel.Application();
-            excelApp.Visible = false;  // Если нужно, можно установить в true, чтобы видеть Excel
-
-            // Создание новой книги
-            Excel.Workbook workbook = excelApp.Workbooks.Add();
-            Excel.Worksheet worksheet = (Excel.Worksheet)workbook.Sheets[1];  // Доступ к первому листу
-
-            // Запись данных в ячейку A1
-            worksheet.Cells[1, 1].Value = "Привет, мир!";
-
-            // Сохранение файла
-            workbook.SaveAs("C:\\path\\to\\your\\file.xlsx");
-
-            // Закрытие
-            workbook.Close();
-            excelApp.Quit();
-        }
-        public string WriteLogToExcel(AuditLog log, Users user, Products product)
-        {
-            // Инициализация Excel приложения
-            Excel.Application excelApp = new Excel.Application();
+            excelApp = new Excel.Application();
             excelApp.Visible = false;
 
-            // Создание нового рабочего файла
-            Excel.Workbook workbook = excelApp.Workbooks.Add();
-            Excel.Worksheet worksheet = (Excel.Worksheet)workbook.Sheets[1];
+            workbook = excelApp.Workbooks.Add();
+            worksheet = (Excel.Worksheet)workbook.Sheets[1];
 
-            // Заполнение ячеек
+            row = 1;
+            column = 0;
+
             worksheet.Cells[1, 1].Value = "Пользователь";
-            worksheet.Cells[2, 1].Value = $"{user.Email}";
-
             worksheet.Cells[1, 2].Value = "Id Товара";
-            worksheet.Cells[2, 2].Value = $"{product.Id}";
+            worksheet.Cells[1, 3].Value = "Название товара"; 
+            worksheet.Cells[1, 4].Value = $"Действие";
+            worksheet.Cells[1, 5].Value = $"Поле";
+            worksheet.Cells[1, 6].Value = $"Дата";
+            worksheet.Cells[1, 7].Value = $"Старое значение";
+            worksheet.Cells[1, 8].Value = $"Новое значение";
 
-            worksheet.Cells[1, 3].Value = "Название товара";
-            worksheet.Cells[2, 3].Value = $"{product.Name}";
+            // Автоматически подгоняем ширину колонок под содержимое
+            worksheet.Columns.AutoFit();
+        }
 
-            // Генерация уникального имени файла на основе текущей даты и времени
+        public void WriteLineLog(AuditLog log)
+        {
+            row++; column++;
+            worksheet.Cells[row, column].Value = $"{log.Users.Email}";
+            column++;
+            worksheet.Cells[row, column].Value = $"{log.Products.Id}";
+            column++;
+            worksheet.Cells[row, column].Value = $"{log.Products.Name}";
+            column++;
+            worksheet.Cells[row, column].Value = $"{log.Fields.Name}";
+            column++;
+            worksheet.Cells[row, column].Value = $"{log.Fields.Name}";
+            column++;
+            worksheet.Cells[row, column].Value = $"{log.ChangeDate}";
+            column++;
+            worksheet.Cells[row, column].Value = $"{log.OldValue}";
+            column++;
+            worksheet.Cells[row, column].Value = $"{log.NewValue}";
+            column = 0;
+        }
+
+        public string CloseLogsExcel()
+        {
             string timestamp = DateTime.Now.ToString("yyyyMMdd_HHmmss");
-            string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"AuditLogReports\\log_{timestamp}.xlsx");
+            string path = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"AuditLogReports\\log_{timestamp}.xlsx");
 
-            // Создание директории, если она не существует
-            Directory.CreateDirectory(Path.GetDirectoryName(path));
-
-            // Сохранение нового файла
+            Directory.CreateDirectory(System.IO.Path.GetDirectoryName(path));
             workbook.SaveAs(path);
 
-            // Ответ с информацией о пути сохранения файла
             string answer = $"Отчёт сохранён в {path}";
 
-            // Закрытие рабочего файла и приложения Excel
             workbook.Close();
             excelApp.Quit();
 

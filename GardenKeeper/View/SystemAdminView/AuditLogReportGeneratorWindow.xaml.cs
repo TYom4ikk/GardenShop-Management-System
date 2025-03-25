@@ -22,14 +22,34 @@ namespace GardenKeeper.View.SystemAdminView
     public partial class AuditLogReportGeneratorWindow : Window
     {
         AuditLogReportGeneratorViewModel model;
+        Users chosenUser;
+        DateTime? chosenDate;
+        
         public AuditLogReportGeneratorWindow()
         {
             InitializeComponent();
             model = new AuditLogReportGeneratorViewModel();
-            var log = Core.context.AuditLog.FirstOrDefault();
-            var user = Core.context.Users.FirstOrDefault(u=>u.Id==log.UserId);
-            var product = Core.context.Products.FirstOrDefault(u=>u.Id==log.ProductId);
-            model.WriteLogToExcel(log, user, product);
+
+            dateToLog.SelectedDate = DateTime.Now;
+
+            userToLog.ItemsSource = Core.context.Users.ToList();
+            userToLog.DisplayMemberPath = "Email";
+            userToLog.SelectedValuePath = "Id";
+            userToLog.SelectedIndex = 0;
+        }
+
+
+        private void GenerateAuditLogReport_Click(object sender, RoutedEventArgs e)
+        {
+            chosenUser = Core.context.Users.FirstOrDefault(u => u.Id == (int)userToLog.SelectedValue);
+            chosenDate = dateToLog.SelectedDate;
+
+            model.OpenLogsExcel();
+            foreach (var log in Core.context.AuditLog.Where(l => l.UserId == chosenUser.Id && l.ChangeDate == chosenDate.Value))
+            {
+                model.WriteLineLog(log);
+            }
+            MessageBox.Show(model.CloseLogsExcel(), "Сохранение отчёта", MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }
 }

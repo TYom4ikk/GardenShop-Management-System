@@ -113,5 +113,11 @@ namespace GardenKeeper.View.UsersView
             var window = new AuditLogReportGeneratorWindow();
             window.ShowDialog();
         }
+
+        private void AddNewManagerButton_Click(object sender, RoutedEventArgs e)
+        {
+            var window = new AddNewManagerWindow();
+            window.ShowDialog();
+        }
     }
 }
