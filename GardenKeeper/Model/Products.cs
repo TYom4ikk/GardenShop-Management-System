@@ -21,7 +21,7 @@ namespace GardenKeeper.Model
             this.ProductProperty = new HashSet<ProductProperty>();
             this.Sales = new HashSet<Sales>();
         }
-    
+
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }

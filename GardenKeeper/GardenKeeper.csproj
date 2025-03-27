@@ -191,6 +191,9 @@
     <Compile Include="ViewModel\SalesReportGeneratorViewModel.cs" />
     <Compile Include="ViewModel\SaleViewModel.cs" />
     <Compile Include="ViewModel\ShoppingCardViewModel.cs" />
+    <Compile Include="View\DirectorView\SalesReportGeneratorWindow.xaml.cs">
+      <DependentUpon>SalesReportGeneratorWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\ManagerView\ProductCustomizationWindow.xaml.cs">
       <DependentUpon>ProductCustomizationWindow.xaml</DependentUpon>
     </Compile>
@@ -255,6 +258,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Assets\Styles\ProductCardStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DirectorView\SalesReportGeneratorWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -339,19 +346,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\Debug\AuditLogReports\" />
-    <Folder Include="View\DirectorView\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Model\Model.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model.edmx</DependentUpon>
-      <LastGenOutput>Model.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Model\Model.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model.edmx</DependentUpon>
-      <LastGenOutput>Model.cs</LastGenOutput>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="Microsoft.Office.Core">
@@ -381,6 +375,18 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Model\Model.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model.edmx</DependentUpon>
+      <LastGenOutput>Model.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model\Model.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model.edmx</DependentUpon>
+      <LastGenOutput>Model.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

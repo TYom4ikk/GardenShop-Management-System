@@ -38,7 +38,7 @@
                     Style="{StaticResource ShoppingCardButton}"/>
         </Grid>
 
-        <Grid Grid.Row="1">
+        <Grid Grid.Row="1" x:Name="CatalogContent">
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="5*" />
@@ -73,10 +73,12 @@
             </Grid>
 
             <GridSplitter Grid.Column="1" ShowsPreview="False" Width="3"
-            HorizontalAlignment="Center" VerticalAlignment="Stretch" />
+            HorizontalAlignment="Center" VerticalAlignment="Stretch" x:Name="SpecialPanelSplitter"/>
             
-            <Grid Grid.Column="2" Background="{StaticResource AlternativeBackgroundColor}">
+            <Grid Grid.Column="2" Background="{StaticResource AlternativeBackgroundColor}"
+                  x:Name="SpecialPanel">
                 <Grid.RowDefinitions>
+                    <RowDefinition/>
                     <RowDefinition/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
@@ -86,6 +88,10 @@
                         Content="Журнал событий" Foreground="White"/>
                 <Button Grid.Row="1" x:Name="AddNewManagerButton" Height="40" Width="126" Background="{StaticResource CatalogButtonColor}"
                         Content="Добавить Менеджера" Foreground="White" Click="AddNewManagerButton_Click"/>
+
+                <Button Grid.Row="2" x:Name="GenerateSalesReportButton" Height="40" Width="126" Background="{StaticResource CatalogButtonColor}"
+                        Content="Статистика продаж" Foreground="White" Click="GenerateSalesReportButton_Click"/>
+
             </Grid>
             
         </Grid>

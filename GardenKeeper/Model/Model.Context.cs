@@ -16,7 +16,7 @@ namespace GardenKeeper.Model
     public partial class GardenStoreEntities : DbContext
     {
         public GardenStoreEntities()
-            : base("name=GardenStoreEntities")
+            : base("name=GardenStoreEntities1")
         {
         }
     

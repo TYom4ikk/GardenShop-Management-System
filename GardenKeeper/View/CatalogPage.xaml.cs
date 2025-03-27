@@ -1,4 +1,5 @@
 ﻿using GardenKeeper.Model;
+using GardenKeeper.View.DirectorView;
 using GardenKeeper.View.SystemAdminView;
 using GardenKeeper.View.UsersView.Partial;
 using GardenKeeper.ViewModel;
@@ -45,8 +46,10 @@ namespace GardenKeeper.View.UsersView
             isManager = user.UserTypeId == MANAGER_TYPE_ID ? true : false;
             isAdmin = user.UserTypeId == ADMIN_TYPE_ID ? true : false;
             isDirector = user.UserTypeId == DIRECTOR_TYPE_ID? true : false;
+
             if (isDirector) { isAdmin = true; }
             if (isAdmin) { isManager = true; }
+
             PriceFilterComboBox.ItemsSource = Enum.GetValues(typeof(CatalogViewModel.PriceFilterStatuses));
             PriceFilterComboBox.SelectedIndex = 0;
 
@@ -55,6 +58,16 @@ namespace GardenKeeper.View.UsersView
             CategoriesFilterComboBox.SelectedIndex = 0;
 
             LoginButton.Content = isRegisteredUser ? "Войти в другой аккаунт" : "Войти в аккаунт";
+
+            SpecialPanel.Visibility = isManager ? Visibility.Visible : Visibility.Hidden;
+            SpecialPanelSplitter.Visibility = isManager ? Visibility.Visible : Visibility.Hidden;
+
+            if (!isManager)
+            {    
+                CatalogContent.ColumnDefinitions.Clear();
+                CatalogContent.ColumnDefinitions.Add(new ColumnDefinition());
+            }
+
 
             UpdateProductDisplay(viewModel.Products);
         }
@@ -117,6 +130,12 @@ namespace GardenKeeper.View.UsersView
         private void AddNewManagerButton_Click(object sender, RoutedEventArgs e)
         {
             var window = new AddNewManagerWindow();
+            window.ShowDialog();
+        }
+
+        private void GenerateSalesReportButton_Click(object sender, RoutedEventArgs e)
+        {
+            var window = new SalesReportGeneratorWindow();
             window.ShowDialog();
         }
     }

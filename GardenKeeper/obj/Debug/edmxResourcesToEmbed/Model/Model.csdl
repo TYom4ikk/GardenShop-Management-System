@@ -97,7 +97,9 @@
     <Property Name="SaleDate" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="TotalPrice" Type="Int64" Nullable="false" />
     <Property Name="UnitPrice" Type="Int64" Nullable="false" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Products" Relationship="Self.FK_Sales_Products" FromRole="Sales" ToRole="Products" />
+    <NavigationProperty Name="Users" Relationship="Self.FK_Sales_Users" FromRole="Sales" ToRole="Users" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>
@@ -118,6 +120,7 @@
     <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="AuditLog" Relationship="Self.FK_AuditLog_Users" FromRole="Users" ToRole="AuditLog" />
+    <NavigationProperty Name="Sales" Relationship="Self.FK_Sales_Users" FromRole="Users" ToRole="Sales" />
     <NavigationProperty Name="UserTypes" Relationship="Self.FK_Users_UserTypes" FromRole="Users" ToRole="UserTypes" />
   </EntityType>
   <EntityType Name="UserTypes">
@@ -252,6 +255,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Sales_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Sales" Type="Self.Sales" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Sales">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Users_UserTypes">
     <End Role="UserTypes" Type="Self.UserTypes" Multiplicity="1">
       <OnDelete Action="Cascade" />
@@ -266,7 +281,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="GardenStoreEntities" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="GardenStoreEntities1" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Actions" EntityType="Self.Actions" />
     <EntitySet Name="AuditLog" EntityType="Self.AuditLog" />
     <EntitySet Name="Categories" EntityType="Self.Categories" />
@@ -313,6 +328,10 @@
     </AssociationSet>
     <AssociationSet Name="FK_Sales_Products" Association="Self.FK_Sales_Products">
       <End Role="Products" EntitySet="Products" />
+      <End Role="Sales" EntitySet="Sales" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sales_Users" Association="Self.FK_Sales_Users">
+      <End Role="Users" EntitySet="Users" />
       <End Role="Sales" EntitySet="Sales" />
     </AssociationSet>
     <AssociationSet Name="FK_Users_UserTypes" Association="Self.FK_Users_UserTypes">

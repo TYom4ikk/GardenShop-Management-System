@@ -86,6 +86,7 @@ namespace GardenKeeper.View
                     Quantity = product.SelectedQuantity,
                     SaleDate = DateTime.Now,
                     UnitPrice = (long)(product.DiscountPrice == null ? product.MainPrice : product.DiscountPrice),
+                    UserId = user.Id,
                 };
                 sale.TotalPrice = (sale.UnitPrice * (long)sale.Quantity);
 

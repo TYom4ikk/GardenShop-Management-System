@@ -17,6 +17,7 @@ namespace GardenKeeper.Model
         public Users()
         {
             this.AuditLog = new HashSet<AuditLog>();
+            this.Sales = new HashSet<Sales>();
         }
     
         public int Id { get; set; }
@@ -25,6 +26,7 @@ namespace GardenKeeper.Model
         public string PasswordHash { get; set; }
     
         public virtual ICollection<AuditLog> AuditLog { get; set; }
+        public virtual ICollection<Sales> Sales { get; set; }
         public virtual UserTypes UserTypes { get; set; }
     }
 }
