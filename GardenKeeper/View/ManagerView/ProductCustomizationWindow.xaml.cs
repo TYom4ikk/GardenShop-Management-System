@@ -38,16 +38,13 @@ namespace GardenKeeper.View.ManagerView
         {
             InitializeComponent();
             
-            // Инициализируем словарь для хранения свойств
             propertyPairs = new Dictionary<TextBox, TextBox>();
             
-            // Устанавливаем контекст данных
             DataContext = product;
             currentProduct = product;
             model = new ProductCustomizationViewModel();
             currentUser = user;
 
-            // Загружаем изображения
             UpdateImagesCollection();
 
             if (product.MainImage != null)
@@ -63,18 +60,15 @@ namespace GardenKeeper.View.ManagerView
                 }
             }
 
-            // Заполняем основные поля товара
             NameTextBox.Text = product.Name;
             DescriptionTextBox.Text = product.Description;
             MainPriceTextBox.Text = product.FormattedMainPrice;
             DiscountPirceTextBox.Text = product.FormattedDiscountPrice;
             QuantityTextBox.Text = product.Quantity.ToString();
 
-            // Загружаем категории
             CategoryComboBox.ItemsSource = Core.context.Categories.ToList();
             CategoryComboBox.DisplayMemberPath = "Name";
             
-            // Находим текущую категорию товара
             for (int i = 0; i < CategoryComboBox.Items.Count; i++)
             {
                 var category = CategoryComboBox.Items[i] as Categories;
@@ -88,10 +82,8 @@ namespace GardenKeeper.View.ManagerView
             if (CategoryComboBox.SelectedIndex < 0)
                 CategoryComboBox.SelectedIndex = 0;
             
-            // Загружаем существующие свойства товара
             LoadExistingProperties();
-            
-            // Обновляем счетчик свойств
+           
             UpdatePropertyCountDisplay();
         }
 

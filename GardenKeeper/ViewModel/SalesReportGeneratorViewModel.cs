@@ -35,8 +35,6 @@ namespace GardenKeeper.ViewModel
             worksheet.Cells[1, 6].Value = $"Цена за штуку";
             worksheet.Cells[1, 7].Value = $"Итоговая цена";
             worksheet.Cells[1, 8].Value = $"Покупатель";
-
-            // Автоматически подгоняем ширину колонок под содержимое
             worksheet.Columns.AutoFit();
         }
 
