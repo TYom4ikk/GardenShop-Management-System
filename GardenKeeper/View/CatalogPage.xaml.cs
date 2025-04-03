@@ -35,9 +35,9 @@ namespace GardenKeeper.View.UsersView
         private bool isManager;
         private bool isAdmin;
         private bool isDirector;
-        public CatalogPage(Users user)
+
+        public void ConstructorBody(Users user)
         {
-            InitializeComponent();
             viewModel = new CatalogViewModel(user);
             DataContext = viewModel;
 
@@ -45,7 +45,7 @@ namespace GardenKeeper.View.UsersView
             isRegisteredUser = user.Email != null ? true : false;
             isManager = user.UserTypeId == MANAGER_TYPE_ID ? true : false;
             isAdmin = user.UserTypeId == ADMIN_TYPE_ID ? true : false;
-            isDirector = user.UserTypeId == DIRECTOR_TYPE_ID? true : false;
+            isDirector = user.UserTypeId == DIRECTOR_TYPE_ID ? true : false;
 
             if (isDirector) { isAdmin = true; }
             if (isAdmin) { isManager = true; }
@@ -63,16 +63,26 @@ namespace GardenKeeper.View.UsersView
             SpecialPanelSplitter.Visibility = isManager ? Visibility.Visible : Visibility.Hidden;
 
             if (!isManager)
-            {    
+            {
                 CatalogContent.ColumnDefinitions.Clear();
                 CatalogContent.ColumnDefinitions.Add(new ColumnDefinition());
             }
-
-
             UpdateProductDisplay(viewModel.Products);
         }
 
-
+        public CatalogPage()
+        {
+            InitializeComponent();
+            Users user = new Users();
+            user.UserTypeId = 1;
+            ConstructorBody(user);
+        }
+        public CatalogPage(Users user)
+        {
+            InitializeComponent();
+            ConstructorBody(user);
+        }
+       
         private void UpdateProductDisplay(List<Products> products)
         {
             CatalogUniformGrid.Children.Clear();

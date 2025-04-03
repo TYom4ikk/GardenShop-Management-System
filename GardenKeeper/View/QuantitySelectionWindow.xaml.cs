@@ -27,7 +27,7 @@ namespace GardenKeeper.View
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            if (int.TryParse(QuantityTextBox.Text, out int quantity))
+            if (int.TryParse(QuantityTextBox.Text, out int quantity) && quantity>0)
             {
                 DialogResult = true;
                 QuantitySelectionViewModel.SelectedQuantity = quantity;

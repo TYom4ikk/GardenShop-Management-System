@@ -23,7 +23,7 @@ namespace GardenKeeper
         public MainWindow()
         {
             InitializeComponent();
-            MainFrame.Navigate(new Uri("View\\RegistrationPage.xaml", UriKind.Relative));
+            MainFrame.Navigate(new Uri("View\\CatalogPage.xaml", UriKind.Relative));
         }
     }
 }

@@ -346,6 +346,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\Debug\AuditLogReports\" />
+    <Folder Include="Model\PartialClasses\" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="Microsoft.Office.Core">

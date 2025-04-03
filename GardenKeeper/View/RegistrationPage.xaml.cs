@@ -38,6 +38,7 @@ namespace GardenKeeper.View
         private void ContinueWithoutRegistration_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             Users user = new Users();
+            user.UserTypeId = 1;
             CatalogPage page = new CatalogPage(user);
             this.NavigationService.Navigate(page);
         }

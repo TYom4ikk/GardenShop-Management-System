@@ -72,6 +72,11 @@ namespace GardenKeeper.View.UsersView.Partial
             bool? success = window.ShowDialog();
             if (success == true)
             {
+                if(QuantitySelectionViewModel.SelectedQuantity > product.Quantity)
+                {
+                    MessageBox.Show("Неверное количество выбранных товаров!", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
                 Products existingProduct = ShoppingCardViewModel.Products.FirstOrDefault(p => p.Id == product.Id);
                 if (existingProduct == null)
                 {
@@ -90,6 +95,7 @@ namespace GardenKeeper.View.UsersView.Partial
         {
             ProductCustomizationWindow window = new ProductCustomizationWindow(product, currentUser);
             window.ShowDialog();
+            DataContext = Core.context.Products.FirstOrDefault(p=>p.Id == product.Id);
 
         }
 

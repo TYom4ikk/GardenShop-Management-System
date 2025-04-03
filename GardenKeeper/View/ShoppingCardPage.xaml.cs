@@ -1,21 +1,11 @@
-﻿using GardenKeeper.Model;
+﻿using System;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
+using GardenKeeper.Model;
 using GardenKeeper.View.Partial;
 using GardenKeeper.View.UsersView;
 using GardenKeeper.ViewModel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace GardenKeeper.View
 {
@@ -77,9 +67,15 @@ namespace GardenKeeper.View
                 MessageBox.Show("Корзина пуста!", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-
             foreach (var product in ShoppingCardViewModel.Products)
             {
+                if (product.SelectedQuantity > product.Quantity)
+                {
+                    MessageBox.Show("Неверное количество товаров!", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+
+                product.Quantity -= product.SelectedQuantity;
                 var sale = new Sales
                 {
                     ProductId = product.Id,
@@ -89,7 +85,6 @@ namespace GardenKeeper.View
                     UserId = user.Id,
                 };
                 sale.TotalPrice = (sale.UnitPrice * (long)sale.Quantity);
-
                 Core.context.Sales.Add(sale);
             }
             Core.context.SaveChanges();
