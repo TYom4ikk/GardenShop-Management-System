@@ -29,21 +29,23 @@ namespace GardenKeeper.View.UsersView.Partial
         private bool isCustomize;
         private int imageIndex = 0;
         private List<ProductImages> images = new List<ProductImages>();
+        ProductCardViewModel model;
         Products product;
 
         Users currentUser;
         public ProductCard(Products product, bool isSell, bool isCustomize, Users user)
         {
             InitializeComponent();
+            model = new ProductCardViewModel();
             DataContext = product;
             this.product = product;
             this.isSell= isSell;
             currentUser = user;
             this.isCustomize=isCustomize;
 
-            if (Core.context.ProductImages.Where(img => img.ProductId == product.Id).ToList().Count > 0)
+            if (model.GetProductImagesByProductId(product.Id).Count > 0)
             {
-                product.MainImage = Core.context.ProductImages.Where(img => img.ProductId == product.Id).ToList()[0].Image;
+                product.MainImage = model.GetProductImagesByProductId(product.Id)[0].Image;
             }
 
             CustomizeButtonImage.Visibility = isCustomize ? Visibility.Visible : Visibility.Hidden;
@@ -61,7 +63,7 @@ namespace GardenKeeper.View.UsersView.Partial
                 BuyProductButton.IsEnabled = false;
             }
 
-            images = Core.context.ProductImages.Where(img => img.ProductId == product.Id).ToList();
+            images = model.GetProductImagesByProductId(product.Id);
             if (images.Count > 0) 
             ChangeImage();
         }
@@ -95,8 +97,11 @@ namespace GardenKeeper.View.UsersView.Partial
         {
             ProductCustomizationWindow window = new ProductCustomizationWindow(product, currentUser);
             window.ShowDialog();
-            DataContext = Core.context.Products.FirstOrDefault(p=>p.Id == product.Id);
-
+            ProductDiscountPriceTextBlock.Text = product.FormattedDiscountPrice;
+            ProductMainPriceTextBlock.Text = product.FormattedMainPrice;
+            ProductNameTextBlock.Text = product.Name;
+            ProductDescriptionTextBlock.Text = product.Description;
+            ProductQuantityTextBlock.Text = $"Осталось: {product.Quantity} шт.";
         }
 
         private void ChangeImageButtonLeft_Click(object sender, RoutedEventArgs e)
@@ -133,6 +138,17 @@ namespace GardenKeeper.View.UsersView.Partial
 
                 ProductImage.Source = bitmap;
             }
+        }
+
+        private void InfoProductButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void OpenProductFullInfoWindow(object sender, MouseButtonEventArgs e)
+        {
+            var window = new ProductFullInfoWindow(product);
+            window.ShowDialog();
         }
     }
 }

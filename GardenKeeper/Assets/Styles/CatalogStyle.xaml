@@ -50,4 +50,12 @@
         <Setter Property="Margin" Value="20 0"/>
     </Style>
 
+    <Style TargetType="Grid" x:Key="AdminPanel">
+        <Setter Property="Background" Value="{StaticResource AdminPanelColor}"/>   
+    </Style>
+
+    <Style TargetType="Button" x:Key="AdminPanelButton">
+        <Setter Property="Background" Value="{StaticResource AdminPanelButtonBackgroundColor}"/>
+    </Style>
+
 </ResourceDictionary>

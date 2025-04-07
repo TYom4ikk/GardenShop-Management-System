@@ -49,7 +49,7 @@
             
             </StackPanel>
             <StackPanel Grid.Column="1" Background="{StaticResource BackgroundColor}">
-                <Button x:Name="BuyButton" Height="50" Content="Купить" Click="BuyButton_Click" Background="{StaticResource CatalogTextColor}"/>
+                <Button x:Name="BuyButton" Height="50" Content="Купить" Click="BuyButton_Click" Background="LimeGreen"/>
             </StackPanel>
         </Grid>
     </Grid>

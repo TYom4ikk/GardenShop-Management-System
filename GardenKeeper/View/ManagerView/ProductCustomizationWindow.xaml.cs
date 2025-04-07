@@ -66,7 +66,7 @@ namespace GardenKeeper.View.ManagerView
             DiscountPirceTextBox.Text = product.FormattedDiscountPrice;
             QuantityTextBox.Text = product.Quantity.ToString();
 
-            CategoryComboBox.ItemsSource = Core.context.Categories.ToList();
+            CategoryComboBox.ItemsSource = model.GetCategories();
             CategoryComboBox.DisplayMemberPath = "Name";
             
             for (int i = 0; i < CategoryComboBox.Items.Count; i++)
@@ -91,14 +91,8 @@ namespace GardenKeeper.View.ManagerView
         {
             try
             {
-                Console.WriteLine("LoadExistingProperties called");
-                
-                // Получаем все связи товар-свойство для текущего товара
-                var productProperties = Core.context.ProductProperty
-                    .Where(pp => pp.ProductId == currentProduct.Id)
-                    .ToList();
-
-                Console.WriteLine($"Found {productProperties.Count} properties for product {currentProduct.Id}");
+                var productProperties = model.GetProductPropertiesByProductId(currentProduct.Id);
+                   
                 
                 if (productProperties.Count > 0)
                 {
@@ -106,15 +100,12 @@ namespace GardenKeeper.View.ManagerView
                     foreach (var productProperty in productProperties)
                     {
                         // Получаем свойство
-                        var property = Core.context.Properties.FirstOrDefault(p => p.Id == productProperty.PropertyId);
+                        var property = model.GetPropertyById(productProperty.PropertyId);
                         if (property != null)
                         {
-                            Console.WriteLine($"Processing property {property.Id}: {property.Name} = {property.Value}");
                             
-                            // Создаем новую панель свойств
                             StackPanel newPropertyPanel = new StackPanel();
                             newPropertyPanel.Orientation = Orientation.Horizontal;
-                            newPropertyPanel.Style = (Style)FindResource("ProperyRow");
 
                             // Создаем контейнер для названия свойства
                             StackPanel nameContainer = new StackPanel();
@@ -138,7 +129,6 @@ namespace GardenKeeper.View.ManagerView
 
                             // Добавляем пару в словарь
                             propertyPairs[propertyNameTextBox] = propertyValueTextBox;
-                            Console.WriteLine($"Added to dictionary: {propertyNameTextBox.Text} -> {propertyValueTextBox.Text}");
                             
                             // Создаем кнопку добавления нового свойства
                             Button addPropertyButton = new Button();
@@ -170,7 +160,6 @@ namespace GardenKeeper.View.ManagerView
                         }
                     }
                     
-                    Console.WriteLine($"After loading properties, dictionary count: {propertyPairs.Count}");
                     
                     // Обновляем счетчик свойств
                     UpdatePropertyCountDisplay();
@@ -183,8 +172,6 @@ namespace GardenKeeper.View.ManagerView
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error in LoadExistingProperties: {ex.Message}");
-                Console.WriteLine(ex.StackTrace);
                 
                 // В случае ошибки всё равно добавляем пустую строку
                 AddEmptyPropertyRow();
@@ -241,14 +228,12 @@ namespace GardenKeeper.View.ManagerView
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error in AddEmptyPropertyRow: {ex.Message}");
-                Console.WriteLine(ex.StackTrace);
             }
         }
 
         private void UpdateImagesCollection()
         {
-            images = Core.context.ProductImages.Where(img => img.ProductId == currentProduct.Id).ToList();
+            images = model.GetProductImagesByProductId(currentProduct.Id);
             imageIndex = 0;
         }
 
@@ -256,13 +241,9 @@ namespace GardenKeeper.View.ManagerView
         {
             try 
             {
-                Console.WriteLine("AddProperty_Click called");
                 
                 var currentStackPanel = (sender as Button).Parent as StackPanel;
                 var parentStackPanel = currentStackPanel.Parent as StackPanel;
-
-                Console.WriteLine($"Current StackPanel: {currentStackPanel}");
-                Console.WriteLine($"Parent StackPanel: {parentStackPanel}");
 
                 // Удаляем кнопку добавления из текущей панели
                 currentStackPanel.Children.Remove(sender as Button);
@@ -292,8 +273,6 @@ namespace GardenKeeper.View.ManagerView
 
                 // Непосредственно добавляем пару в словарь (без проверки на пустоту)
                 propertyPairs[propertyNameTextBox] = propertyValueTextBox;
-                Console.WriteLine($"Added to dictionary directly: {propertyNameTextBox.Text} -> {propertyValueTextBox.Text}");
-                Console.WriteLine($"Dictionary count: {propertyPairs.Count}");
                 
                 // Обновляем счетчик свойств
                 UpdatePropertyCountDisplay();
@@ -314,15 +293,12 @@ namespace GardenKeeper.View.ManagerView
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error in AddProperty_Click: {ex.Message}");
-                Console.WriteLine(ex.StackTrace);
             }
         }
 
         private void PropertyName_TextChanged(object sender, TextChangedEventArgs e)
         {
             TextBox nameTextBox = sender as TextBox;
-            Console.WriteLine($"PropertyName_TextChanged: {nameTextBox.Text}");
             
             try
             {
@@ -330,7 +306,6 @@ namespace GardenKeeper.View.ManagerView
                 var nameContainer = nameTextBox.Parent as StackPanel;
                 if (nameContainer == null)
                 {
-                    Console.WriteLine("nameContainer is null");
                     return;
                 }
                 
@@ -338,7 +313,6 @@ namespace GardenKeeper.View.ManagerView
                 var propertyRow = nameContainer.Parent as StackPanel;
                 if (propertyRow == null)
                 {
-                    Console.WriteLine("propertyRow is null");
                     return;
                 }
                 
@@ -351,7 +325,6 @@ namespace GardenKeeper.View.ManagerView
                 // Получаем все дочерние StackPanel
                 foreach (var child in propertyRow.Children)
                 {
-                    Console.WriteLine($"Child {childIndex}: {child.GetType().Name}");
                     
                     if (child is StackPanel && child != nameContainer)
                     {
@@ -363,14 +336,12 @@ namespace GardenKeeper.View.ManagerView
                 
                 if (valueContainer == null)
                 {
-                    Console.WriteLine("valueContainer is null");
                     return;
                 }
                 
                 // Находим TextBox в контейнере значения
                 foreach (var child in valueContainer.Children)
                 {
-                    Console.WriteLine($"ValueContainer child: {child.GetType().Name}");
                     
                     if (child is TextBox)
                     {
@@ -381,7 +352,6 @@ namespace GardenKeeper.View.ManagerView
                 
                 if (valueTextBox == null)
                 {
-                    Console.WriteLine("valueTextBox is null");
                     return;
                 }
                 
@@ -389,22 +359,18 @@ namespace GardenKeeper.View.ManagerView
                 if (!propertyPairs.ContainsKey(nameTextBox))
                 {
                     propertyPairs.Add(nameTextBox, valueTextBox);
-                    Console.WriteLine($"Added to dictionary: {nameTextBox.Text} -> {valueTextBox.Text}");
                 }
                 else
                 {
                     propertyPairs[nameTextBox] = valueTextBox;
-                    Console.WriteLine($"Updated in dictionary: {nameTextBox.Text} -> {valueTextBox.Text}");
                 }
                 
                 // Обновляем счетчик свойств
                 UpdatePropertyCountDisplay();
                 
-                Console.WriteLine($"Dictionary count: {propertyPairs.Count}");
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error in PropertyName_TextChanged: {ex.Message}");
             }
         }
 
@@ -456,22 +422,18 @@ namespace GardenKeeper.View.ManagerView
                 if (!propertyPairs.ContainsKey(nameTextBox))
                 {
                     propertyPairs.Add(nameTextBox, valueTextBox);
-                    Console.WriteLine($"Added to dictionary: {nameTextBox.Text} -> {valueTextBox.Text}");
                 }
                 else
                 {
                     propertyPairs[nameTextBox] = valueTextBox;
-                    Console.WriteLine($"Updated in dictionary: {nameTextBox.Text} -> {valueTextBox.Text}");
                 }
                 
                 // Обновляем счетчик свойств
                 UpdatePropertyCountDisplay();
                 
-                Console.WriteLine($"Dictionary count: {propertyPairs.Count}");
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error in PropertyValue_TextChanged: {ex.Message}");
             }
         }
 
@@ -515,8 +477,7 @@ namespace GardenKeeper.View.ManagerView
                 ChangeDate = DateTime.Now,
                 UserId = currentUser.Id
             };
-            Core.context.AuditLog.Add(log);
-            Core.context.SaveChanges();
+            model.AddLog(log);
         }
 
         private void AddImage_Click(object sender, RoutedEventArgs e)
@@ -542,8 +503,7 @@ namespace GardenKeeper.View.ManagerView
                 UserId = currentUser.Id
             };
             currentProduct.Name = NameTextBox.Text;
-            Core.context.AuditLog.Add(log);
-            Core.context.SaveChanges();
+            model.AddLog(log);
         }
 
         // Можно оставить пустым (Описание, скидочную цену)
@@ -552,11 +512,9 @@ namespace GardenKeeper.View.ManagerView
             try
             {
                 // Выводим отладочную информацию о свойствах
-                Console.WriteLine($"Dictionary count at save: {propertyPairs.Count}");
                 
                 foreach (var pair in propertyPairs)
                 {
-                    Console.WriteLine($"Property: {pair.Key.Text} -> {pair.Value.Text}");
                 }
                 
                 if (!string.IsNullOrEmpty(NameTextBox.Text) &&
@@ -578,7 +536,7 @@ namespace GardenKeeper.View.ManagerView
                             UserId = currentUser.Id
                         };
                         currentProduct.Name = NameTextBox.Text;
-                        Core.context.AuditLog.Add(log);
+                        model.AddLog(log);
                     }
                     
                     if (!string.IsNullOrEmpty(currentProduct.Description))
@@ -598,7 +556,7 @@ namespace GardenKeeper.View.ManagerView
                                     UserId = currentUser.Id
                                 };
                                 currentProduct.Description = DescriptionTextBox.Text;
-                                Core.context.AuditLog.Add(log);
+                                model.AddLog(log);
                             }
                         }
                         else
@@ -614,7 +572,7 @@ namespace GardenKeeper.View.ManagerView
                                 UserId = currentUser.Id
                             };
                             currentProduct.Description = string.Empty;
-                            Core.context.AuditLog.Add(log);
+                            model.AddLog(log);
                         }
                     }
                     else{
@@ -631,7 +589,7 @@ namespace GardenKeeper.View.ManagerView
                                 UserId = currentUser.Id
                             };
                             currentProduct.Description = DescriptionTextBox.Text;
-                            Core.context.AuditLog.Add(log);
+                            model.AddLog(log);
                         }
                     }
 
@@ -649,7 +607,7 @@ namespace GardenKeeper.View.ManagerView
                         };
                         currentProduct.MainPrice = newMainPrice;
                         log.NewValue = currentProduct.FormattedMainPrice.Replace("₽", "");
-                        Core.context.AuditLog.Add(log);
+                        model.AddLog(log);
                     }
 
 
@@ -670,7 +628,7 @@ namespace GardenKeeper.View.ManagerView
                                 };
                                 currentProduct.DiscountPrice = long.Parse(DiscountPirceTextBox.Text.Split(' ')[0].Replace(".", ""));
                                 log.NewValue = currentProduct.FormattedDiscountPrice.Replace("₽","");
-                                Core.context.AuditLog.Add(log);
+                                model.AddLog(log);
                             }
                         }
                         else
@@ -686,7 +644,7 @@ namespace GardenKeeper.View.ManagerView
                                 UserId = currentUser.Id
                             };
                             currentProduct.DiscountPrice = null;
-                            Core.context.AuditLog.Add(log);
+                            model.AddLog(log);
                         }
                     }
                     else
@@ -704,7 +662,7 @@ namespace GardenKeeper.View.ManagerView
                             };
                             currentProduct.Description = DescriptionTextBox.Text;
                             log.NewValue = currentProduct.FormattedDiscountPrice.Replace("₽", "");
-                            Core.context.AuditLog.Add(log);
+                            model.AddLog(log);
                         }
                     }
 
@@ -722,7 +680,7 @@ namespace GardenKeeper.View.ManagerView
                             UserId = currentUser.Id
                         };
                         currentProduct.Quantity = long.Parse(QuantityTextBox.Text);
-                        Core.context.AuditLog.Add(log);
+                        model.AddLog(log);
                     }
 
 
@@ -739,21 +697,14 @@ namespace GardenKeeper.View.ManagerView
                             UserId = currentUser.Id
                         };
                         currentProduct.CategoryId = ((Categories)CategoryComboBox.SelectedItem).Id;
-                        Core.context.AuditLog.Add(log);
+                        model.AddLog(log);
                     }
 
-                    // Теперь работаем со свойствами товара
-                    Console.WriteLine($"Processing {propertyPairs.Count} property pairs");
-                    
-                    // Удаляем старые свойства товара
-                    var oldProductProperties = Core.context.ProductProperty
-                        .Where(pp => pp.ProductId == currentProduct.Id)
-                        .ToList();
+                    var oldProductProperties = model.GetProductPropertiesByProductId(currentProduct.Id);
                         
                     foreach(var pp in oldProductProperties)
                     {
-                        Console.WriteLine($"Removing old property: {pp.PropertyId}");
-                        Core.context.ProductProperty.Remove(pp);
+                        model.RemoveProductProperty(pp);
                     }
 
                     // Добавляем новые свойства
@@ -761,31 +712,26 @@ namespace GardenKeeper.View.ManagerView
                     {
                         if (string.IsNullOrEmpty(propertyPair.Key.Text) || string.IsNullOrEmpty(propertyPair.Value.Text))
                         {
-                            Console.WriteLine($"Skipping empty property");
                             continue; // Пропускаем пустые свойства
                         }
                         
-                        Console.WriteLine($"Adding property: {propertyPair.Key.Text} -> {propertyPair.Value.Text}");
                         
                         var property = new Model.Properties
                         {
                             Name = propertyPair.Key.Text,
                             Value = propertyPair.Value.Text,
                         };
-                        Core.context.Properties.Add(property);
-                        Core.context.SaveChanges(); // Сохраняем, чтобы получить ID
+                        model.AddProperty(property);  // Сохраняем, чтобы получить ID
 
                         var productProperty = new ProductProperty
                         {
                             ProductId = currentProduct.Id,
                             PropertyId = property.Id
                         };
-                        Core.context.ProductProperty.Add(productProperty);
+                        model.AddProductProperty(productProperty);
                         
-                        // Добавляем лог
                         // Получаем допустимые значения FieldId из таблицы Fields
-                        var validFieldIds = Core.context.Fields.Select(f => f.Id).ToList();
-                        Console.WriteLine($"Valid Field IDs: {string.Join(", ", validFieldIds)}");
+                        var validFieldIds = model.SelectFieldsById();
                         
                         // Используем первое доступное значение или 1, если список пуст
                         int propertyFieldId = validFieldIds.Contains(8) ? 8 : (validFieldIds.FirstOrDefault() != 0 ? validFieldIds.FirstOrDefault() : 1);
@@ -800,17 +746,13 @@ namespace GardenKeeper.View.ManagerView
                             ChangeDate = DateTime.Now,
                             UserId = currentUser.Id
                         };
-                        Core.context.AuditLog.Add(log);
+                        model.AddLog(log);
                     }
-
-                    Core.context.SaveChanges();
                     MessageBox.Show("Изменения успешно сохранены!", "Успех!", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
             }
             catch (Exception ex) {
                 MessageBox.Show($"Ошибка: {ex.Message}", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
-                Console.WriteLine($"Error in SaveChangesButton_Click: {ex.Message}");
-                Console.WriteLine(ex.StackTrace);
             }
         }
 
@@ -906,8 +848,7 @@ namespace GardenKeeper.View.ManagerView
 
         private void DeleteProduct_Click(object sender, RoutedEventArgs e)
         {
-            Core.context.Products.Remove(currentProduct);
-            Core.context.SaveChanges();
+            model.RemoveProduct(currentProduct);
             MessageBox.Show("Товар удалён!", "Удаление", MessageBoxButton.OK, MessageBoxImage.Information);
             this.Close();
         }

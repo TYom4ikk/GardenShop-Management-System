@@ -7,6 +7,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Security.Cryptography;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace GardenKeeper.ViewModel
 {
@@ -25,6 +26,16 @@ namespace GardenKeeper.ViewModel
                 return currentUser;
             }
             return null;
+        }
+
+        public Users GetUserByEmail(string email)
+        {
+            return Core.context.Users.FirstOrDefault(u => u.Email == email);
+        }
+        public void AddUser (Users user)
+        {
+            Core.context.Users.Add(user);
+            Core.context.SaveChanges();
         }
 
         public string GeneratePassword(int length)

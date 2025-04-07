@@ -22,6 +22,7 @@ namespace GardenKeeper.View.SystemAdminView
     public partial class AddNewManagerWindow : Window
     {
         private const int MANAGER_ID = 2;
+        AddNewManagerViewModel model;
         public AddNewManagerWindow()
         {
             InitializeComponent();
@@ -29,19 +30,18 @@ namespace GardenKeeper.View.SystemAdminView
 
         private void AddNewManager_Click(object sender, RoutedEventArgs e)
         {
-            RegistrationViewModel model = new RegistrationViewModel();
+            RegistrationViewModel regModel = new RegistrationViewModel();
             try
             {
                 if (!string.IsNullOrEmpty(EmailTextBox.Text) &&
                     !string.IsNullOrEmpty(PasswordTextBox.Text))
                 {
-                    Core.context.Users.Add(new Users
+                    model.AddNewManager(new Users
                     {
                         Email = EmailTextBox.Text,
-                        PasswordHash = model.GenerateHash(PasswordTextBox.Text),
+                        PasswordHash = regModel.GenerateHash(PasswordTextBox.Text),
                         UserTypeId = MANAGER_ID
                     });
-                    Core.context.SaveChanges();
                     MessageBox.Show($"Менеджер: {EmailTextBox.Text} создан!", "Создан менеджер", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 else

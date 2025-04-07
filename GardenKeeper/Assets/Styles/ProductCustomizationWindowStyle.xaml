@@ -16,15 +16,15 @@
     </Style>
 
     <Style TargetType="TextBox">
-        <Setter Property="Height" Value="30"/>
-        <Setter Property="Width" Value="200"/>
+        <Setter Property="Height" Value="40"/>
+        <Setter Property="Width" Value="250"/>
         <Setter Property="FontSize" Value="24"/>
         <Setter Property="Margin" Value="0 0 15 0"/>
         <Setter Property="HorizontalAlignment" Value="Left"/>
     </Style>
 
     <Style TargetType="TextBox" x:Key="Description" BasedOn="{StaticResource {x:Type TextBox}}">
-        <Setter Property="Height" Value="50"/>
+        <Setter Property="Height" Value="40"/>
     </Style>
 
     <Style TargetType="StackPanel" x:Key="ProperyRow">

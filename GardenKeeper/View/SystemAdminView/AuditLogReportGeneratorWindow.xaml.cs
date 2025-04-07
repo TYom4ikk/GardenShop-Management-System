@@ -32,7 +32,7 @@ namespace GardenKeeper.View.SystemAdminView
 
             dateToLog.SelectedDate = DateTime.Now;
 
-            userToLog.ItemsSource = Core.context.Users.ToList();
+            userToLog.ItemsSource = model.GetUsers();
             userToLog.DisplayMemberPath = "Email";
             userToLog.SelectedValuePath = "Id";
             userToLog.SelectedIndex = 0;
@@ -41,11 +41,11 @@ namespace GardenKeeper.View.SystemAdminView
 
         private void GenerateAuditLogReport_Click(object sender, RoutedEventArgs e)
         {
-            chosenUser = Core.context.Users.FirstOrDefault(u => u.Id == (int)userToLog.SelectedValue);
+            chosenUser = model.GetUsers().FirstOrDefault(u => u.Id == (int)userToLog.SelectedValue);
             chosenDate = dateToLog.SelectedDate;
 
             model.OpenLogsExcel();
-            foreach (var log in Core.context.AuditLog.Where(l => l.UserId == chosenUser.Id && l.ChangeDate == chosenDate.Value))
+            foreach (var log in model.GetAuditLogs(chosenUser.Id, chosenDate))
             {
                 model.WriteLineLog(log);
             }

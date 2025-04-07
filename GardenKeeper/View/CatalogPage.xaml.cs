@@ -57,10 +57,26 @@ namespace GardenKeeper.View.UsersView
             CategoriesFilterComboBox.DisplayMemberPath = viewModel.CategoriesFilterDisplayMemberPath;
             CategoriesFilterComboBox.SelectedIndex = 0;
 
-            LoginButton.Content = isRegisteredUser ? "Войти в другой аккаунт" : "Войти в аккаунт";
+            SpecialPanel.Visibility = Visibility.Hidden;
+            SpecialPanelSplitter.Visibility = Visibility.Hidden;
+            GenerateSalesReportButton.Visibility = Visibility.Hidden;
 
-            SpecialPanel.Visibility = isManager ? Visibility.Visible : Visibility.Hidden;
-            SpecialPanelSplitter.Visibility = isManager ? Visibility.Visible : Visibility.Hidden;
+
+            if (isDirector || isAdmin)
+            {
+                SpecialPanel.Visibility = Visibility.Visible;
+                SpecialPanelSplitter.Visibility = Visibility.Visible;
+
+                if (isDirector)
+                {
+                    GenerateSalesReportButton.Visibility = Visibility.Visible;
+                }
+            }
+
+            LoginButton.Content = isRegisteredUser ? "Выйти" : "Войти в аккаунт";
+
+
+            
 
             if (!isManager)
             {
@@ -83,7 +99,7 @@ namespace GardenKeeper.View.UsersView
             ConstructorBody(user);
         }
        
-        private void UpdateProductDisplay(List<Products> products)
+        private List<Products> UpdateProductDisplay(List<Products> products)
         {
             CatalogUniformGrid.Children.Clear();
 
@@ -97,6 +113,7 @@ namespace GardenKeeper.View.UsersView
                 };
                 CatalogUniformGrid.Children.Add(card);
             }
+            return products;
         }
 
         private void PriceFilterComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -114,8 +131,8 @@ namespace GardenKeeper.View.UsersView
             if(PriceFilterComboBox.SelectedItem is CatalogViewModel.PriceFilterStatuses selectedFilter &&
                 CategoriesFilterComboBox.SelectedItem is Categories category)
             {
-                UpdateProductDisplay(viewModel.CategoryFilter(category.Id).ToList());
-                UpdateProductDisplay(viewModel.PriceFilter(selectedFilter).ToList());
+                var sortedProducts = viewModel.CategoryFilter(category.Id).ToList();
+                UpdateProductDisplay(viewModel.PriceFilter(selectedFilter, sortedProducts).ToList());
             }
         }
 

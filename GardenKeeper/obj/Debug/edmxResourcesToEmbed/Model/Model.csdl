@@ -83,7 +83,7 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Value" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="ProductProperty" Relationship="Self.FK_ProductProperty_Properties" FromRole="Properties" ToRole="ProductProperty" />
   </EntityType>
@@ -98,8 +98,18 @@
     <Property Name="TotalPrice" Type="Int64" Nullable="false" />
     <Property Name="UnitPrice" Type="Int64" Nullable="false" />
     <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="StatusId" Type="Int32" />
     <NavigationProperty Name="Products" Relationship="Self.FK_Sales_Products" FromRole="Sales" ToRole="Products" />
+    <NavigationProperty Name="Statuses" Relationship="Self.FK_Sales_Statuses" FromRole="Sales" ToRole="Statuses" />
     <NavigationProperty Name="Users" Relationship="Self.FK_Sales_Users" FromRole="Sales" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Statuses">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Sales" Relationship="Self.FK_Sales_Statuses" FromRole="Statuses" ToRole="Sales" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>
@@ -255,6 +265,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Sales_Statuses">
+    <End Role="Statuses" Type="Self.Statuses" Multiplicity="0..1" />
+    <End Role="Sales" Type="Self.Sales" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Statuses">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Sales">
+        <PropertyRef Name="StatusId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Sales_Users">
     <End Role="Users" Type="Self.Users" Multiplicity="1" />
     <End Role="Sales" Type="Self.Sales" Multiplicity="*" />
@@ -281,7 +303,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="GardenStoreEntities1" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="GardenStoreEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Actions" EntityType="Self.Actions" />
     <EntitySet Name="AuditLog" EntityType="Self.AuditLog" />
     <EntitySet Name="Categories" EntityType="Self.Categories" />
@@ -291,6 +313,7 @@
     <EntitySet Name="Products" EntityType="Self.Products" />
     <EntitySet Name="Properties" EntityType="Self.Properties" />
     <EntitySet Name="Sales" EntityType="Self.Sales" />
+    <EntitySet Name="Statuses" EntityType="Self.Statuses" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
     <EntitySet Name="Users" EntityType="Self.Users" />
     <EntitySet Name="UserTypes" EntityType="Self.UserTypes" />
@@ -328,6 +351,10 @@
     </AssociationSet>
     <AssociationSet Name="FK_Sales_Products" Association="Self.FK_Sales_Products">
       <End Role="Products" EntitySet="Products" />
+      <End Role="Sales" EntitySet="Sales" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sales_Statuses" Association="Self.FK_Sales_Statuses">
+      <End Role="Statuses" EntitySet="Statuses" />
       <End Role="Sales" EntitySet="Sales" />
     </AssociationSet>
     <AssociationSet Name="FK_Sales_Users" Association="Self.FK_Sales_Users">

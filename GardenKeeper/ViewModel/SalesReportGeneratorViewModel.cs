@@ -74,5 +74,13 @@ namespace GardenKeeper.ViewModel
 
             return answer;
         }
+        public IEnumerable<Sales> SalesByYear(int year)
+        {
+            return Core.context.Sales.Where(s => s.SaleDate.Year == year);
+        }
+        public IEnumerable<Sales> SalesByMonth(int year, int month)
+        {
+            return Core.context.Sales.Where(s => s.SaleDate.Year == year && s.SaleDate.Month == month);
+        }
     }
 }

@@ -6,7 +6,18 @@
         xmlns:local="clr-namespace:GardenKeeper.View.DirectorView"
         mc:Ignorable="d"
         Title="Генерация отчёта" Height="450" Width="400"
+            MinHeight="450" MinWidth="400"
+            MaxHeight="450" MaxWidth="400" 
         WindowStartupLocation="CenterScreen">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Assets/Styles/SalesReportGeneratorWindowStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
     <Grid Margin="20">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>

@@ -33,7 +33,7 @@ namespace GardenKeeper.View.Partial
             PriceTextBlock.Text = product.DiscountPrice == null ?
                 product.MainPrice.ToString() : product.DiscountPrice.ToString();
 
-            QuantityTextBlock.Text += product.SelectedQuantity.ToString();
+            QuantityTextBox.Text = QuantitySelectionViewModel.SelectedQuantity.ToString();
         }
 
         private Panel ParentContainer { get; set; } // Ссылка на родительский контейнер
@@ -43,6 +43,24 @@ namespace GardenKeeper.View.Partial
             
             ShoppingCardViewModel.Products.Remove(product);
             ParentContainer.Children.Remove(this);
+        }
+
+        private void IncreaseButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (int.TryParse(QuantityTextBox.Text, out int quantity))
+            {
+                QuantityTextBox.Text = (quantity + 1).ToString();
+                product.SelectedQuantity = quantity + 1;
+            }
+        }
+
+        private void DecreaseButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (int.TryParse(QuantityTextBox.Text, out int quantity) && quantity > 1)
+            {
+                QuantityTextBox.Text = (quantity - 1).ToString();
+                product.SelectedQuantity = quantity - 1;
+            }
         }
     }
 }

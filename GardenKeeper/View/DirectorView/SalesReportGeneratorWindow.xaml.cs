@@ -17,7 +17,7 @@ using System.Windows.Shapes;
 namespace GardenKeeper.View.DirectorView
 {
     /// <summary>
-    /// Логика взаимодействия для SalesReportGeneratorWindow.xaml
+    /// Формирование отчётов о продажах
     /// </summary>
     public partial class SalesReportGeneratorWindow : Window
     {
@@ -70,14 +70,14 @@ namespace GardenKeeper.View.DirectorView
                 model.OpenLogsExcel();
                 if (YearRadioButton.IsChecked == true)
                 {
-                    foreach (var sale in Core.context.Sales.Where(s => s.SaleDate.Year == year))
+                    foreach (var sale in model.SalesByYear(year))
                     {
                         model.WriteLineLog(sale);
                     }
                 }
                 else if (MonthRadioButton.IsChecked == true)
                 {
-                    foreach (var sale in Core.context.Sales.Where(s => s.SaleDate.Year == year && s.SaleDate.Month == month))
+                    foreach (var sale in model.SalesByMonth(year, month))
                     {
                         model.WriteLineLog(sale);
                     }
@@ -87,9 +87,7 @@ namespace GardenKeeper.View.DirectorView
             }
             catch(Exception ex)
             {
-                //MessageBox.Show(ex.Message, "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-
         }
     }
 }

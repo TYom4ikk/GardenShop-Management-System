@@ -77,5 +77,15 @@ namespace GardenKeeper.ViewModel
 
             return answer;
         }
+
+        public List<Users> GetUsers()
+        {
+            return Core.context.Users.ToList();
+        }
+
+        public List<AuditLog> GetAuditLogs(int userId, DateTime? dateTime)
+        {
+            return Core.context.AuditLog.Where(l => l.UserId == userId && l.ChangeDate == dateTime.Value).ToList();
+        }
     }
 }

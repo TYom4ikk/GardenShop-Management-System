@@ -196,3 +196,9 @@ C:\Users\Admin\Desktop\GardenShop-Management-System\GardenKeeper\obj\Debug\Garde
 C:\Users\Admin\Desktop\GardenShop-Management-System\GardenKeeper\obj\Debug\GardenKe.CFEE4CED.Up2Date
 C:\Users\Admin\Desktop\GardenShop-Management-System\GardenKeeper\obj\Debug\GardenKeeper.exe
 C:\Users\Admin\Desktop\GardenShop-Management-System\GardenKeeper\obj\Debug\GardenKeeper.pdb
+C:\Users\Admin\Desktop\GardenShop-Management-System\GardenKeeper\obj\Debug\Assets\Styles\SalesReportGeneratorWindowStyle.baml
+C:\Users\Admin\Desktop\GardenShop-Management-System\GardenKeeper\obj\Debug\Assets\Styles\AddNewManagerWindowStyle.baml
+C:\Users\Admin\Desktop\GardenShop-Management-System\GardenKeeper\obj\Debug\Assets\Styles\AuditLogReportGeneratorWindowStyle.baml
+C:\Users\Admin\Desktop\GardenShop-Management-System\GardenKeeper\obj\Debug\View\ProductFullInfoWindow.g.cs
+C:\Users\Admin\Desktop\GardenShop-Management-System\GardenKeeper\obj\Debug\View\ProductFullInfoWindow.baml
+C:\Users\Admin\Desktop\GardenShop-Management-System\GardenKeeper\obj\Debug\Assets\Styles\ProductFullInfoWindow.baml

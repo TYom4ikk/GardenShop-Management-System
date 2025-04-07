@@ -1,0 +1,82 @@
+﻿<Window x:Class="GardenKeeper.View.ProductFullInfoWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GardenKeeper.View"
+        mc:Ignorable="d"
+        Title="ProductFullInfoWindow" Height="550" Width="800" WindowState="Maximized"
+        MinHeight="900" MinWidth="1000">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Assets/Styles/ProductCardStyle.xaml"/>
+                <ResourceDictionary Source="/Assets/Styles/ProductFullInfoWindow.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid x:Name="ProductCardGrid" Style="{StaticResource ProductCardGrid}">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button x:Name="ChangeImageButtonLeft" Content="&lt;" Style="{StaticResource ChangeImageButton}"
+                Click="ChangeImageButtonLeft_Click"/>
+            <Image x:Name="ProductImage" Style="{StaticResource ProductImage}"/>
+            <Button x:Name="ChangeImageButtonRight" Content="&gt;" Style="{StaticResource ChangeImageButton}"
+                Click="ChangeImageButtonRight_Click"/>
+        </StackPanel>
+
+        <Grid x:Name="ProductContentGrid" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition Height="4*"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Orientation="Horizontal" Grid.Row="0" VerticalAlignment="Center">
+                <TextBlock x:Name="ProductDiscountPriceTextBlock" Text="{Binding FormattedDiscountPrice}" Style="{StaticResource ProductDiscountPriceTextBlock}"/>
+                <TextBlock x:Name="ProductMainPriceTextBlock" Text="{Binding FormattedMainPrice}" Style="{StaticResource ProductMainPriceTextBlock}"/>
+            </StackPanel>
+
+            <TextBlock x:Name="ProductNameTextBlock" Grid.Row="1" Text="{Binding Name}" Style="{StaticResource ProductNameTextBlock}"/>
+            <TextBlock x:Name="ProductDescriptionTextBlock" Grid.Row="2" Text="{Binding Description}" Style="{StaticResource ProductDescriptionTextBlock}"/>
+
+            <Grid x:Name="BottomLineStackPanel" Grid.Row="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="0.25*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock x:Name="ProductQuantityTextBlock" Text="{Binding Quantity, StringFormat='Осталось: {0} шт.'}"
+                       Style="{StaticResource ProductQuantityTextBlock}" />
+            </Grid>
+
+            <!-- Свойства товара -->
+            <Grid Margin="10" Grid.Row="4">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="Свойства товара" 
+                        FontSize="20" 
+                        FontWeight="Bold" 
+                        Margin="30,0,0,10"/>
+
+                <ScrollViewer Grid.Row="1">
+                    <StackPanel x:Name="StackPanelProperties">
+                        
+                    </StackPanel>
+                </ScrollViewer>
+            </Grid>
+
+        </Grid>
+    </Grid>
+</Window>

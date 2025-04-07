@@ -7,8 +7,13 @@ using System.Threading.Tasks;
 
 namespace GardenKeeper.ViewModel
 {
-    public static class ShoppingCardViewModel
+    public class ShoppingCardViewModel
     {
         public static List<Products> Products = new List<Products>();
+        public void AddSale(Sales sale)
+        {
+            Core.context.Sales.Add(sale);
+            Core.context.SaveChanges();
+        }
     }
 }

@@ -10,7 +10,7 @@
     </Style>
 
     <Style TargetType="Button">
-        <Setter Property="Foreground" Value="{StaticResource CatalogTextColor}"/>
+        <Setter Property="Foreground" Value="{StaticResource ProductCardTextColor}"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Background" Value="{StaticResource HeaderBackgroundColor}"/>
     </Style>

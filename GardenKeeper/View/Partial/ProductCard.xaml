@@ -15,7 +15,7 @@
         </ResourceDictionary>
     </UserControl.Resources>
 
-    <Grid x:Name="ProductCardGrid" Style="{StaticResource ProductCardGrid}">
+    <Grid x:Name="ProductCardGrid" Style="{StaticResource ProductCardGrid}" MouseLeftButtonDown="OpenProductFullInfoWindow">
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition/>
@@ -24,7 +24,7 @@
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
             <Button x:Name="ChangeImageButtonLeft" Content="&lt;" Style="{StaticResource ChangeImageButton}"
                     Click="ChangeImageButtonLeft_Click"/>
-            <Image x:Name="ProductImage"/>
+            <Image x:Name="ProductImage" Style="{StaticResource ProductImage}"/>
             <Button x:Name="ChangeImageButtonRight" Content="&gt;" Style="{StaticResource ChangeImageButton}"
                     Click="ChangeImageButtonRight_Click"/>
         </StackPanel>
@@ -56,7 +56,6 @@
                 <Button x:Name="BuyProductButton" Style="{StaticResource BuyProductButton}" Content="Купить"
                         Grid.Column="1"
                         HorizontalAlignment="Right" Click="BuyProductButton_Click"/>
-
                 <Image x:Name="CustomizeButtonImage" Style="{StaticResource CustomizeButtonImage}" Source="/Assets/Images/Customize.png" Grid.Column="2"
                        MouseLeftButtonDown="CustomizeButtonImage_MouseLeftButtonDown"/>
             </Grid>

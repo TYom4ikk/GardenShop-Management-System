@@ -1,11 +1,10 @@
-﻿using GardenKeeper.Model;
-using GardenKeeper.View.UsersView;
-using GardenKeeper.ViewModel;
-using System;
-using System.Security.Cryptography;
-using System.Text;
+﻿using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
+using GardenKeeper.Model;
+using GardenKeeper.View.UsersView;
+using GardenKeeper.ViewModel;
 
 namespace GardenKeeper.View
 {
@@ -15,6 +14,7 @@ namespace GardenKeeper.View
     public partial class RegistrationPage : Page
     {
         RegistrationViewModel model;
+        bool isRegistrationMode = false;
         public RegistrationPage()
         {
             InitializeComponent();
@@ -23,15 +23,50 @@ namespace GardenKeeper.View
 
         private void ButtonSubmit_Click(object sender, RoutedEventArgs e)
         {
-            Users currentUser = (model).Authenticate(TextBoxLogin.Text, PasswordBoxPassword.Password);
-            if (currentUser == null)
+            if (!isRegistrationMode)
             {
-                MessageBox.Show("Неверный логин или пароль!", "Ошибка аутентификации", MessageBoxButton.OK, MessageBoxImage.Error);
+                Users currentUser = (model).Authenticate(TextBoxLogin.Text, PasswordBoxPassword.Password);
+                if (currentUser == null)
+                {
+                    MessageBox.Show("Неверный логин или пароль!", "Ошибка аутентификации", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                else
+                {
+                    CatalogPage page = new CatalogPage(currentUser);
+                    this.NavigationService.Navigate(page);
+                }
             }
             else
             {
-                CatalogPage page = new CatalogPage(currentUser);
-                this.NavigationService.Navigate(page);
+                string emailPattern = @"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$";
+
+                string email = TextBoxLogin.Text;
+                string password = PasswordBoxPassword.Password;
+
+                if (Regex.IsMatch(email, emailPattern) && !string.IsNullOrEmpty(password))
+                {
+                    if(model.GetUserByEmail(email) != null)
+                    {
+                        MessageBox.Show("Такой email уже зарегестрирован в системе!", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
+                        return;
+
+                    }
+                    Users currentUser = new Users
+                    {
+                        Email = email,
+                        PasswordHash = model.GenerateHash(password),
+                        UserTypeId = 1
+                    };
+                   
+                    model.AddUser(currentUser);
+                    MessageBox.Show("Вы зарегестрировались!", "Регистрация", MessageBoxButton.OK, MessageBoxImage.Information);
+                    CatalogPage page = new CatalogPage(currentUser);
+                    this.NavigationService.Navigate(page);
+                }
+                else
+                {
+                    MessageBox.Show("Введите корректные данные!", "Регистрация", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
         }
 
@@ -60,6 +95,21 @@ namespace GardenKeeper.View
                 string hash = model.GenerateHash(newPassword);
                 model.SaveUserRegistrationData(TextBoxLogin.Text, hash);
                 EmailInteraction.SendResetPassword(TextBoxLogin.Text, newPassword);
+            }
+        }
+
+        private void RegistrationButton_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            isRegistrationMode = !isRegistrationMode;
+            if (isRegistrationMode)
+            {
+                ButtonSubmit.Content = "Зарегестрироваться";
+                RegistrationButton.Content = "Войти в существующий аккаунт";
+            }
+            else
+            {
+                ButtonSubmit.Content = "Войти";
+                RegistrationButton.Content = "Зарегестрироваться";
             }
         }
     }

@@ -12,12 +12,12 @@ namespace GardenKeeper.ViewModel
     {
         public enum PriceFilterStatuses
         {
-            Default,
-            Cheap,
-            Expensive,
-            Date
+            Стандарт,
+            Дешевле,
+            Дороже,
+            Дата
         }
-        public PriceFilterStatuses PriceFilterStatus = PriceFilterStatuses.Default;
+        public PriceFilterStatuses PriceFilterStatus = PriceFilterStatuses.Стандарт;
         public string CategoriesFilterDisplayMemberPath = "Name";
         public List<Products> Products { get; set; }
         public List<Categories> Categories { get; set; }
@@ -29,25 +29,25 @@ namespace GardenKeeper.ViewModel
             currentUser = user;
         }
 
-        public IEnumerable<Products> PriceFilter(PriceFilterStatuses selectedFilter)
+        public IEnumerable<Products> PriceFilter(PriceFilterStatuses selectedFilter, List<Products> products)
         {
             IEnumerable<Products> filteredProducts;
             switch (selectedFilter)
             {
-                case PriceFilterStatuses.Cheap:
-                    filteredProducts = Products.OrderBy(p => p.PriceToSort);
+                case PriceFilterStatuses.Дешевле:
+                    filteredProducts = products.OrderBy(p => p.PriceToSort);
                     break;
-                case PriceFilterStatuses.Expensive:
-                    filteredProducts = Products.OrderByDescending(p => p.PriceToSort);
+                case PriceFilterStatuses.Дороже:
+                    filteredProducts = products.OrderByDescending(p => p.PriceToSort);
                     break;
-                case PriceFilterStatuses.Date:
-                    filteredProducts = Products.OrderBy(p => p.PriceToSort);
+                case PriceFilterStatuses.Дата:
+                    filteredProducts = products.OrderBy(p => p.PriceToSort);
                     break;
-                case PriceFilterStatuses.Default:
-                    filteredProducts = Products;
+                case PriceFilterStatuses.Стандарт:
+                    filteredProducts = products;
                     break;
                 default:
-                    filteredProducts = Products;
+                    filteredProducts = products;
                     break;
             }
             return filteredProducts;

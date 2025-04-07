@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GardenKeeper.View.ManagerView"
         mc:Ignorable="d"
-        Title="Редактирование товара" Height="700" Width="1000">
+        Title="Редактирование товара" Height="750" Width="1300" MinHeight="750" MinWidth="1300" MaxHeight="750" MaxWidth="1300">
 
     <Window.Resources>
         <ResourceDictionary>

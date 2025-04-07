@@ -16,11 +16,12 @@ namespace GardenKeeper.View
     {
         Users user;
         private bool isRegisteredUser;
+        ShoppingCardViewModel model;
         public ShoppingCardPage(Users user)
         {
             InitializeComponent();
             this.user = user;
-
+            model = new ShoppingCardViewModel();
             isRegisteredUser = user.Email != null ? true : false;
             LoginButton.Content = isRegisteredUser ? "Войти в другой аккаунт" : "Войти в аккаунт";
 
@@ -85,9 +86,9 @@ namespace GardenKeeper.View
                     UserId = user.Id,
                 };
                 sale.TotalPrice = (sale.UnitPrice * (long)sale.Quantity);
-                Core.context.Sales.Add(sale);
+                model.AddSale(sale);
             }
-            Core.context.SaveChanges();
+           
             ShoppingCardViewModel.Products.Clear();
             MessageBox.Show("Товары приобретены!", "Покупка совершена!", MessageBoxButton.OK, MessageBoxImage.Information);
         }

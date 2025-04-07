@@ -29,7 +29,9 @@
              Click="ButtonSubmit_Click"/>
             <Label x:Name="ForgetPassword" Content="Забыли пароль?" HorizontalAlignment="Center" Foreground="Blue" MouseLeftButtonDown="ForgetPassword_MouseLeftButtonDown" 
                    Cursor="Hand"/>
-            <Label x:Name="ContinueWithoutRegistration" Content="Продолжить без регистрации" HorizontalAlignment="Center" Foreground="Blue" MouseLeftButtonDown="ContinueWithoutRegistration_MouseLeftButtonDown" 
+            <Label x:Name="RegistrationButton" Content="Зарегестрироваться" HorizontalAlignment="Center" Foreground="Blue" MouseLeftButtonDown="RegistrationButton_MouseLeftButtonDown" 
+                   Cursor="Hand"/>
+            <Label x:Name="ContinueWithoutRegistration" Content="Продолжить без входа" HorizontalAlignment="Center" Foreground="Blue" MouseLeftButtonDown="ContinueWithoutRegistration_MouseLeftButtonDown" 
                    Cursor="Hand"/>
         </StackPanel>
     </Grid>

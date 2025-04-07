@@ -21,56 +21,15 @@ namespace GardenKeeper.Model
             this.ProductProperty = new HashSet<ProductProperty>();
             this.Sales = new HashSet<Sales>();
         }
-
+    
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public long MainPrice { get; set; }
-        public string FormattedMainPrice
-        {
-            get
-            {
-                string mainPriceStr = MainPrice.ToString();
-
-                string rubles = mainPriceStr.Substring(0, mainPriceStr.Length - 2);
-                string kopecks = mainPriceStr.Substring(mainPriceStr.Length - 2);
-                return $"{rubles}.{kopecks} ₽";
-            }
-        }
         public Nullable<long> DiscountPrice { get; set; }
-        public string FormattedDiscountPrice
-        {
-            get
-            {
-                if (DiscountPrice == null)
-                {
-                    return "";
-                }
-                string discountPriceStr = DiscountPrice.ToString();
-
-                string rubles = discountPriceStr.Substring(0, discountPriceStr.Length - 2);
-                string kopecks = discountPriceStr.Substring(discountPriceStr.Length - 2);
-                return $"{rubles}.{kopecks} ₽";
-            }
-        }
-        public Nullable<long> PriceToSort
-        {
-            get
-            {
-                if (DiscountPrice == null)
-                {
-                    return MainPrice;
-                }
-                return DiscountPrice;
-            }
-        }
         public long Quantity { get; set; }
-
-        public long SelectedQuantity = 0;
         public int CategoryId { get; set; }
-
-        public byte[] MainImage { get; set; }
-
+    
         public virtual ICollection<AuditLog> AuditLog { get; set; }
         public virtual Categories Categories { get; set; }
         public virtual ICollection<ProductImages> ProductImages { get; set; }

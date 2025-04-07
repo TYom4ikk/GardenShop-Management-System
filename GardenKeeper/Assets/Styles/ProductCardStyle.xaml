@@ -57,6 +57,11 @@
         <Setter Property="Width" Value="30"/>
     </Style>
 
+    <Style TargetType="Image" x:Key="ProductImage">
+        <Setter Property="Margin" Value="0,20,0,0"/>
+    </Style>
+
+
     <Style TargetType="Button" x:Key="ChangeImageButton">
         <Setter Property="Height" Value="40"/>
         <Setter Property="Width" Value="40"/>

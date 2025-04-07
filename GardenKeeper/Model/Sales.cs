@@ -21,8 +21,10 @@ namespace GardenKeeper.Model
         public long TotalPrice { get; set; }
         public long UnitPrice { get; set; }
         public int UserId { get; set; }
+        public Nullable<int> StatusId { get; set; }
     
         public virtual Products Products { get; set; }
+        public virtual Statuses Statuses { get; set; }
         public virtual Users Users { get; set; }
     }
 }

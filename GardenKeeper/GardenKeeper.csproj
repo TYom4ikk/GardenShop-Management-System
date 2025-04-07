@@ -158,6 +158,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Model\PartialClasses\Products.cs" />
     <Compile Include="Model\ProductImages.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -173,6 +174,9 @@
     <Compile Include="Model\Sales.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\Statuses.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\sysdiagrams.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -182,10 +186,13 @@
     <Compile Include="Model\UserTypes.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\AddNewManagerViewModel.cs" />
     <Compile Include="ViewModel\AuditLogReportGeneratorViewModel.cs" />
     <Compile Include="ViewModel\AuditLogViewModel.cs" />
     <Compile Include="ViewModel\CatalogViewModel.cs" />
+    <Compile Include="ViewModel\ProductCardViewModel.cs" />
     <Compile Include="ViewModel\ProductCustomizationViewModel.cs" />
+    <Compile Include="ViewModel\ProductFullInfoViewModel.cs" />
     <Compile Include="ViewModel\QuantitySelectionViewModel.cs" />
     <Compile Include="ViewModel\RegistrationViewModel.cs" />
     <Compile Include="ViewModel\SalesReportGeneratorViewModel.cs" />
@@ -199,6 +206,9 @@
     </Compile>
     <Compile Include="View\Partial\ShoppingCardProduct.xaml.cs">
       <DependentUpon>ShoppingCardProduct.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ProductFullInfoWindow.xaml.cs">
+      <DependentUpon>ProductFullInfoWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\QuantitySelectionWindow.xaml.cs">
       <DependentUpon>QuantitySelectionWindow.xaml</DependentUpon>
@@ -229,11 +239,27 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Assets\Styles\AddNewManagerWindowStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Assets\Styles\AuditLogReportGeneratorWindowStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Assets\Styles\ProductCustomizationWindowStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Assets\Styles\ProductFullInfoWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Assets\Styles\QuantitySelectionWindowStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Assets\Styles\SalesReportGeneratorWindowStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -270,6 +296,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Partial\ShoppingCardProduct.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ProductFullInfoWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -346,7 +376,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\Debug\AuditLogReports\" />
-    <Folder Include="Model\PartialClasses\" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="Microsoft.Office.Core">
