@@ -14,16 +14,5 @@ namespace GardenKeeper.ViewModel
         {
             AuditLogs = Core.context.AuditLog.ToList();
         }
-
-        public void AddLog()
-        {
-            AuditLog log = new AuditLog
-            {
-              /*  ProductId = ,
-                ActionId = ,
-                FieldId = ,
-                OldValue*/
-            };
-        }
     }
 }

@@ -9,6 +9,10 @@ namespace GardenKeeper.ViewModel
 {
     internal class AddNewManagerViewModel
     {
+        /// <summary>
+        /// Добавление менеджера в базу данных
+        /// </summary>
+        /// <param name="user"></param>
         public void AddNewManager(Model.Users user)
         {
             Core.context.Users.Add(user);

@@ -128,8 +128,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Authentication.cs" />
-    <Compile Include="EmailInteraction.cs" />
+    <Compile Include="Classes\Authentication.cs" />
+    <Compile Include="Classes\EmailInteraction.cs" />
     <Compile Include="Model\Actions.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
