@@ -9,12 +9,19 @@ using System.Windows.Media.Imaging;
 
 namespace GardenKeeper.View.UsersView.Partial
 {
+    /// <summary>
+    /// Окно для отображения полной информации о товаре
+    /// </summary>
     public partial class ProductFullInfoWindow : Window
     {
         private int imageIndex = 0;
         private List<ProductImages> images = new List<ProductImages>();
         private Products product;
 
+        /// <summary>
+        /// Инициализирует новый экземпляр окна с информацией о товаре
+        /// </summary>
+        /// <param name="product">Товар, информацию о котором нужно отобразить</param>
         public ProductFullInfoWindow(Products product)
         {
             InitializeComponent();
@@ -77,6 +84,9 @@ namespace GardenKeeper.View.UsersView.Partial
             }
         }
 
+        /// <summary>
+        /// Обработчик нажатия кнопки для переключения на предыдущее изображение
+        /// </summary>
         private void ChangeImageButtonLeft_Click(object sender, RoutedEventArgs e)
         {
             if (images.Count == 0) return;
@@ -89,6 +99,9 @@ namespace GardenKeeper.View.UsersView.Partial
             ChangeImage();
         }
 
+        /// <summary>
+        /// Обработчик нажатия кнопки для переключения на следующее изображение
+        /// </summary>
         private void ChangeImageButtonRight_Click(object sender, RoutedEventArgs e)
         {
             if (images.Count == 0) return;
@@ -101,6 +114,9 @@ namespace GardenKeeper.View.UsersView.Partial
             ChangeImage();
         }
 
+        /// <summary>
+        /// Обновляет отображаемое изображение товара
+        /// </summary>
         private void ChangeImage()
         {
             if (images.Count == 0) return;

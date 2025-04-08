@@ -22,6 +22,11 @@ namespace GardenKeeper.ViewModel
         public List<Products> Products { get; set; }
         public List<Categories> Categories { get; set; }
         public Users currentUser { get; set; }
+
+        /// <summary>
+        /// Инициализирует новый экземпляр класса CatalogViewModel
+        /// </summary>
+        /// <param name="user">Текущий пользователь</param>
         public CatalogViewModel(Users user)
         {
             Products = Core.context.Products.ToList();
@@ -29,6 +34,12 @@ namespace GardenKeeper.ViewModel
             currentUser = user;
         }
 
+        /// <summary>
+        /// Фильтрует список товаров по цене в соответствии с выбранным статусом
+        /// </summary>
+        /// <param name="selectedFilter">Выбранный статус фильтрации</param>
+        /// <param name="products">Список товаров для фильтрации</param>
+        /// <returns>Отфильтрованный список товаров</returns>
         public IEnumerable<Products> PriceFilter(PriceFilterStatuses selectedFilter, List<Products> products)
         {
             IEnumerable<Products> filteredProducts;
@@ -52,6 +63,12 @@ namespace GardenKeeper.ViewModel
             }
             return filteredProducts;
         }
+
+        /// <summary>
+        /// Фильтрует список товаров по категории
+        /// </summary>
+        /// <param name="categoryId">Идентификатор категории</param>
+        /// <returns>Отфильтрованный список товаров</returns>
         public IEnumerable<Products> CategoryFilter(int categoryId)
         {
             if(categoryId == 1)

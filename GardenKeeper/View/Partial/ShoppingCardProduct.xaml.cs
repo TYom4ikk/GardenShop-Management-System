@@ -23,6 +23,12 @@ namespace GardenKeeper.View.Partial
     public partial class ShoppingCardProduct : UserControl
     {
         private Products product;
+
+        /// <summary>
+        /// Инициализирует новый экземпляр класса ShoppingCardProduct
+        /// </summary>
+        /// <param name="product">Товар для отображения в корзине</param>
+        /// <param name="parent">Родительский контейнер для размещения элемента</param>
         public ShoppingCardProduct(Products product, StackPanel parent)
         {
             InitializeComponent();
@@ -36,15 +42,27 @@ namespace GardenKeeper.View.Partial
             QuantityTextBox.Text = QuantitySelectionViewModel.SelectedQuantity.ToString();
         }
 
-        private Panel ParentContainer { get; set; } // Ссылка на родительский контейнер
+        /// <summary>
+        /// Ссылка на родительский контейнер
+        /// </summary>
+        private Panel ParentContainer { get; set; }
 
+        /// <summary>
+        /// Обработчик нажатия на кнопку удаления товара из корзины
+        /// </summary>
+        /// <param name="sender">Источник события</param>
+        /// <param name="e">Параметры события</param>
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-            
             ShoppingCardViewModel.Products.Remove(product);
             ParentContainer.Children.Remove(this);
         }
 
+        /// <summary>
+        /// Обработчик нажатия на кнопку увеличения количества товара
+        /// </summary>
+        /// <param name="sender">Источник события</param>
+        /// <param name="e">Параметры события</param>
         private void IncreaseButton_Click(object sender, RoutedEventArgs e)
         {
             if (int.TryParse(QuantityTextBox.Text, out int quantity))
@@ -54,6 +72,11 @@ namespace GardenKeeper.View.Partial
             }
         }
 
+        /// <summary>
+        /// Обработчик нажатия на кнопку уменьшения количества товара
+        /// </summary>
+        /// <param name="sender">Источник события</param>
+        /// <param name="e">Параметры события</param>
         private void DecreaseButton_Click(object sender, RoutedEventArgs e)
         {
             if (int.TryParse(QuantityTextBox.Text, out int quantity) && quantity > 1)

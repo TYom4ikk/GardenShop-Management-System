@@ -25,6 +25,9 @@ namespace GardenKeeper.View.SystemAdminView
         Users chosenUser;
         DateTime? chosenDate;
         
+        /// <summary>
+        /// Инициализирует новый экземпляр окна генерации отчета аудита
+        /// </summary>
         public AuditLogReportGeneratorWindow()
         {
             InitializeComponent();
@@ -38,18 +41,33 @@ namespace GardenKeeper.View.SystemAdminView
             userToLog.SelectedIndex = 0;
         }
 
-
+        /// <summary>
+        /// Обработчик нажатия на кнопку генерации отчета аудита
+        /// </summary>
+        /// <param name="sender">Источник события</param>
+        /// <param name="e">Параметры события</param>
         private void GenerateAuditLogReport_Click(object sender, RoutedEventArgs e)
         {
-            chosenUser = model.GetUsers().FirstOrDefault(u => u.Id == (int)userToLog.SelectedValue);
-            chosenDate = dateToLog.SelectedDate;
-
-            model.OpenLogsExcel();
-            foreach (var log in model.GetAuditLogs(chosenUser.Id, chosenDate))
+            try
             {
-                model.WriteLineLog(log);
+                chosenUser = model.GetUsers().FirstOrDefault(u => u.Id == (int)userToLog.SelectedValue);
+                chosenDate = dateToLog.SelectedDate;
+
+                model.OpenLogsExcel();
+                foreach (var log in model.GetAuditLogs(chosenUser.Id, chosenDate))
+                {
+                    model.WriteLineLog(log);
+                }
+                string result = model.CloseLogsExcel();
+                if (result != null)
+                {
+                    MessageBox.Show(result, "Сохранение отчёта", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
             }
-            MessageBox.Show(model.CloseLogsExcel(), "Сохранение отчёта", MessageBoxButton.OK, MessageBoxImage.Information);
+            catch(Exception ex)
+            {
+                MessageBox.Show("Произошла ошибка при формировании отчета: " + ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }

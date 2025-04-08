@@ -17,6 +17,11 @@ namespace GardenKeeper.View
         Users user;
         private bool isRegisteredUser;
         ShoppingCardViewModel model;
+
+        /// <summary>
+        /// Инициализирует новый экземпляр класса ShoppingCardPage
+        /// </summary>
+        /// <param name="user">Текущий пользователь</param>
         public ShoppingCardPage(Users user)
         {
             InitializeComponent();
@@ -28,6 +33,9 @@ namespace GardenKeeper.View
             InitializeProductList();
         }
 
+        /// <summary>
+        /// Инициализирует список продуктов в корзине
+        /// </summary>
         private void InitializeProductList()
         {
             foreach(var product in ShoppingCardViewModel.Products)
@@ -39,23 +47,42 @@ namespace GardenKeeper.View
             }
         }
 
+        /// <summary>
+        /// Обработчик нажатия на кнопку входа/выхода
+        /// </summary>
+        /// <param name="sender">Источник события</param>
+        /// <param name="e">Параметры события</param>
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
             RegistrationPage page = new RegistrationPage();
             this.NavigationService.Navigate(page);
         }
 
+        /// <summary>
+        /// Обработчик нажатия на кнопку корзины
+        /// </summary>
+        /// <param name="sender">Источник события</param>
+        /// <param name="e">Параметры события</param>
         private void ShoppingCardButton_Click(object sender, RoutedEventArgs e)
         {
-
         }
 
+        /// <summary>
+        /// Обработчик нажатия на логотип
+        /// </summary>
+        /// <param name="sender">Источник события</param>
+        /// <param name="e">Параметры события</param>
         private void LogoImage_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             CatalogPage page = new CatalogPage(user);
             this.NavigationService.Navigate(page);
         }
 
+        /// <summary>
+        /// Обработчик нажатия на кнопку покупки
+        /// </summary>
+        /// <param name="sender">Источник события</param>
+        /// <param name="e">Параметры события</param>
         private void BuyButton_Click(object sender, RoutedEventArgs e)
         {
             if(!isRegisteredUser)

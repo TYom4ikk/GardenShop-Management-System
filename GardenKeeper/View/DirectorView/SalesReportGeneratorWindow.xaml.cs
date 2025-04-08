@@ -22,6 +22,10 @@ namespace GardenKeeper.View.DirectorView
     public partial class SalesReportGeneratorWindow : Window
     {
         SalesReportGeneratorViewModel model;
+
+        /// <summary>
+        /// Инициализирует новый экземпляр окна генерации отчета о продажах
+        /// </summary>
         public SalesReportGeneratorWindow()
         {
             InitializeComponent();
@@ -39,8 +43,13 @@ namespace GardenKeeper.View.DirectorView
                               "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь" };
             MonthComboBox.ItemsSource = months;
             MonthComboBox.SelectedIndex = DateTime.Now.Month - 1;
-
         }
+
+        /// <summary>
+        /// Обработчик изменения состояния радиокнопок выбора периода
+        /// </summary>
+        /// <param name="sender">Источник события</param>
+        /// <param name="e">Параметры события</param>
         private void RadioButton_Checked(object sender, RoutedEventArgs e)
         {
             if (MonthComboBox != null)
@@ -57,6 +66,12 @@ namespace GardenKeeper.View.DirectorView
                 }
             }
         }
+
+        /// <summary>
+        /// Обработчик нажатия на кнопку генерации отчета о продажах
+        /// </summary>
+        /// <param name="sender">Источник события</param>
+        /// <param name="e">Параметры события</param>
         private void GenerateSalesReportButton_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -82,11 +97,15 @@ namespace GardenKeeper.View.DirectorView
                         model.WriteLineLog(sale);
                     }
                 }
-                MessageBox.Show(model.CloseLogsExcel(), "Сохранение отчёта", MessageBoxButton.OK, MessageBoxImage.Information);
-                model.CloseLogsExcel();
+                string result = model.CloseLogsExcel();
+                if (result != null)
+                {
+                    MessageBox.Show(result, "Сохранение отчёта", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
             }
             catch(Exception ex)
             {
+                MessageBox.Show("Произошла ошибка при формировании отчета: " + ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }

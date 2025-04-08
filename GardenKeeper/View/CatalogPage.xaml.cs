@@ -36,6 +36,10 @@ namespace GardenKeeper.View.UsersView
         private bool isAdmin;
         private bool isDirector;
 
+        /// <summary>
+        /// Инициализирует состояние страницы каталога
+        /// </summary>
+        /// <param name="user">Текущий пользователь</param>
         public void ConstructorBody(Users user)
         {
             viewModel = new CatalogViewModel(user);
@@ -86,6 +90,9 @@ namespace GardenKeeper.View.UsersView
             UpdateProductDisplay(viewModel.Products);
         }
 
+        /// <summary>
+        /// Инициализирует новый экземпляр класса CatalogPage для неавторизованного пользователя
+        /// </summary>
         public CatalogPage()
         {
             InitializeComponent();
@@ -93,12 +100,21 @@ namespace GardenKeeper.View.UsersView
             user.UserTypeId = 1;
             ConstructorBody(user);
         }
+        /// <summary>
+        /// Инициализирует новый экземпляр класса CatalogPage для указанного пользователя
+        /// </summary>
+        /// <param name="user">Пользователь, для которого создается страница</param>
         public CatalogPage(Users user)
         {
             InitializeComponent();
             ConstructorBody(user);
         }
        
+        /// <summary>
+        /// Обновляет отображение продуктов в каталоге
+        /// </summary>
+        /// <param name="products">Список продуктов для отображения</param>
+        /// <returns>Список отображаемых продуктов</returns>
         private List<Products> UpdateProductDisplay(List<Products> products)
         {
             CatalogUniformGrid.Children.Clear();
@@ -116,16 +132,29 @@ namespace GardenKeeper.View.UsersView
             return products;
         }
 
+        /// <summary>
+        /// Обработчик изменения фильтра по цене
+        /// </summary>
+        /// <param name="sender">Источник события</param>
+        /// <param name="e">Параметры события</param>
         private void PriceFilterComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Filter();
         }
 
+        /// <summary>
+        /// Обработчик изменения фильтра по категории
+        /// </summary>
+        /// <param name="sender">Источник события</param>
+        /// <param name="e">Параметры события</param>
         private void CategoriesFilterComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Filter();
         }
 
+        /// <summary>
+        /// Применяет текущие фильтры к списку продуктов
+        /// </summary>
         private void Filter()
         {
             if(PriceFilterComboBox.SelectedItem is CatalogViewModel.PriceFilterStatuses selectedFilter &&
@@ -136,30 +165,55 @@ namespace GardenKeeper.View.UsersView
             }
         }
 
+        /// <summary>
+        /// Обработчик нажатия на кнопку входа/выхода
+        /// </summary>
+        /// <param name="sender">Источник события</param>
+        /// <param name="e">Параметры события</param>
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
             RegistrationPage page = new RegistrationPage();
             this.NavigationService.Navigate(page);
         }
 
+        /// <summary>
+        /// Обработчик нажатия на кнопку корзины
+        /// </summary>
+        /// <param name="sender">Источник события</param>
+        /// <param name="e">Параметры события</param>
         private void ShoppingCardButton_Click(object sender, RoutedEventArgs e)
         {
             ShoppingCardPage page = new ShoppingCardPage(currentUser);
             this.NavigationService.Navigate(page);
         }
 
+        /// <summary>
+        /// Обработчик нажатия на кнопку генерации отчета аудита
+        /// </summary>
+        /// <param name="sender">Источник события</param>
+        /// <param name="e">Параметры события</param>
         private void GenerateAuditLogReportButton_Click(object sender, RoutedEventArgs e)
         {
             var window = new AuditLogReportGeneratorWindow();
             window.ShowDialog();
         }
 
+        /// <summary>
+        /// Обработчик нажатия на кнопку добавления нового менеджера
+        /// </summary>
+        /// <param name="sender">Источник события</param>
+        /// <param name="e">Параметры события</param>
         private void AddNewManagerButton_Click(object sender, RoutedEventArgs e)
         {
             var window = new AddNewManagerWindow();
             window.ShowDialog();
         }
 
+        /// <summary>
+        /// Обработчик нажатия на кнопку генерации отчета о продажах
+        /// </summary>
+        /// <param name="sender">Источник события</param>
+        /// <param name="e">Параметры события</param>
         private void GenerateSalesReportButton_Click(object sender, RoutedEventArgs e)
         {
             var window = new SalesReportGeneratorWindow();

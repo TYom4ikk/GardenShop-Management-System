@@ -33,6 +33,14 @@ namespace GardenKeeper.View.UsersView.Partial
         Products product;
 
         Users currentUser;
+
+        /// <summary>
+        /// Инициализирует новый экземпляр класса ProductCard
+        /// </summary>
+        /// <param name="product">Товар для отображения</param>
+        /// <param name="isSell">Флаг возможности продажи</param>
+        /// <param name="isCustomize">Флаг возможности настройки</param>
+        /// <param name="user">Текущий пользователь</param>
         public ProductCard(Products product, bool isSell, bool isCustomize, Users user)
         {
             InitializeComponent();
@@ -68,6 +76,11 @@ namespace GardenKeeper.View.UsersView.Partial
             ChangeImage();
         }
 
+        /// <summary>
+        /// Обработчик нажатия на кнопку покупки товара
+        /// </summary>
+        /// <param name="sender">Источник события</param>
+        /// <param name="e">Параметры события</param>
         private void BuyProductButton_Click(object sender, RoutedEventArgs e)
         {
             QuantitySelectionWindow window = new QuantitySelectionWindow();
@@ -88,11 +101,21 @@ namespace GardenKeeper.View.UsersView.Partial
             }
         }
 
+        /// <summary>
+        /// Обработчик обратной связи при перетаскивании изображения
+        /// </summary>
+        /// <param name="sender">Источник события</param>
+        /// <param name="e">Параметры события</param>
         private void Image_GiveFeedback(object sender, GiveFeedbackEventArgs e)
         {
 
         }
 
+        /// <summary>
+        /// Обработчик нажатия на кнопку настройки товара
+        /// </summary>
+        /// <param name="sender">Источник события</param>
+        /// <param name="e">Параметры события</param>
         private void CustomizeButtonImage_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             ProductCustomizationWindow window = new ProductCustomizationWindow(product, currentUser);
@@ -104,6 +127,11 @@ namespace GardenKeeper.View.UsersView.Partial
             ProductQuantityTextBlock.Text = $"Осталось: {product.Quantity} шт.";
         }
 
+        /// <summary>
+        /// Обработчик нажатия на кнопку переключения изображения влево
+        /// </summary>
+        /// <param name="sender">Источник события</param>
+        /// <param name="e">Параметры события</param>
         private void ChangeImageButtonLeft_Click(object sender, RoutedEventArgs e)
         {
             if (imageIndex == 0)
@@ -114,6 +142,11 @@ namespace GardenKeeper.View.UsersView.Partial
             ChangeImage();
         }
 
+        /// <summary>
+        /// Обработчик нажатия на кнопку переключения изображения вправо
+        /// </summary>
+        /// <param name="sender">Источник события</param>
+        /// <param name="e">Параметры события</param>
         private void ChangeImageButtonRight_Click(object sender, RoutedEventArgs e)
         {
             if (imageIndex == images.Count - 1)
@@ -124,6 +157,9 @@ namespace GardenKeeper.View.UsersView.Partial
             ChangeImage();
         }
 
+        /// <summary>
+        /// Изменяет текущее отображаемое изображение товара
+        /// </summary>
         private void ChangeImage()
         {
             byte[] imageBytes = images[imageIndex].Image;
@@ -140,11 +176,21 @@ namespace GardenKeeper.View.UsersView.Partial
             }
         }
 
+        /// <summary>
+        /// Обработчик нажатия на кнопку информации о товаре
+        /// </summary>
+        /// <param name="sender">Источник события</param>
+        /// <param name="e">Параметры события</param>
         private void InfoProductButton_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
+        /// <summary>
+        /// Открывает окно с полной информацией о товаре
+        /// </summary>
+        /// <param name="sender">Источник события</param>
+        /// <param name="e">Параметры события</param>
         private void OpenProductFullInfoWindow(object sender, MouseButtonEventArgs e)
         {
             var window = new ProductFullInfoWindow(product);

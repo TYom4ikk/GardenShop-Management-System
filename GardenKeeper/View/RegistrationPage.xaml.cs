@@ -15,12 +15,21 @@ namespace GardenKeeper.View
     {
         RegistrationViewModel model;
         bool isRegistrationMode = false;
+
+        /// <summary>
+        /// Инициализирует новый экземпляр класса RegistrationPage
+        /// </summary>
         public RegistrationPage()
         {
             InitializeComponent();
             model = new RegistrationViewModel();
         }
 
+        /// <summary>
+        /// Обработчик нажатия на кнопку подтверждения
+        /// </summary>
+        /// <param name="sender">Источник события</param>
+        /// <param name="e">Параметры события</param>
         private void ButtonSubmit_Click(object sender, RoutedEventArgs e)
         {
             if (!isRegistrationMode)
@@ -70,6 +79,11 @@ namespace GardenKeeper.View
             }
         }
 
+        /// <summary>
+        /// Обработчик нажатия на кнопку продолжения без регистрации
+        /// </summary>
+        /// <param name="sender">Источник события</param>
+        /// <param name="e">Параметры события</param>
         private void ContinueWithoutRegistration_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             Users user = new Users();
@@ -78,6 +92,11 @@ namespace GardenKeeper.View
             this.NavigationService.Navigate(page);
         }
 
+        /// <summary>
+        /// Обработчик нажатия на кнопку восстановления пароля
+        /// </summary>
+        /// <param name="sender">Источник события</param>
+        /// <param name="e">Параметры события</param>
         private void ForgetPassword_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             if (string.IsNullOrEmpty(TextBoxLogin.Text))
@@ -98,6 +117,11 @@ namespace GardenKeeper.View
             }
         }
 
+        /// <summary>
+        /// Обработчик нажатия на кнопку переключения режима регистрации/входа
+        /// </summary>
+        /// <param name="sender">Источник события</param>
+        /// <param name="e">Параметры события</param>
         private void RegistrationButton_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             isRegistrationMode = !isRegistrationMode;

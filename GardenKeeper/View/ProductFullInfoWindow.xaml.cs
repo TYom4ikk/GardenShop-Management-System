@@ -11,6 +11,9 @@ using System.Windows.Media.Imaging;
 
 namespace GardenKeeper.View
 {
+    /// <summary>
+    /// Окно для отображения полной информации о товаре
+    /// </summary>
     public partial class ProductFullInfoWindow : Window
     {
         private int imageIndex = 0;
@@ -18,6 +21,10 @@ namespace GardenKeeper.View
         private Products product;
         ProductFullInfoViewModel model;
 
+        /// <summary>
+        /// Инициализирует новое окно с информацией о товаре
+        /// </summary>
+        /// <param name="product">Товар, информацию о котором нужно отобразить</param>
         public ProductFullInfoWindow(Products product)
         {
             InitializeComponent();
@@ -41,12 +48,10 @@ namespace GardenKeeper.View
             {
                 var currentProperty = model.GetPropertyById(property.PropertyId);
 
-                // Создаем контейнер для свойства
                 StackPanel propertyContainer = new StackPanel();
                 propertyContainer.Orientation = Orientation.Horizontal;
                 propertyContainer.Margin = new Thickness(0, 20, 0, 20);
 
-                // Создаем TextBlock для названия свойства
                 TextBlock propertyName = new TextBlock();
                 propertyName.Text = currentProperty.Name + ": ";
                 propertyName.FontWeight = FontWeights.Bold;
@@ -56,7 +61,6 @@ namespace GardenKeeper.View
                 propertyName.Foreground = Brushes.White;
                 propertyName.Margin = new Thickness(30, 0, 0, 0);
 
-                // Создаем TextBlock для значения свойства
                 TextBlock propertyValue = new TextBlock();
                 propertyValue.Text = currentProperty.Value;
                 propertyValue.VerticalAlignment = VerticalAlignment.Center;
@@ -64,7 +68,6 @@ namespace GardenKeeper.View
                 propertyValue.Foreground = Brushes.White;
                 propertyValue.Margin = new Thickness(180, 0, 0, 0);
 
-                // Добавляем элементы в контейнер
                 propertyContainer.Children.Add(propertyName);
                 propertyContainer.Children.Add(propertyValue);
 
@@ -87,6 +90,11 @@ namespace GardenKeeper.View
             }
         }
 
+        /// <summary>
+        /// Обработчик нажатия на кнопку переключения изображения влево
+        /// </summary>
+        /// <param name="sender">Источник события</param>
+        /// <param name="e">Параметры события</param>
         private void ChangeImageButtonLeft_Click(object sender, RoutedEventArgs e)
         {
             if (images.Count == 0) return;
@@ -99,6 +107,11 @@ namespace GardenKeeper.View
             ChangeImage();
         }
 
+        /// <summary>
+        /// Обработчик нажатия на кнопку переключения изображения вправо
+        /// </summary>
+        /// <param name="sender">Источник события</param>
+        /// <param name="e">Параметры события</param>
         private void ChangeImageButtonRight_Click(object sender, RoutedEventArgs e)
         {
             if (images.Count == 0) return;
@@ -111,6 +124,9 @@ namespace GardenKeeper.View
             ChangeImage();
         }
 
+        /// <summary>
+        /// Изменяет отображаемое изображение товара
+        /// </summary>
         private void ChangeImage()
         {
             if (images.Count == 0) return;

@@ -9,6 +9,11 @@ namespace GardenKeeper.ViewModel
 {
     internal class ProductCardViewModel
     {
+        /// <summary>
+        /// Получает список изображений товара по его идентификатору
+        /// </summary>
+        /// <param name="productId">Идентификатор товара</param>
+        /// <returns>Список изображений товара</returns>
         public List<ProductImages> GetProductImagesByProductId(int productId)
         {
             return Core.context.ProductImages.Where(pp => pp.ProductId == productId)

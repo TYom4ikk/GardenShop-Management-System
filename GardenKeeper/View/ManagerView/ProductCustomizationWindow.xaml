@@ -39,9 +39,9 @@
             </StackPanel>
             
             <StackPanel Grid.Column="1">
-                <Button Content="Добавить картинку" x:Name="AddImage" Click="AddImage_Click"/>
-                <Button Content="Удалить картинку" x:Name="DeleteImage" Click="DeleteImage_Click"/>
-                <Button Content="Удалить товар" x:Name="DeleteProduct" Click="DeleteProduct_Click"/>
+                <Button Content="Добавить картинку" x:Name="AddImage" Click="AddImageButton_Click"/>
+                <Button Content="Удалить картинку" x:Name="DeleteImage" Click="DeleteImageButton_Click"/>
+                <Button Content="Удалить товар" x:Name="DeleteProduct" Click="DeleteProductButton_Click"/>
             </StackPanel>
         </Grid>
 
@@ -101,7 +101,7 @@
                 <TextBlock x:Name="PropertyPairsCountTextBlock" Text="Свойства:" Margin="10,5" FontWeight="Bold"/>
                 <ScrollViewer VerticalScrollBarVisibility="Visible" Height="200" MaxHeight="200">
                     <StackPanel x:Name="CustomPropertiesStackPanel" Orientation="Vertical">
-                        <!-- Шаблон свойства убран, теперь все свойства добавляются динамически -->
+                        
                     </StackPanel>
                 </ScrollViewer>
             </StackPanel>

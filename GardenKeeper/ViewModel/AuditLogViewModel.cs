@@ -10,6 +10,10 @@ namespace GardenKeeper.ViewModel
     class AuditLogViewModel
     {
         public List<AuditLog> AuditLogs { get; set; }
+
+        /// <summary>
+        /// Инициализирует новый экземпляр класса AuditLogViewModel и загружает все записи аудита
+        /// </summary>
         public AuditLogViewModel()
         {
             AuditLogs = Core.context.AuditLog.ToList();

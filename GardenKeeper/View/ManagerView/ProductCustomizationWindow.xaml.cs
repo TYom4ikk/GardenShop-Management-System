@@ -34,6 +34,11 @@ namespace GardenKeeper.View.ManagerView
 
         private Users currentUser;
 
+        /// <summary>
+        /// Инициализирует новый экземпляр окна настройки товара
+        /// </summary>
+        /// <param name="product">Товар для настройки</param>
+        /// <param name="user">Текущий пользователь</param>
         public ProductCustomizationWindow(Products product, Users user)
         {
             InitializeComponent();
@@ -87,6 +92,9 @@ namespace GardenKeeper.View.ManagerView
             UpdatePropertyCountDisplay();
         }
 
+        /// <summary>
+        /// Загружает существующие свойства товара
+        /// </summary>
         private void LoadExistingProperties()
         {
             try
@@ -178,7 +186,9 @@ namespace GardenKeeper.View.ManagerView
             }
         }
         
-        // Метод для добавления пустой строки свойства
+        /// <summary>
+        /// Добавляет пустую строку для нового свойства
+        /// </summary>
         private void AddEmptyPropertyRow()
         {
             try
@@ -228,74 +238,32 @@ namespace GardenKeeper.View.ManagerView
             }
             catch (Exception ex)
             {
+                MessageBox.Show("Ошибка при добавлении пустой строки свойства: " + ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
+        /// <summary>
+        /// Обновляет коллекцию изображений товара
+        /// </summary>
         private void UpdateImagesCollection()
         {
             images = model.GetProductImagesByProductId(currentProduct.Id);
             imageIndex = 0;
         }
 
-        private void AddProperty_Click(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Обновляет отображение количества свойств
+        /// </summary>
+        private void UpdatePropertyCountDisplay()
         {
-            try 
-            {
-                
-                var currentStackPanel = (sender as Button).Parent as StackPanel;
-                var parentStackPanel = currentStackPanel.Parent as StackPanel;
-
-                // Удаляем кнопку добавления из текущей панели
-                currentStackPanel.Children.Remove(sender as Button);
-
-                // Создаем новую панель свойств
-                StackPanel newPropertyPanel = new StackPanel();
-                newPropertyPanel.Orientation = Orientation.Horizontal;
-                newPropertyPanel.Style = (Style)FindResource("ProperyRow");
-
-                // Создаем контейнер для названия свойства
-                StackPanel nameContainer = new StackPanel();
-                Label nameLabel = new Label();
-                nameLabel.Content = "Название свойства";
-                TextBox propertyNameTextBox = new TextBox();
-                propertyNameTextBox.TextChanged += PropertyName_TextChanged;
-                nameContainer.Children.Add(nameLabel);
-                nameContainer.Children.Add(propertyNameTextBox);
-
-                // Создаем контейнер для значения свойства
-                StackPanel valueContainer = new StackPanel();
-                Label valueLabel = new Label();
-                valueLabel.Content = "Значение свойства";
-                TextBox propertyValueTextBox = new TextBox();
-                propertyValueTextBox.TextChanged += PropertyValue_TextChanged;
-                valueContainer.Children.Add(valueLabel);
-                valueContainer.Children.Add(propertyValueTextBox);
-
-                // Непосредственно добавляем пару в словарь (без проверки на пустоту)
-                propertyPairs[propertyNameTextBox] = propertyValueTextBox;
-                
-                // Обновляем счетчик свойств
-                UpdatePropertyCountDisplay();
-
-                // Создаем кнопку добавления нового свойства
-                Button addPropertyButton = new Button();
-                addPropertyButton.Content = "+";
-                addPropertyButton.Width = 30;
-                addPropertyButton.Click += AddProperty_Click;
-
-                // Добавляем элементы в новую панель
-                newPropertyPanel.Children.Add(nameContainer);
-                newPropertyPanel.Children.Add(valueContainer);
-                newPropertyPanel.Children.Add(addPropertyButton);
-
-                // Добавляем новую панель в родительский контейнер
-                parentStackPanel.Children.Add(newPropertyPanel);
-            }
-            catch (Exception ex)
-            {
-            }
+            PropertyPairsCountTextBlock.Text = $"Свойства: {propertyPairs.Count}";
         }
 
+        /// <summary>
+        /// Обработчик изменения текста в поле названия свойства
+        /// </summary>
+        /// <param name="sender">Источник события</param>
+        /// <param name="e">Параметры события</param>
         private void PropertyName_TextChanged(object sender, TextChangedEventArgs e)
         {
             TextBox nameTextBox = sender as TextBox;
@@ -374,6 +342,11 @@ namespace GardenKeeper.View.ManagerView
             }
         }
 
+        /// <summary>
+        /// Обработчик изменения текста в поле значения свойства
+        /// </summary>
+        /// <param name="sender">Источник события</param>
+        /// <param name="e">Параметры события</param>
         private void PropertyValue_TextChanged(object sender, TextChangedEventArgs e)
         {
             // Аналогично обрабатываем изменение значения свойства
@@ -437,7 +410,76 @@ namespace GardenKeeper.View.ManagerView
             }
         }
 
-        // Метод для поиска родительского элемента нужного типа
+        /// <summary>
+        /// Обработчик нажатия на кнопку добавления свойства
+        /// </summary>
+        /// <param name="sender">Источник события</param>
+        /// <param name="e">Параметры события</param>
+        private void AddProperty_Click(object sender, RoutedEventArgs e)
+        {
+            try 
+            {
+                
+                var currentStackPanel = (sender as Button).Parent as StackPanel;
+                var parentStackPanel = currentStackPanel.Parent as StackPanel;
+
+                // Удаляем кнопку добавления из текущей панели
+                currentStackPanel.Children.Remove(sender as Button);
+
+                // Создаем новую панель свойств
+                StackPanel newPropertyPanel = new StackPanel();
+                newPropertyPanel.Orientation = Orientation.Horizontal;
+                newPropertyPanel.Style = (Style)FindResource("ProperyRow");
+
+                // Создаем контейнер для названия свойства
+                StackPanel nameContainer = new StackPanel();
+                Label nameLabel = new Label();
+                nameLabel.Content = "Название свойства";
+                TextBox propertyNameTextBox = new TextBox();
+                propertyNameTextBox.TextChanged += PropertyName_TextChanged;
+                nameContainer.Children.Add(nameLabel);
+                nameContainer.Children.Add(propertyNameTextBox);
+
+                // Создаем контейнер для значения свойства
+                StackPanel valueContainer = new StackPanel();
+                Label valueLabel = new Label();
+                valueLabel.Content = "Значение свойства";
+                TextBox propertyValueTextBox = new TextBox();
+                propertyValueTextBox.TextChanged += PropertyValue_TextChanged;
+                valueContainer.Children.Add(valueLabel);
+                valueContainer.Children.Add(propertyValueTextBox);
+
+                // Непосредственно добавляем пару в словарь (без проверки на пустоту)
+                propertyPairs[propertyNameTextBox] = propertyValueTextBox;
+                
+                // Обновляем счетчик свойств
+                UpdatePropertyCountDisplay();
+
+                // Создаем кнопку добавления нового свойства
+                Button addPropertyButton = new Button();
+                addPropertyButton.Content = "+";
+                addPropertyButton.Width = 30;
+                addPropertyButton.Click += AddProperty_Click;
+
+                // Добавляем элементы в новую панель
+                newPropertyPanel.Children.Add(nameContainer);
+                newPropertyPanel.Children.Add(valueContainer);
+                newPropertyPanel.Children.Add(addPropertyButton);
+
+                // Добавляем новую панель в родительский контейнер
+                parentStackPanel.Children.Add(newPropertyPanel);
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+        /// <summary>
+        /// Находит родительский элемент указанного типа
+        /// </summary>
+        /// <typeparam name="T">Тип искомого элемента</typeparam>
+        /// <param name="child">Дочерний элемент</param>
+        /// <returns>Найденный родительский элемент или null</returns>
         private static T FindVisualParent<T>(DependencyObject child) where T : DependencyObject
         {
             // Получаем родителя
@@ -454,7 +496,12 @@ namespace GardenKeeper.View.ManagerView
             return null;
         }
 
-        private void DeleteImage_Click(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Обработчик нажатия на кнопку удаления изображения
+        /// </summary>
+        /// <param name="sender">Источник события</param>
+        /// <param name="e">Параметры события</param>
+        private void DeleteImageButton_Click(object sender, RoutedEventArgs e)
         {
             if (model.DeleteImage(images[imageIndex].Id) == true)
             {
@@ -468,19 +515,24 @@ namespace GardenKeeper.View.ManagerView
             ChangeImage();
 
             var log = new AuditLog
-            {
-                ProductId = currentProduct.Id,
-                ActionId = 2, // DELETE
-                FieldId = 7, // IMAGE
-                OldValue = images[imageIndex].Image.ToString(),
-                NewValue = null,
-                ChangeDate = DateTime.Now,
-                UserId = currentUser.Id
-            };
+                     {
+                         ProductId = currentProduct.Id,
+                 ActionId = 2, // DELETE
+                 FieldId = 7, // IMAGE
+                 OldValue = images[imageIndex].Image.ToString(),
+                 NewValue = null,
+                 ChangeDate = DateTime.Now,
+                 UserId = currentUser.Id
+                     };
             model.AddLog(log);
         }
 
-        private void AddImage_Click(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Обработчик нажатия на кнопку добавления изображения
+        /// </summary>
+        /// <param name="sender">Источник события</param>
+        /// <param name="e">Параметры события</param>
+        private void AddImageButton_Click(object sender, RoutedEventArgs e)
         {
             if (model.AddNewImage(currentProduct.Id) == true)
             {
@@ -506,7 +558,11 @@ namespace GardenKeeper.View.ManagerView
             model.AddLog(log);
         }
 
-        // Можно оставить пустым (Описание, скидочную цену)
+        /// <summary>
+        /// Обработчик нажатия на кнопку сохранения изменений
+        /// </summary>
+        /// <param name="sender">Источник события</param>
+        /// <param name="e">Параметры события</param>
         private void SaveChangesButton_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -756,6 +812,11 @@ namespace GardenKeeper.View.ManagerView
             }
         }
 
+        /// <summary>
+        /// Обработчик нажатия на кнопку переключения изображения влево
+        /// </summary>
+        /// <param name="sender">Источник события</param>
+        /// <param name="e">Параметры события</param>
         private void ChangeImageButtonLeft_Click(object sender, RoutedEventArgs e)
         {
             if (imageIndex == 0)
@@ -766,6 +827,11 @@ namespace GardenKeeper.View.ManagerView
             ChangeImage();
         }
 
+        /// <summary>
+        /// Обработчик нажатия на кнопку переключения изображения вправо
+        /// </summary>
+        /// <param name="sender">Источник события</param>
+        /// <param name="e">Параметры события</param>
         private void ChangeImageButtonRight_Click(object sender, RoutedEventArgs e)
         {
             if (imageIndex == images.Count - 1)
@@ -776,6 +842,9 @@ namespace GardenKeeper.View.ManagerView
             ChangeImage();
         }
 
+        /// <summary>
+        /// Изменяет отображаемое изображение товара
+        /// </summary>
         private void ChangeImage()
         {
             byte[] imageBytes = images[imageIndex].Image;
@@ -792,6 +861,11 @@ namespace GardenKeeper.View.ManagerView
             }
         }
 
+        /// <summary>
+        /// Обработчик получения фокуса полем ввода цены
+        /// </summary>
+        /// <param name="sender">Источник события</param>
+        /// <param name="e">Параметры события</param>
         private void PriceTextBox_GotFocus(object sender, RoutedEventArgs e)
         {
             if (MainPriceTextBox.Text == currentProduct.FormattedMainPrice)
@@ -801,6 +875,11 @@ namespace GardenKeeper.View.ManagerView
             }
         }
 
+        /// <summary>
+        /// Обработчик потери фокуса полем ввода цены
+        /// </summary>
+        /// <param name="sender">Источник события</param>
+        /// <param name="e">Параметры события</param>
         private void PriceTextBox_LostFocus(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(MainPriceTextBox.Text))
@@ -810,6 +889,11 @@ namespace GardenKeeper.View.ManagerView
             }
         }
 
+        /// <summary>
+        /// Обработчик ввода текста в поле основной цены
+        /// </summary>
+        /// <param name="sender">Источник события</param>
+        /// <param name="e">Параметры события</param>
         private void MainPriceTextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             var text = MainPriceTextBox.Text + e.Text;
@@ -819,6 +903,11 @@ namespace GardenKeeper.View.ManagerView
             }
         }
 
+        /// <summary>
+        /// Обработчик получения фокуса полем ввода скидочной цены
+        /// </summary>
+        /// <param name="sender">Источник события</param>
+        /// <param name="e">Параметры события</param>
         private void DiscountPirceTextBox_GotFocus(object sender, RoutedEventArgs e)
         {
             if (DiscountPirceTextBox.Text == currentProduct.FormattedDiscountPrice)
@@ -828,6 +917,11 @@ namespace GardenKeeper.View.ManagerView
             }
         }
 
+        /// <summary>
+        /// Обработчик потери фокуса полем ввода скидочной цены
+        /// </summary>
+        /// <param name="sender">Источник события</param>
+        /// <param name="e">Параметры события</param>
         private void DiscountPirceTextBox_LostFocus(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(DiscountPirceTextBox.Text))
@@ -837,6 +931,11 @@ namespace GardenKeeper.View.ManagerView
             }
         }
 
+        /// <summary>
+        /// Обработчик ввода текста в поле скидочной цены
+        /// </summary>
+        /// <param name="sender">Источник события</param>
+        /// <param name="e">Параметры события</param>
         private void DiscountPirceTextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             var text = DiscountPirceTextBox.Text + e.Text;
@@ -846,17 +945,25 @@ namespace GardenKeeper.View.ManagerView
             }
         }
 
-        private void DeleteProduct_Click(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Обработчик нажатия на кнопку удаления товара
+        /// </summary>
+        /// <param name="sender">Источник события</param>
+        /// <param name="e">Параметры события</param>
+        private void DeleteProductButton_Click(object sender, RoutedEventArgs e)
         {
-            model.RemoveProduct(currentProduct);
-            MessageBox.Show("Товар удалён!", "Удаление", MessageBoxButton.OK, MessageBoxImage.Information);
-            this.Close();
-        }
+            MessageBoxResult result = MessageBox.Show(
+                "Вы действительно хотите удалить данный продукт?",
+                "Подтверждение удаления",
+                MessageBoxButton.YesNo,
+                MessageBoxImage.Question);
 
-        // Метод для обновления отображения количества свойств
-        private void UpdatePropertyCountDisplay()
-        {
-            PropertyPairsCountTextBlock.Text = $"Свойства: {propertyPairs.Count}";
+            if (result == MessageBoxResult.Yes)
+            {
+                model.RemoveProduct(currentProduct);
+                MessageBox.Show("Товар удалён!", "Удаление", MessageBoxButton.OK, MessageBoxImage.Information);
+                this.Close();
+            }
         }
     }
 }
