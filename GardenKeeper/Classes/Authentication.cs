@@ -29,9 +29,6 @@ namespace GardenKeeper
             {
                 sBuilder.Append(data[i].ToString("x2"));
             }
-            StreamWriter sw = new StreamWriter("asd.txt", true);
-            sw.WriteLine(sBuilder.ToString());
-            sw.Close();
             foreach (var user in users)
             {
                 if(user.Email == email && user.PasswordHash == sBuilder.ToString())

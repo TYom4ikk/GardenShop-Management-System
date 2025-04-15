@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls.Primitives;
 
 namespace GardenKeeper.ViewModel
@@ -64,10 +65,20 @@ namespace GardenKeeper.ViewModel
         /// Удаляет товар
         /// </summary>
         /// <param name="product">Товар для удаления</param>
-        public void RemoveProduct(Products product)
+        public bool RemoveProduct(Products product)
         {
-            Core.context.Products.Remove(product);
-            Core.context.SaveChanges();
+            if (Core.context.Products.Any(p => p.Id == product.Id))
+            {
+
+                Core.context.Products.Remove(product);
+                Core.context.SaveChanges();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+            
         }
 
         /// <summary>
@@ -139,6 +150,12 @@ namespace GardenKeeper.ViewModel
         {
             try
             {
+                if(!Core.context.Products.Any(p => p.Id == productId))
+                {
+                    MessageBox.Show("Попробуйте сначала создать товар, а затем изменять картинки!", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return false;
+                }
+
                 OpenFileDialog openFileDialog = new OpenFileDialog();
                 var result = openFileDialog.ShowDialog();
                 if (result == false)
@@ -178,6 +195,35 @@ namespace GardenKeeper.ViewModel
             {
                 return false;
             }
+        }
+
+        /// <summary>
+        /// Проверяет, существует ли продукт в таблице Products
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>true, если существует, иначе false</returns>
+        public bool ContainsProductById(int id)
+        {
+            return Core.context.Products.Any(p => p.Id == id);
+        }
+
+        /// <summary>
+        /// Добавляет продукт в Базу данных
+        /// </summary>
+        /// <param name="product"></param>
+        public void AddProduct(Products product)
+        {
+            Core.context.Products.Add(product);
+            Core.context.SaveChanges();
+        }
+
+        /// <summary>
+        /// Получает последний продукт из базы данных, отсортированный по убыванию идентификатора.
+        /// </summary>
+        /// <returns>Последний добавленный продукт</returns>
+        public Products GetLastProduct()
+        {
+            return Core.context.Products.OrderByDescending(p => p.Id).FirstOrDefault();
         }
     }
 }

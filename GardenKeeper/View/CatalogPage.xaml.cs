@@ -1,5 +1,6 @@
 ﻿using GardenKeeper.Model;
 using GardenKeeper.View.DirectorView;
+using GardenKeeper.View.ManagerView;
 using GardenKeeper.View.SystemAdminView;
 using GardenKeeper.View.UsersView.Partial;
 using GardenKeeper.ViewModel;
@@ -64,16 +65,20 @@ namespace GardenKeeper.View.UsersView
             SpecialPanel.Visibility = Visibility.Hidden;
             SpecialPanelSplitter.Visibility = Visibility.Hidden;
             GenerateSalesReportButton.Visibility = Visibility.Hidden;
+            AddProductButton.Visibility = Visibility.Hidden;
 
-
-            if (isDirector || isAdmin)
+            if (isDirector || isAdmin || isManager) 
             {
-                SpecialPanel.Visibility = Visibility.Visible;
-                SpecialPanelSplitter.Visibility = Visibility.Visible;
-
-                if (isDirector)
+                AddProductButton.Visibility = Visibility.Visible;
+                if (isDirector || isAdmin)
                 {
-                    GenerateSalesReportButton.Visibility = Visibility.Visible;
+                    SpecialPanel.Visibility = Visibility.Visible;
+                    SpecialPanelSplitter.Visibility = Visibility.Visible;
+
+                    if (isDirector)
+                    {
+                        GenerateSalesReportButton.Visibility = Visibility.Visible;
+                    }
                 }
             }
 
@@ -218,6 +223,28 @@ namespace GardenKeeper.View.UsersView
         {
             var window = new SalesReportGeneratorWindow();
             window.ShowDialog();
+        }
+
+        /// <summary>
+        /// Обработчик нажатия на кнопку добавления товара
+        /// </summary>
+        /// <param name="sender">Источник события</param>
+        /// <param name="e">Параметры события</param>
+        private void AddProductButton_Click(object sender, RoutedEventArgs e)
+        {
+            var productCustomizationWindow = new ProductCustomizationWindow(new Products { DiscountPrice = 100, MainPrice = 100 }, currentUser);
+            productCustomizationWindow.ShowDialog();
+            Filter();
+        }
+
+        /// <summary>
+        /// Обновление страницы
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void LogoImage_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            ConstructorBody(currentUser);
         }
     }
 }

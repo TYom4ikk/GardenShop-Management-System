@@ -16,7 +16,11 @@
         </ResourceDictionary>
     </Page.Resources>
 
-    <Grid x:Name="CatalogGrid" Style="{StaticResource CatalogGrid}">
+    <Page.Background>
+        <ImageBrush ImageSource="pack://application:,,,/Assets/Images/background.png"/>
+    </Page.Background>
+
+    <Grid x:Name="CatalogGrid">
         <Grid.RowDefinitions>
             <RowDefinition Height="100"/>
             <RowDefinition Height="*"/>
@@ -30,7 +34,8 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             
-            <Image x:Name="LogoImage" Grid.Column="0" Source="/Assets/Images/GardenKeeperLogo.png" Style="{StaticResource LogoImage}"/>
+            <Image x:Name="LogoImage" Grid.Column="0" Source="/Assets/Images/GardenKeeperLogo.png" Style="{StaticResource LogoImage}"
+                   MouseLeftButtonDown="LogoImage_MouseLeftButtonDown"/>
             <Button x:Name="LoginButton" Grid.Column="1" Style="{StaticResource LoginButton}"
                     Click="LoginButton_Click"/>
             <Button x:Name="ShoppingCardButton" Grid.Column="4" Content="Корзина"
@@ -46,7 +51,7 @@
                 <ColumnDefinition Width="*" MaxWidth="300" MinWidth="150"/>
             </Grid.ColumnDefinitions>
             
-            <Grid Grid.Column="0">
+            <Grid Grid.Column="0" x:Name="ProductsContentContainer">
             
                 <Grid.RowDefinitions>
                     <RowDefinition Height="50"/>
@@ -58,7 +63,9 @@
                     <ComboBox x:Name="CategoriesFilterComboBox" Style="{StaticResource CategoriesFilterComboBox}"
                               SelectionChanged="CategoriesFilterComboBox_SelectionChanged"
                               HorizontalContentAlignment="Center"
-                              VerticalContentAlignment="Center"/>
+                              VerticalContentAlignment="Center"
+                              IsEditable="True"/>
+                    
 
                     <ComboBox x:Name="PriceFilterComboBox" Style="{StaticResource PriceFilterComboBox}"
                               HorizontalContentAlignment="Center"
@@ -70,6 +77,22 @@
                     <UniformGrid Columns="3" x:Name="CatalogUniformGrid">
                     </UniformGrid>
                 </ScrollViewer>
+
+                <Button x:Name="AddProductButton" 
+                        Content="+" 
+                        Width="40" 
+                        Height="40" 
+                        FontSize="24"
+                        Background="#FF4CAF50"
+                        Foreground="White"
+                        BorderThickness="0"
+                        Click="AddProductButton_Click"
+                        Grid.Row="1"
+                        HorizontalAlignment="Right" 
+                        VerticalAlignment="Bottom"
+                        Margin="0,0,10,10"
+                        Panel.ZIndex="1">
+                </Button>
             </Grid>
 
             <GridSplitter Grid.Column="1" ShowsPreview="False" Width="3"

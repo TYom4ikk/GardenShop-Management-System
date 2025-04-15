@@ -34,6 +34,11 @@ namespace GardenKeeper.ViewModel
             currentUser = user;
         }
 
+        public CatalogViewModel()
+        {
+            
+        }
+
         /// <summary>
         /// Фильтрует список товаров по цене в соответствии с выбранным статусом
         /// </summary>
@@ -46,13 +51,16 @@ namespace GardenKeeper.ViewModel
             switch (selectedFilter)
             {
                 case PriceFilterStatuses.Дешевле:
-                    filteredProducts = products.OrderBy(p => p.PriceToSort);
+                    filteredProducts = products.Where(p => p.PriceToSort.HasValue)
+                                               .OrderBy(p => p.PriceToSort);
                     break;
                 case PriceFilterStatuses.Дороже:
-                    filteredProducts = products.OrderByDescending(p => p.PriceToSort);
+                    filteredProducts = products.Where(p => p.PriceToSort.HasValue)
+                                               .OrderByDescending(p => p.PriceToSort);
                     break;
                 case PriceFilterStatuses.Дата:
-                    filteredProducts = products.OrderBy(p => p.PriceToSort);
+                    filteredProducts = products.Where(p => p.PriceToSort.HasValue)
+                                               .OrderBy(p => p.PriceToSort);
                     break;
                 case PriceFilterStatuses.Стандарт:
                     filteredProducts = products;

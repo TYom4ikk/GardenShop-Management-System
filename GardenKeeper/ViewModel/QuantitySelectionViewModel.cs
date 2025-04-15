@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GardenKeeper.ViewModel
 {
-    static class QuantitySelectionViewModel
+    public static class QuantitySelectionViewModel
     {
         public static long SelectedQuantity { get; set; }
     }

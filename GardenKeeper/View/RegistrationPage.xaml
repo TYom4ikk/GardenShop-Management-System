@@ -16,7 +16,11 @@
         </ResourceDictionary>
     </Page.Resources>
 
-    <Grid Background="{StaticResource BackgroundColor}">
+    <Page.Background>
+        <ImageBrush ImageSource="pack://application:,,,/Assets/Images/background.png"/>
+    </Page.Background>
+
+    <Grid>
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
             <Label Content="Garden Store" FontSize="26" FontWeight="Bold" HorizontalAlignment="Center" FontFamily="Arial" Margin="0 0 0 30"/>
             <Label Content="Логин:" Width="200" Height="30"/>

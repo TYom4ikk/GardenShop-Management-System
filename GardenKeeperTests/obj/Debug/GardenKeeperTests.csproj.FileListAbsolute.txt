@@ -19,3 +19,8 @@ C:\Users\Admin\Desktop\GardenShop-Management-System\GardenKeeperTests\bin\Debug\
 C:\Users\Admin\Desktop\GardenShop-Management-System\GardenKeeperTests\obj\Debug\GardenKe.6BE28911.Up2Date
 C:\Users\Admin\Desktop\GardenShop-Management-System\GardenKeeperTests\obj\Debug\GardenKeeperTests.dll
 C:\Users\Admin\Desktop\GardenShop-Management-System\GardenKeeperTests\obj\Debug\GardenKeeperTests.pdb
+C:\Users\Admin\Desktop\GardenShop-Management-System\GardenKeeperTests\bin\Debug\GardenKeeper.exe
+C:\Users\Admin\Desktop\GardenShop-Management-System\GardenKeeperTests\bin\Debug\EntityFramework.dll
+C:\Users\Admin\Desktop\GardenShop-Management-System\GardenKeeperTests\bin\Debug\GardenKeeper.pdb
+C:\Users\Admin\Desktop\GardenShop-Management-System\GardenKeeperTests\bin\Debug\GardenKeeper.exe.config
+C:\Users\Admin\Desktop\GardenShop-Management-System\GardenKeeperTests\bin\Debug\EntityFramework.xml

@@ -1,70 +1,12 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\Admin\\Desktop\\GardenShop-Management-System\\GardenKeeper\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{A6410086-3335-4C36-86DC-52D27162A60B}|GardenKeeper.csproj|c:\\users\\admin\\desktop\\gardenshop-management-system\\gardenkeeper\\view\\managerview\\productcustomizationwindow.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|",
-      "RelativeMoniker": "D:0:0:{A6410086-3335-4C36-86DC-52D27162A60B}|GardenKeeper.csproj|solutionrelative:view\\managerview\\productcustomizationwindow.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A6410086-3335-4C36-86DC-52D27162A60B}|GardenKeeper.csproj|C:\\Users\\Admin\\Desktop\\GardenShop-Management-System\\GardenKeeper\\view\\managerview\\productcustomizationwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{A6410086-3335-4C36-86DC-52D27162A60B}|GardenKeeper.csproj|solutionrelative:view\\managerview\\productcustomizationwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A6410086-3335-4C36-86DC-52D27162A60B}|GardenKeeper.csproj|c:\\users\\admin\\desktop\\gardenshop-management-system\\gardenkeeper\\viewmodel\\productcustomizationviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A6410086-3335-4C36-86DC-52D27162A60B}|GardenKeeper.csproj|solutionrelative:viewmodel\\productcustomizationviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": [
-        {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 1,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ProductCustomizationViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\GardenShop-Management-System\\GardenKeeper\\ViewModel\\ProductCustomizationViewModel.cs",
-              "RelativeDocumentMoniker": "ViewModel\\ProductCustomizationViewModel.cs",
-              "ToolTip": "C:\\Users\\Admin\\Desktop\\GardenShop-Management-System\\GardenKeeper\\ViewModel\\ProductCustomizationViewModel.cs",
-              "RelativeToolTip": "ViewModel\\ProductCustomizationViewModel.cs",
-              "ViewState": "AgIAAIUAAAAAAAAAAAAQwJsAAAAcAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-08T21:01:25.578Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ProductCustomizationWindow.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\GardenShop-Management-System\\GardenKeeper\\View\\ManagerView\\ProductCustomizationWindow.xaml.cs",
-              "RelativeDocumentMoniker": "View\\ManagerView\\ProductCustomizationWindow.xaml.cs",
-              "ToolTip": "C:\\Users\\Admin\\Desktop\\GardenShop-Management-System\\GardenKeeper\\View\\ManagerView\\ProductCustomizationWindow.xaml.cs",
-              "RelativeToolTip": "View\\ManagerView\\ProductCustomizationWindow.xaml.cs",
-              "ViewState": "AgIAABoBAAAAAAAAAAAEwC8BAAAQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-08T20:47:35.511Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ProductCustomizationWindow.xaml",
-              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\GardenShop-Management-System\\GardenKeeper\\View\\ManagerView\\ProductCustomizationWindow.xaml",
-              "RelativeDocumentMoniker": "View\\ManagerView\\ProductCustomizationWindow.xaml",
-              "ToolTip": "C:\\Users\\Admin\\Desktop\\GardenShop-Management-System\\GardenKeeper\\View\\ManagerView\\ProductCustomizationWindow.xaml",
-              "RelativeToolTip": "View\\ManagerView\\ProductCustomizationWindow.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-04-08T20:47:28.849Z",
-              "EditorCaption": ""
-            }
-          ]
-        }
-      ]
+      "DocumentGroups": []
     }
   ]
 }

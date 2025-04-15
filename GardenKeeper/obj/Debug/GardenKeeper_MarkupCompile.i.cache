@@ -16,5 +16,5 @@ C:\Users\Admin\Desktop\GardenShop-Management-System\GardenKeeper\App.xaml
 44-427708389
 Assets\Colors\MainColors.xaml;Assets\Fonts\MainFonts.xaml;Assets\Styles\AddNewManagerWindowStyle.xaml;Assets\Styles\AuditLogReportGeneratorWindowStyle.xaml;Assets\Styles\ProductCustomizationWindowStyle.xaml;Assets\Styles\ProductFullInfoWindow.xaml;Assets\Styles\QuantitySelectionWindowStyle.xaml;Assets\Styles\SalesReportGeneratorWindowStyle.xaml;Assets\Styles\ShoppingCardStyle.xaml;MainWindow.xaml;Assets\Styles\CatalogStyle.xaml;Assets\Styles\ProductCardStyle.xaml;View\DirectorView\SalesReportGeneratorWindow.xaml;View\ManagerView\ProductCustomizationWindow.xaml;View\Partial\ShoppingCardProduct.xaml;View\ProductFullInfoWindow.xaml;View\QuantitySelectionWindow.xaml;View\RegistrationPage.xaml;View\CatalogPage.xaml;View\Partial\ProductCard.xaml;View\ShoppingCardPage.xaml;View\SystemAdminView\AddNewManagerWindow.xaml;View\SystemAdminView\AuditLogReportGeneratorWindow.xaml;
 
-False
+True
 

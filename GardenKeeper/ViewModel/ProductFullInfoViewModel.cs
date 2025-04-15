@@ -10,7 +10,7 @@ namespace GardenKeeper.ViewModel
     /// <summary>
     /// ViewModel для окна отображения полной информации о товаре
     /// </summary>
-    internal class ProductFullInfoViewModel
+    public class ProductFullInfoViewModel
     {
         /// <summary>
         /// Получает список изображений товара по его идентификатору

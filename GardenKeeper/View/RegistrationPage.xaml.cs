@@ -47,12 +47,10 @@ namespace GardenKeeper.View
             }
             else
             {
-                string emailPattern = @"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$";
-
                 string email = TextBoxLogin.Text;
                 string password = PasswordBoxPassword.Password;
 
-                if (Regex.IsMatch(email, emailPattern) && !string.IsNullOrEmpty(password))
+                if (model.IsEmailValid(email) && !string.IsNullOrEmpty(password))
                 {
                     if(model.GetUserByEmail(email) != null)
                     {

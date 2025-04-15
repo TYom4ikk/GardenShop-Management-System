@@ -44,6 +44,9 @@ namespace GardenKeeper.Model
                 }
                 return DiscountPrice;
             }
+            set
+            {
+            }
         }
         public long SelectedQuantity = 0;
         public byte[] MainImage { get; set; }

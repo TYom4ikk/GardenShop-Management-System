@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace GardenKeeper.ViewModel
 {
-    class SaleViewModel
+    public class SaleViewModel
     {
         public List<Sales> Sales{ get; set; }
 

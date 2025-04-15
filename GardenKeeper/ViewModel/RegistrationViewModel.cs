@@ -8,6 +8,7 @@ using System.Windows.Input;
 using System.Security.Cryptography;
 using System.Linq;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace GardenKeeper.ViewModel
 {
@@ -32,6 +33,24 @@ namespace GardenKeeper.ViewModel
                 return currentUser;
             }
             return null;
+        }
+
+        /// <summary>
+        /// Проверка email на валидность
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns>true, если email валидный, иначе false</returns>
+        public bool IsEmailValid(string email)
+        {
+            string emailPattern = @"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$";
+            if(Regex.IsMatch(email, emailPattern))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         /// <summary>

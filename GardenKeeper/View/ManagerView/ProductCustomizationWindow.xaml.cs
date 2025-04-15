@@ -1,5 +1,6 @@
 ﻿using GardenKeeper.Model;
 using GardenKeeper.ViewModel;
+using Microsoft.Office.Core;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -540,6 +541,7 @@ namespace GardenKeeper.View.ManagerView
             }
             else {
                 MessageBox.Show("Произошла ошибка при добавлении!" ,"Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
             }
             UpdateImagesCollection();
             ChangeImage();
@@ -567,17 +569,24 @@ namespace GardenKeeper.View.ManagerView
         {
             try
             {
-                // Выводим отладочную информацию о свойствах
-                
-                foreach (var pair in propertyPairs)
-                {
-                }
                 
                 if (!string.IsNullOrEmpty(NameTextBox.Text) &&
                     !string.IsNullOrEmpty(MainPriceTextBox.Text) &&
                     !string.IsNullOrEmpty(QuantityTextBox.Text)
                     )
                 {
+                    if(!model.ContainsProductById(currentProduct.Id))
+                    {
+                        currentProduct.Name = NameTextBox.Text;
+                        currentProduct.Description = DescriptionTextBox.Text;
+                        currentProduct.MainPrice = long.Parse(MainPriceTextBox.Text.Split(' ')[0].Replace(".", ""));
+                        currentProduct.DiscountPrice = long.Parse(DiscountPirceTextBox.Text.Split(' ')[0].Replace(".", ""));
+                        currentProduct.Quantity = long.Parse(QuantityTextBox.Text);
+                        currentProduct.CategoryId = ((Categories)CategoryComboBox.SelectedItem).Id;
+                        model.AddProduct(currentProduct);
+                        currentProduct = model.GetLastProduct();
+                    }
+
                     // Сначала обрабатываем основные свойства товара
                     if (currentProduct.Name != NameTextBox.Text)
                     {
@@ -591,7 +600,7 @@ namespace GardenKeeper.View.ManagerView
                             ChangeDate = DateTime.Now,
                             UserId = currentUser.Id
                         };
-                        currentProduct.Name = NameTextBox.Text;
+                        
                         model.AddLog(log);
                     }
                     
@@ -611,7 +620,7 @@ namespace GardenKeeper.View.ManagerView
                                     ChangeDate = DateTime.Now,
                                     UserId = currentUser.Id
                                 };
-                                currentProduct.Description = DescriptionTextBox.Text;
+
                                 model.AddLog(log);
                             }
                         }
@@ -661,7 +670,6 @@ namespace GardenKeeper.View.ManagerView
                             ChangeDate = DateTime.Now,
                             UserId = currentUser.Id
                         };
-                        currentProduct.MainPrice = newMainPrice;
                         log.NewValue = currentProduct.FormattedMainPrice.Replace("₽", "");
                         model.AddLog(log);
                     }
@@ -682,7 +690,6 @@ namespace GardenKeeper.View.ManagerView
                                     ChangeDate = DateTime.Now,
                                     UserId = currentUser.Id
                                 };
-                                currentProduct.DiscountPrice = long.Parse(DiscountPirceTextBox.Text.Split(' ')[0].Replace(".", ""));
                                 log.NewValue = currentProduct.FormattedDiscountPrice.Replace("₽","");
                                 model.AddLog(log);
                             }
@@ -735,7 +742,6 @@ namespace GardenKeeper.View.ManagerView
                             ChangeDate = DateTime.Now,
                             UserId = currentUser.Id
                         };
-                        currentProduct.Quantity = long.Parse(QuantityTextBox.Text);
                         model.AddLog(log);
                     }
 
@@ -752,7 +758,6 @@ namespace GardenKeeper.View.ManagerView
                             ChangeDate = DateTime.Now,
                             UserId = currentUser.Id
                         };
-                        currentProduct.CategoryId = ((Categories)CategoryComboBox.SelectedItem).Id;
                         model.AddLog(log);
                     }
 
@@ -806,6 +811,10 @@ namespace GardenKeeper.View.ManagerView
                     }
                     MessageBox.Show("Изменения успешно сохранены!", "Успех!", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
+                else
+                {
+                    MessageBox.Show("Пожалуйста, заполните все поля!", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
             catch (Exception ex) {
                 MessageBox.Show($"Ошибка: {ex.Message}", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -847,6 +856,10 @@ namespace GardenKeeper.View.ManagerView
         /// </summary>
         private void ChangeImage()
         {
+            if(images.Count == 0)
+            {
+                return;
+            }
             byte[] imageBytes = images[imageIndex].Image;
 
             using (var ms = new MemoryStream(imageBytes))
@@ -960,8 +973,14 @@ namespace GardenKeeper.View.ManagerView
 
             if (result == MessageBoxResult.Yes)
             {
-                model.RemoveProduct(currentProduct);
-                MessageBox.Show("Товар удалён!", "Удаление", MessageBoxButton.OK, MessageBoxImage.Information);
+                if (model.RemoveProduct(currentProduct))
+                {
+                    MessageBox.Show("Товар удалён!", "Удаление", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Невозможно удалить несуществующий товар!", "Удаление", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
                 this.Close();
             }
         }
